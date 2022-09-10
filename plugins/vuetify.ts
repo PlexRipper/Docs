@@ -1,3 +1,6 @@
+import '@mdi/font/css/materialdesignicons.css';
+import { mdi } from 'vuetify/lib/iconsets/mdi';
+
 import { defineNuxtPlugin } from '#app';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
@@ -9,6 +12,12 @@ export default defineNuxtPlugin((nuxtApp) => {
 		directives,
 		theme: {
 			defaultTheme: 'dark',
+		},
+		icons: {
+			defaultSet: 'mdi',
+			sets: {
+				mdi,
+			},
 		},
 	});
 
