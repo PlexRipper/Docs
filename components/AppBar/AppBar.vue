@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "#imports";
+import { computed, useRoute } from "#imports";
 
 interface NavLink {
   label: string;
@@ -33,9 +33,9 @@ const navLinks = computed<NavLink[]>(() => {
 
 function isActive(path) {
   // eslint-disable-next-line no-unused-vars
-  const [_empty, section, ..._rest] = path.split('/')
-
-  return section === this.section
+  const [_empty, section, ..._rest] = path.split('/');
+  const [_currentEmpty, currentSection, ..._currentRest] = useRoute().path.split('/');
+  return section === currentSection;
 }
 </script>
 

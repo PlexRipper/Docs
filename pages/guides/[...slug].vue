@@ -1,8 +1,9 @@
-<script setup>
-import {fetchContentNavigation, queryContent, useAsyncData} from "#imports";
+<script setup lang="ts">
 import NavigationDrawer from "~/components/Sidebar/NavigationDrawer.vue";
+import { queryContent, fetchContentNavigation, useAsyncData } from "#imports";
 
-const {data} = await useAsyncData('guides', () => fetchContentNavigation(queryContent('guides')))
+
+const { data } = await useAsyncData('guides', () => fetchContentNavigation(queryContent('guides')))
 
 </script>
 
