@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <app-bar/>
-    <div>
+    <v-main class="mt-0">
       <NuxtPage/>
-    </div>
+    </v-main>
   </v-app>
 </template>
 <script>

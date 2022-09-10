@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed} from "#imports";
+import { computed } from "#imports";
 
 interface NavLink {
   label: string;
@@ -10,7 +10,7 @@ const navLinks = computed<NavLink[]>(() => {
   return [
     {
       label: 'Guides',
-      path: '/guides/overview/why-cypress',
+      path: '/guides/',
     },
     {
       label: 'API',
@@ -43,6 +43,8 @@ function isActive(path) {
   <v-app-bar
       color="primary"
       density="compact"
+      app
+      clipped-left clipped-right
   >
     <template #prepend>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
