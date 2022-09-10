@@ -1,0 +1,92 @@
+<script setup lang="ts">
+import {computed} from "#imports";
+
+interface NavLink {
+  label: string;
+  path: string;
+}
+
+const navLinks = computed<NavLink[]>(() => {
+  return [
+    {
+      label: 'Guides',
+      path: '/guides/overview/why-cypress',
+    },
+    {
+      label: 'API',
+      path: '/api/table-of-contents',
+    },
+    {
+      label: 'Plugins',
+      path: '/plugins',
+    },
+    {
+      label: 'Examples',
+      path: '/examples/examples/recipes',
+    },
+    {
+      label: 'FAQ',
+      path: '/faq/questions/using-cypress-faq',
+    },
+  ];
+})
+
+function isActive(path) {
+  // eslint-disable-next-line no-unused-vars
+  const [_empty, section, ..._rest] = path.split('/')
+
+  return section === this.section
+}
+</script>
+
+<template>
+  <v-app-bar
+      color="primary"
+      density="compact"
+  >
+    <template #prepend>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </template>
+
+    <v-app-bar-title>
+      <v-btn to="/" outlined nuxt>
+        <div class="d-flex align-center">
+          <logo :size="36"/>
+          <span class="app-header-title ml-2">PlexRipper Docs</span>
+        </div>
+      </v-btn>
+    </v-app-bar-title>
+    <div>
+      <v-btn v-for="(link, index) in navLinks"
+             :key="`header-nav-link-${index}`" :to="link.path" outlined nuxt :class="
+                    isActive(link.path)
+                      ? 'bg-gray-700 text-white'
+                      : 'hover:bg-gray-700 hover:text-white text-gray-300'
+                  "
+             class="app-bar-link"> {{ link.label }}
+      </v-btn>
+
+    </div>
+    <v-spacer></v-spacer>
+
+    <v-btn icon>
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>mdi-heart</v-icon>
+    </v-btn>
+
+  </v-app-bar>
+</template>
+
+
+<style lang="scss">
+.app-header-title {
+
+}
+
+.app-bar-link {
+  color: red;
+}
+</style>
