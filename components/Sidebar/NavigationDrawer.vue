@@ -15,7 +15,7 @@ const props = defineProps<Props>()
 <template>
   <v-navigation-drawer>
     <v-list>
-      <v-list-group v-for="(parent, index) in items" :value="parent.title">
+      <v-list-group v-for="parent in items" :value="parent.title">
         <template v-slot:activator="{ props }">
           <v-list-item
               v-bind="props"
@@ -24,7 +24,7 @@ const props = defineProps<Props>()
         </template>
 
         <v-list-item
-            v-for="(child, i) in parent.children"
+            v-for="child in parent.children"
             :key="child._id"
             :value="child._path"
             :title="child.title"

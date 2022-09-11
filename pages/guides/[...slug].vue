@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import NavigationDrawer from "~/components/Sidebar/NavigationDrawer.vue";
-import { queryContent, fetchContentNavigation, useAsyncData } from "#imports";
+import { useNavigationStore } from "~/store/navigationStore";
 
-
-const { data } = await useAsyncData('guides', () => fetchContentNavigation(queryContent('guides')))
+const store = useNavigationStore();
 
 </script>
 
 <template>
   <main>
-    <NavigationDrawer :items="data[0].children"/>
+    <NavigationDrawer :items="store.getGuidesNavItems"/>
   </main>
 </template>
 
