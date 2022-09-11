@@ -4,7 +4,10 @@ import { fileURLToPath } from 'url';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+    // Doc: https://v3.nuxtjs.org/api/configuration/nuxt.config#srcdir
     srcDir: 'src/',
+    ssr: true,
+    target: "static",
     modules: [
         '@nuxt/content',
         '@nuxt/image-edge',

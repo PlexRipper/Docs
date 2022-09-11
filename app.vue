@@ -1,6 +1,6 @@
 <script setup>
 
-import {useNavigationStore} from "~/store/navigationStore";
+import {useNavigationStore} from "store/navigationStore";
 import AppBar from "~/components/AppBar/AppBar";
 
 const store = useNavigationStore();
