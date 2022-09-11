@@ -1,6 +1,6 @@
 <script setup>
 
-import {useNavigationStore} from "./store/navigationStore";
+import {useNavigationStore} from "store/navigationStore";
 
 const store = useNavigationStore();
 await store.setup()
