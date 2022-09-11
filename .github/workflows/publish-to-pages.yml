@@ -7,7 +7,7 @@ name: Deploy Nuxt site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -53,11 +53,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
-          # Automatically inject router.base in your Nuxt configuration file and set
-          # target to static (https://nuxtjs.org/docs/configuration-glossary/configuration-target/).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: nuxt
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .output/public
       - name: Restore cache
         uses: actions/cache@v3
         with:
