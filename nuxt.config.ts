@@ -50,8 +50,9 @@ export default defineNuxtConfig({
         dir: 'assets/img',
     },
     alias: {
-        img: fileURLToPath(new URL('src/assets/img', import.meta.url)),
-        const: fileURLToPath(new URL('src/common/constants', import.meta.url)),
-        store: fileURLToPath(new URL('src/store', import.meta.url)),
+        img: fileURLToPath(new URL('./src/assets/img', import.meta.url)),
+        const: fileURLToPath(new URL('./src/common/constants', import.meta.url)),
+        store: fileURLToPath(new URL('./src/store', import.meta.url)),
+        components: fileURLToPath(new URL('./src/components', import.meta.url)),
     },
 });
