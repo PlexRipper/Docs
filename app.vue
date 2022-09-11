@@ -1,6 +1,7 @@
 <script setup>
 
 import {useNavigationStore} from "store/navigationStore";
+import AppBar from "./src/components/AppBar/AppBar";
 
 const store = useNavigationStore();
 await store.setup()
@@ -9,7 +10,7 @@ await store.setup()
 
 <template>
   <v-app>
-    <app-bar/>
+    <AppBar/>
     <v-main class="mt-0">
       <NuxtPage/>
     </v-main>

@@ -1,35 +1,8 @@
 <script setup lang="ts">
-import { computed, useRoute } from "#imports";
+import { useRoute } from "#imports";
+import { useNavigationStore } from "~/store/navigationStore";
 
-interface NavLink {
-  label: string;
-  path: string;
-}
-
-const navLinks = computed<NavLink[]>(() => {
-  return [
-    {
-      label: 'Guides',
-      path: '/guides/',
-    },
-    {
-      label: 'API',
-      path: '/api/table-of-contents',
-    },
-    {
-      label: 'Plugins',
-      path: '/plugins',
-    },
-    {
-      label: 'Examples',
-      path: '/examples/examples/recipes',
-    },
-    {
-      label: 'FAQ',
-      path: '/faq/questions/using-cypress-faq',
-    },
-  ];
-})
+const store = useNavigationStore();
 
 function isActive(path) {
   // eslint-disable-next-line no-unused-vars
@@ -59,7 +32,7 @@ function isActive(path) {
       </v-btn>
     </v-app-bar-title>
     <div>
-      <v-btn v-for="(link, index) in navLinks"
+      <v-btn v-for="(link, index) in store.getPageNavItems"
              :key="`header-nav-link-${index}`" :to="link.path" outlined nuxt :class="
                     isActive(link.path)
                       ? 'bg-gray-700 text-white'
