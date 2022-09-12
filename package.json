@@ -24,7 +24,7 @@
     "@nuxt/image-edge": "^1.0.0-27707824.1028381",
     "nuxt": "^3.0.0-rc.9",
     "sass": "^1.54.9",
-    "vite-plugin-vuetify": "^1.0.0-alpha.16",
+    "vite-plugin-vuetify": "^1.0.0-alpha.17",
     "vuetify": "^3.0.0-beta.10"
   }
 }
