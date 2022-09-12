@@ -1,7 +1,7 @@
 <script setup>
 
 import {useNavigationStore} from "store/navigationStore";
-import AppBar from "~/components/AppBar/AppBar";
+import AppBar from "~/components/AppBar/AppBar.vue";
 
 const store = useNavigationStore();
 await store.setup()

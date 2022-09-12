@@ -1,0 +1,11 @@
+---
+title: Similar Projects
+---
+
+## Similar Projects
+
+- [plexmedia-downloader](https://github.com/codedninja/plexmedia-downloader)
+
+- [Saverr](https://github.com/ninthwalker/saverr)
+
+- [PlexDL](https://github.com/BRH-Media/PlexDL)
