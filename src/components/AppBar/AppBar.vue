@@ -17,7 +17,7 @@ function isActive(path) {
       color="primary"
       density="compact"
       app
-      clipped-left clipped-right
+      clipped-left
   >
     <template #prepend>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>

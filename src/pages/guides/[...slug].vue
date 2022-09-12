@@ -1,33 +1,30 @@
 <script setup lang="ts">
 import { useNavigationStore } from "~/store/navigationStore";
-import { onMounted, queryContent, reactive, ref, useAsyncData, useRoute, useRouter } from "#imports";
-import NavigationDrawer from "~/components/Sidebar/NavigationDrawer.vue";
+import { definePageMeta, queryContent, ref, useRoute } from "#imports";
 import PAGE from "const/page-name-constants";
 import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
+definePageMeta({
+  title: 'My home page',
+  layout: 'document',
+  page: PAGE.GUIDES,
+})
+
 const store = useNavigationStore();
+const route = useRoute()
 
 const currentPage = ref<ParsedContent>();
-const currentPath = ref(`/${ PAGE.GUIDES }`);
 
-currentPage.value = await queryContent(useRoute().path).findOne()
-
-async function requestPage(path: string) {
-  currentPath.value = path;
-  await useRouter().push(path)
-}
+currentPage.value = await queryContent(route.path).findOne()
 
 </script>
 
 <template>
-  <main>
-    <NavigationDrawer :sidebar-key="PAGE.GUIDES" :items="store.getGuidesNavItems" @change="requestPage($event)"/>
-    <ContentRenderer :value="currentPage">
-      <template #empty>
-        <h3>No content found.</h3>
-      </template>
-    </ContentRenderer>
-  </main>
+  <ContentRenderer :value="currentPage">
+    <template #empty>
+      <h3>No content found.</h3>
+    </template>
+  </ContentRenderer>
 </template>
 
 

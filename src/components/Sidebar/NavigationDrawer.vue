@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "#imports";
+import { computed, ref, useRouter } from "#imports";
 import { NavItem } from "@nuxt/content/dist/runtime/types";
 import { useNavigationStore } from "store/navigationStore";
 
@@ -14,12 +14,16 @@ const props = defineProps<Props>()
 const emit = defineEmits<{ (e: 'change', path: string): void }>()
 const store = useNavigationStore();
 
+function onClick(path: string) {
+  useRouter().push(path).then(() => emit('change', path))
+}
 
 </script>
 
 <template>
-  <v-navigation-drawer>
-    <v-list :opened="store.getSidebarState(sidebarKey)" @update:opened="store.setSidebarState(sidebarKey, $event)"
+  <v-navigation-drawer app clipped>
+    <v-list :opened="store.getSidebarState(sidebarKey)"
+            @update:opened="store.setSidebarState(sidebarKey, $event)"
             open-strategy="list">
       <v-list-group v-for="parent in items" :value="parent.title">
         <template v-slot:activator="{ props }">
@@ -34,8 +38,8 @@ const store = useNavigationStore();
             :key="child._id"
             :value="child._path"
             :title="child.title"
-            @click="emit('change', child._path);"
-        ></v-list-item>
+            @click="onClick(child._path);"
+        />
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
