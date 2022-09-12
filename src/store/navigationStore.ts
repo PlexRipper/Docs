@@ -16,7 +16,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             pageItems: [
                 {
                     label: 'Guides',
-                    path: `/${ PAGE.GUIDES }`,
+                    path: `/${ PAGE.GUIDES }/overview/what-is-plexripper`,
                 },
                 {
                     label: 'Demo',
@@ -41,7 +41,7 @@ export const useNavigationStore = defineStore('navigationStore', {
     },
     actions: {
         async setup() {
-            const { data } = await useAsyncData(() => fetchContentNavigation(queryContent(PAGE.GUIDES)));
+            const { data } = await useAsyncData(() => fetchContentNavigation());
             this.navItems = data.value ?? [];
         },
         setSidebarState(key: string, selected: string[]) {
@@ -55,7 +55,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             return (key) => state.sideBarState.get(key)
         },
         getGuidesNavItems: (state) => {
-            return state.navItems.find(x => x._path.substring(1) === PAGE.GUIDES)?.children.filter(x => x._path.substring(1) !== PAGE.GUIDES) ?? [];
+            return state.navItems.find(x => x._path.substring(1) === PAGE.GUIDES)?.children.filter(x => x._path !== `/${ PAGE.GUIDES }`) ?? [];
         }
     }
 })
