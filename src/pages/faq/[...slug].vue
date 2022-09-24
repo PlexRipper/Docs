@@ -1,46 +1,84 @@
 <script setup lang="ts">
 import Log from 'consola';
-import { useNavigationStore } from "~/store/navigationStore";
-import { definePageMeta, queryContent, ref, useContent, useRoute } from "#imports";
+import { definePageMeta, queryContent, ref } from "#imports";
 import PAGE from "const/page-name-constants";
-import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { MarkdownNode, MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 import { Question } from "#components";
+
+interface Question {
+  title: string;
+  answer: MarkdownParsedContent,
+}
 
 definePageMeta({
   title: 'My home page',
   page: PAGE.FAQ,
 })
-const { navigation, page, surround, globals } = useContent()
 
-const store = useNavigationStore();
-const route = useRoute()
+const currentPage = ref<MarkdownParsedContent>();
+currentPage.value = await queryContent(PAGE.FAQ).findOne() as MarkdownParsedContent
+const questions = parseQuestions();
 
-const currentPage = ref<ParsedContent>();
-currentPage.value = await queryContent(PAGE.FAQ).findOne()
+function parseQuestions() {
+  if (!currentPage.value) {
+    return [];
+  }
+  const children = currentPage.value?.body.children ?? [];
+  let questionIndices = []
+  // Remove FAQ title
+  children.splice(0, 1);
+  // Retrieve all questions tagged with h2 tag
+  for (let i = 0; i < children.length - 1; i++) {
+    if (children[i]?.tag === 'h2') {
+      questionIndices.push(i);
+    }
+  }
 
-Log.debug(page)
+  // Retrieve all the answers between the questions and map them
+  let result: Question[] = []
+  const lastIndex = children.length - 1;
+  for (let i = 0; i < questionIndices.length; i++) {
+    const questionIndex = questionIndices[i];
+    const title = children[questionIndex].children[0].value;
+    let answerChildren: MarkdownNode[] = [];
+
+    if (i < lastIndex) {
+      const nextQuestionIndex = questionIndices[i + 1];
+      answerChildren = children.slice(questionIndex + 1, nextQuestionIndex);
+    } else {
+      answerChildren = children.slice(questionIndex + 1, lastIndex + 1);
+    }
+
+    result.push({
+      title,
+      answer: {
+        ...currentPage.value,
+        body: {
+          type: 'root',
+          children: answerChildren,
+        }
+      }
+    })
+  }
+
+  return result;
+}
+
+
 </script>
 
 <template>
   <main>
-
-    <v-list>
-      <!--      <v-list-group v-for="parent in items" :value="parent.title">-->
-      <!--        <template v-slot:activator="{ props }">-->
-      <!--          <v-list-item-->
-      <!--              v-bind="props"-->
-      <!--              :title="parent.title"-->
-      <!--          ></v-list-item>-->
-      <!--        </template>-->
-
-      <!--        <v-list-item-->
-      <!--            v-for="child in parent.children"-->
-      <!--            :key="child._id"-->
-      <!--            :value="child._path"-->
-      <!--            :title="child.title"-->
-      <!--            @click="onClick(child._path);"-->
-      <!--        />-->      <!--      </v-list-group>-->
-    </v-list>
-    <ContentRenderer :value="page"/>
+    <v-container>
+      <v-expansion-panels class="my-4">
+        <template v-for="(question, index) in questions" :key="index">
+          <v-expansion-panel :title="question.title" eager>
+            <template #text>
+              <ContentRenderer v-if="question.answer" :value="question.answer"/>
+            </template>
+          </v-expansion-panel>
+        </template>
+      </v-expansion-panels>
+    </v-container>
   </main>
 </template>
