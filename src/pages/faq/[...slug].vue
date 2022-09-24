@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import Log from 'consola';
 import { definePageMeta, queryContent, ref } from "#imports";
 import PAGE from "const/page-name-constants";
 import { MarkdownNode, MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
-import { Question } from "#components";
 
 interface Question {
   title: string;
@@ -11,7 +9,7 @@ interface Question {
 }
 
 definePageMeta({
-  title: 'My home page',
+  title: 'Frequently Asked Questions',
   page: PAGE.FAQ,
 })
 
@@ -70,6 +68,7 @@ function parseQuestions() {
 <template>
   <main>
     <v-container>
+      <h1>Frequently Asked Questions</h1>
       <v-expansion-panels class="my-4">
         <template v-for="(question, index) in questions" :key="index">
           <v-expansion-panel :title="question.title" eager>

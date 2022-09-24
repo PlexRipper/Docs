@@ -5,9 +5,8 @@ import PAGE from "const/page-name-constants";
 import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 definePageMeta({
-  title: 'Guides',
-  layout: 'document',
-  page: PAGE.GUIDES,
+  title: 'Acknowledgements',
+  page: PAGE.ACKNOWLEDGEMENTS,
 })
 
 const store = useNavigationStore();

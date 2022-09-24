@@ -1,5 +1,5 @@
 ---
-title: What is PlexRipper?
+title: Frequently Asked Questions
 ---
 
 # Frequently Asked Questions
@@ -47,5 +47,7 @@ pinky toe.
 
 ## I'm impressed with you work, can I hire you?
 
-Yes, I (@JasonLandbridge) work as a freelance Vue.js/.NET developer, and I'm always looking forward to the next awesome
+Yes, I ([@JasonLandbridge](https://github.com/JasonLandbridge)) work as a freelance Vue.js/.NET
+developer, and I'm
+always looking forward to the next awesome
 project. But if you're secretly hoping for more updates on PlexRipper, then you might not want to hire me ;)

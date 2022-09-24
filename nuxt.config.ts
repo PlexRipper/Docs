@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     content: {
         documentDriven: true,
     },
-    css: ['vuetify/styles', 'mdi/css/materialdesignicons.min.css'],
+    css: ['vuetify/styles', 'mdi/css/materialdesignicons.min.css', '@/assets/scss/style.scss'],
     build: {
         transpile: ['vuetify'],
     },

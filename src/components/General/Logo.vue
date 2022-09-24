@@ -10,6 +10,6 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <nuxt-img :height="size" :width="size" src="/logo/full-logo-256.png"/>
+  <img :height="size" :width="size" src="/img/logo/full-logo-256.png" alt="PlexRipper Docs"/>
 </template>
 
