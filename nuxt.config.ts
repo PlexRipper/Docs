@@ -1,5 +1,5 @@
 import vuetify from 'vite-plugin-vuetify';
-import { defineNuxtConfig } from 'nuxt';
+import { defineNuxtConfig } from 'nuxt/config';
 import { fileURLToPath } from 'url';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     content: {
         documentDriven: true,
     },
-    css: ['vuetify/styles', 'mdi/css/materialdesignicons.min.css', '@/assets/scss/style.scss'],
+    css: ['vuetify/styles', '@/assets/scss/style.scss'],
     build: {
         extractCSS: true,
         transpile: ['vuetify'],
