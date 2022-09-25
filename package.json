@@ -18,8 +18,9 @@
     "mdi": "^2.2.43",
     "pinia": "^2.0.22",
     "prettier": "^2.7.1",
-    "vanta": "^0.5.24",
-    "three": "^0.123.0"
+    "three": "^0.123.0",
+    "urlcat": "^2.0.4",
+    "vanta": "^0.5.24"
   },
   "devDependencies": {
     "@nuxt/content": "^2.1.1",

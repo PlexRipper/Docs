@@ -22,13 +22,11 @@ currentPage.value = await queryContent(route.path).findOne()
 <template>
   <div>
     <NavigationDrawer :sidebar-key="PAGE.GUIDES" :items="store.getGuidesNavItems"/>
-    <v-main class="mt-0">
-      <ContentRenderer :value="currentPage">
-        <template #empty>
-          <h3>No content found.</h3>
-        </template>
-      </ContentRenderer>
-    </v-main>
+    <ContentRenderer :value="currentPage">
+      <template #empty>
+        <h3>No content found.</h3>
+      </template>
+    </ContentRenderer>
   </div>
 </template>
 
