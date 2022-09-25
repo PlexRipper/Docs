@@ -1,4 +1,8 @@
-import urlcat, { ParamMap } from 'urlcat';
+// Urlcat is not a function fix on production:
+// https://github.com/balazsbotond/urlcat/issues/171
+import urlcatM, { ParamMap } from "urlcat";
+// @ts-ignore
+const urlcat = urlcatM.default;
 
 export interface IShield {
     label?: string;
