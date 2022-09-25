@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IShield, transform } from "~/common/lib/shields-parser";
+import { transform } from "~/common/lib/shields-parser";
 
 const shields = transform([
   {
@@ -60,7 +60,7 @@ const devShields = transform([
   },
 ]);
 
-const stableShields: IShield[] = transform([
+const stableShields = transform([
   {
     label: 'Stable Version',
     fileName: 'src/WebAPI/ClientApp/package.json',
@@ -82,32 +82,38 @@ const stableShields: IShield[] = transform([
 </script>
 
 <template>
-  <v-row justify="center">
-    <v-col cols="auto" v-for="(link, index) in shields" :key="index">
-      <img :src="link.src" :alt="link.label">
-    </v-col>
-  </v-row>
   <v-row>
+    <v-col cols="12">
+      <v-row justify="center">
+        <v-col cols="auto" v-for="(link, index) in shields" :key="index">
+          <img :src="link.src" :alt="link.label">
+        </v-col>
+      </v-row>
+    </v-col>
 
     <v-col>
-      <v-table density="compact">
+      <v-table>
         <thead>
         <tr>
           <th class="text-left">
-            Development
+            <h3>
+              Development
+            </h3>
           </th>
           <th class="text-left">
-            Stable
+            <h3>
+              Stable
+            </h3>
           </th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="(_, index) in Math.min(devShields.length, stableShields.length)" :key="index">
           <td>
-            <img :src="devShields[index].src" :alt="devShields[index].label">
+            <img class="mt-1" :src="devShields[index].src" :alt="devShields[index].label">
           </td>
           <td>
-            <img :src="stableShields[index].src" :alt="stableShields[index].label">
+            <img class="mt-1" :src="stableShields[index].src" :alt="stableShields[index].label">
           </td>
         </tr>
         </tbody>

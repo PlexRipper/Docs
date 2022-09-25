@@ -3,6 +3,7 @@ const PAGE = {
     DEMO: 'demo',
     FAQ: 'faq',
     CONTRIBUTING: 'contributing',
+    ROADMAP: 'roadmap',
     ACKNOWLEDGEMENTS: 'acknowledgements',
 }
 export default PAGE;

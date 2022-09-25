@@ -5,7 +5,11 @@
 <template>
   <v-main class="mt-10">
     <v-container>
-      <slot/>
+      <v-row justify="center" no-gutters>
+        <v-col cols="12" lg="9" xl="6">
+          <slot/>
+        </v-col>
+      </v-row>
     </v-container>
   </v-main>
 </template>

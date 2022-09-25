@@ -12,7 +12,7 @@ definePageMeta({
 
 const store = useNavigationStore();
 const route = useRoute()
-
+const guidesKey = PAGE.GUIDES;
 const currentPage = ref<ParsedContent>();
 
 currentPage.value = await queryContent(route.path).findOne()
@@ -21,7 +21,7 @@ currentPage.value = await queryContent(route.path).findOne()
 
 <template>
   <div>
-    <NavigationDrawer :sidebar-key="PAGE.GUIDES" :items="store.getGuidesNavItems"/>
+    <NavigationDrawer :sidebar-key="guidesKey" :items="store.getGuidesNavItems"/>
     <ContentRenderer :value="currentPage">
       <template #empty>
         <h3>No content found.</h3>

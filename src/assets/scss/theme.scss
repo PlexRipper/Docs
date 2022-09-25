@@ -5,11 +5,11 @@ v-app
 */
 .v-application {
   &.v-theme--dark {
-    background: $dark-theme-background !important;
+    background-color: $dark-theme-background !important;
   }
 
   &.v-theme--light {
-    background: $light-theme-background !important;
+    background-color: $light-theme-background !important;
   }
 }
 
@@ -18,12 +18,98 @@ v-app-bar
 */
 .v-app-bar {
   &.v-theme--dark {
-    background: $dark-theme-background !important;
-    color: white;
+    background-color: $dark-theme-background !important;
+    color: white !important;
   }
 
   &.v-theme--light {
-    background: $light-theme-background !important;
-    color: black;
+    background-color: $dark-theme-background !important;
+    color: white !important;
   }
 }
+
+/*
+v-navigation-drawer
+*/
+.v-navigation-drawer {
+  &.v-theme--dark {
+    background-color: $dark-theme-navigation-drawer-background !important;
+    color: white !important;
+    border-right-color: $dark-theme-border-color;
+  }
+
+  &.v-theme--light {
+    background-color: $light-theme-navigation-drawer-background !important;
+    color: black !important;
+    border-right-color: $dark-theme-border-color;
+  }
+}
+
+/*
+v-table
+*/
+.v-table {
+  &.v-theme--dark {
+    background-color: transparent !important;
+    color: white;
+
+    th, td, tr {
+      border-top-color: $dark-theme-border-color !important;
+      border-bottom-color: $dark-theme-border-color !important;
+    }
+  }
+
+  &.v-theme--light {
+    background-color: transparent !important;
+    color: black;
+
+    th, td, tr {
+      border-top-color: $light-theme-border-color !important;
+      border-bottom-color: $light-theme-border-color !important;
+    }
+  }
+}
+
+/*
+v-expansion-panels
+*/
+.v-expansion-panels, {
+  &.v-theme--dark {
+    background-color: transparent !important;
+    color: white !important;
+    border-right-color: $dark-theme-border-color;
+
+    .v-expansion-panel {
+      background-color: $dark-theme-navigation-drawer-background !important;
+
+      .v-expansion-panel-title {
+        font-weight: bold;
+
+        &.v-expansion-panel-title--active {
+          background-color: rgba(255, 0, 0, 0.40) !important;
+        }
+      }
+
+    }
+  }
+
+  &.v-theme--light {
+    background-color: transparent !important;
+    color: black !important;
+    border-right-color: $dark-theme-border-color;
+
+    .v-expansion-panel {
+      background-color: $light-theme-navigation-drawer-background !important;
+
+      .v-expansion-panel-title {
+        font-weight: bold;
+
+        &.v-expansion-panel-title--active {
+          background-color: rgba(255, 0, 0, 0.40) !important;
+        }
+      }
+    }
+  }
+}
+
+

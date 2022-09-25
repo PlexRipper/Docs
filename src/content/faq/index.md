@@ -27,7 +27,7 @@ vulnerability in PlexRipper.
 
 Most likely not, but I do not own them, so I can't give guarantees. If you want to be extra safe then make a dummy
 account, and then use that account to request access to various Plex servers. Your real account will then never be
-exposed to a Plex server if that account is not used to authenticate with.
+exposed to a Plex server its downloading from.
 
 ## How is PlexRipper spelled?
 
@@ -41,13 +41,10 @@ The dev branch contains all the latest under development changes.
 
 ## Is this project dead? Why no updates? Can you hurry up?
 
-Please go stub you pinky toe against a table leg. Once you've done that, you can check the dev branch which is the most
-up-to-date version of PlexRipper and you will most likely see recent commits and updates. Now go stub you're other
-pinky toe.
+Check the [homepage](/) for what is currently happening.
 
 ## I'm impressed with you work, can I hire you?
 
-Yes, I ([@JasonLandbridge](https://github.com/JasonLandbridge)) work as a freelance Vue.js/.NET
-developer, and I'm
-always looking forward to the next awesome
-project. But if you're secretly hoping for more updates on PlexRipper, then you might not want to hire me ;)
+Yes, I ([JasonLandbridge](https://github.com/JasonLandbridge)) work as a freelance Vue.js/.NET developer, and I'm
+always looking forward to the next awesome project. But if you're secretly hoping for more updates on PlexRipper, then
+you might not want to hire me ;)

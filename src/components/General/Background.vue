@@ -21,14 +21,14 @@ onMounted(() => {
     mouseControls: false,
     touchControls: false,
     gyroControls: false,
-    minHeight: 200.0,
-    minWidth: 200.0,
+    minHeight: 800.0,
+    minWidth: 800.0,
     scale: 1.0,
     scaleMobile: 1.0,
     color: 0x880000,
     shininess: 43.0,
     waveHeight: 4.0,
-    waveSpeed: 0.3,
+    waveSpeed: 0.5,
     zoom: 2.45,
   });
 })

@@ -1,3 +1,4 @@
+// @ts-ignore
 import urlcat, { ParamMap } from 'urlcat';
 
 export interface IShield {

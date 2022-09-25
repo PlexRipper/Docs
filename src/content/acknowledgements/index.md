@@ -4,7 +4,7 @@ title: Acknowledgements
 
 # Acknowledgements
 
-PlexRipper has been created and developed thus far by ([@JasonLandbridge](https://github.com/JasonLandbridge)), but this
+PlexRipper has been created and developed thus far by ([JasonLandbridge](https://github.com/JasonLandbridge)), but this
 could not have been done without the exceptional help of many others.
 
 An absolute massive thank you to the following people!
@@ -47,9 +47,9 @@ special thank you!
 Huge thank you to [Jetbrains](http://www.jetbrains.com/) for supporting open source projects and
 providing us with free licenses of their great tools!
 
-- [![](/img/jetbrains/resharper.svg){.img-size-32} ReSharper](http://www.jetbrains.com/resharper/)
 - [![](/img/jetbrains/webstorm.svg){.img-size-32} WebStorm](http://www.jetbrains.com/webstorm/)
 - [![](/img/jetbrains/rider.svg){.img-size-32} Rider](http://www.jetbrains.com/rider/)
+- [![](/img/jetbrains/resharper.svg){.img-size-32} ReSharper](http://www.jetbrains.com/resharper/)
 - [![](/img/jetbrains/dottrace.svg){.img-size-32} DotTrace](http://www.jetbrains.com/dottrace/)
 
 ## Thanks, but no thanks

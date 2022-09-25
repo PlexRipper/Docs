@@ -27,6 +27,10 @@ export const useNavigationStore = defineStore('navigationStore', {
                     path: `/${ PAGE.FAQ }`,
                 },
                 {
+                    label: 'Roadmap',
+                    path: `/${ PAGE.ROADMAP }`,
+                },
+                {
                     label: 'Contributing',
                     path: `/${ PAGE.CONTRIBUTING }`,
                 },
@@ -60,6 +64,7 @@ export const useNavigationStore = defineStore('navigationStore', {
     }
 })
 
+// Added to make hot module reloading work during development
 if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useNavigationStore, import.meta.hot))
 }
