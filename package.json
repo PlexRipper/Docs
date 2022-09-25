@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@nuxt/content": "^2.1.1",
-    "@nuxt/image-edge": "^1.0.0-27719579.87dcdf2",
     "nuxt": "^3.0.0-rc.9",
     "sass": "^1.55.0",
     "vite-plugin-vuetify": "^1.0.0-alpha.17",

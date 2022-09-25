@@ -26,7 +26,6 @@ export default defineNuxtConfig({
     },
     modules: [
         '@nuxt/content',
-        '@nuxt/image-edge',
         '@pinia/nuxt',
         async (options, nuxt) => {
             // @ts-ignore
