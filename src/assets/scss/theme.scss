@@ -1,0 +1,29 @@
+@import 'variables';
+
+/*
+v-app
+*/
+.v-application {
+  &.v-theme--dark {
+    background: $dark-theme-background !important;
+  }
+
+  &.v-theme--light {
+    background: $light-theme-background !important;
+  }
+}
+
+/*
+v-app-bar
+*/
+.v-app-bar {
+  &.v-theme--dark {
+    background: $dark-theme-background !important;
+    color: white;
+  }
+
+  &.v-theme--light {
+    background: $light-theme-background !important;
+    color: black;
+  }
+}

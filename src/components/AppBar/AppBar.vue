@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { useRoute } from "#imports";
-import { useNavigationStore } from "~/store/navigationStore";
+import { computed, useRoute } from "#imports";
+import { useNavigationStore } from "store";
+import { useTheme } from "vuetify";
+
+const theme = useTheme()
 
 const store = useNavigationStore();
 
@@ -10,6 +13,19 @@ function isActive(path) {
   const [_currentEmpty, currentSection, ..._currentRest] = useRoute().path.split('/');
   return section === currentSection;
 }
+
+function toggleTheme() {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
+}
+
+const isDark = computed(() => {
+  return theme.global.name.value === 'dark';
+});
+
+const icon = computed(() => {
+  return isDark.value ? 'mdi-white-balance-sunny' : 'mdi-moon-waxing-crescent';
+});
+
 </script>
 
 <template>
@@ -19,10 +35,6 @@ function isActive(path) {
       app
       clipped-left
   >
-    <template #prepend>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-    </template>
-
     <v-app-bar-title>
       <v-btn to="/" outlined nuxt>
         <div class="d-flex align-center">
@@ -33,33 +45,26 @@ function isActive(path) {
     </v-app-bar-title>
     <div>
       <v-btn v-for="(link, index) in store.getPageNavItems"
-             :key="`header-nav-link-${index}`" :to="link.path" outlined nuxt :class="
-                    isActive(link.path)
-                      ? 'bg-gray-700 text-white'
-                      : 'hover:bg-gray-700 hover:text-white text-gray-300'
-                  "
-             class="app-bar-link"> {{ link.label }}
+             :key="index" :to="link.path" outlined nuxt>
+        {{ link.label }}
       </v-btn>
 
     </div>
     <v-spacer></v-spacer>
+    <!-- Theme Toggle -->
+    <v-btn class="mx-2" :icon="icon" @click="toggleTheme()"/>
 
-    <v-btn icon="mdi-magnify">
+    <!-- Github Docs Link -->
+    <v-btn href="https://github.com/PlexRipper/Docs" target="_blank">
+      <v-icon icon="mdi-github"/>
+      Docs
     </v-btn>
 
-    <v-btn icon="mdi-heart">
+    <!-- Github PlexRipper Link -->
+    <v-btn href="https://github.com/PlexRipper/PlexRipper" target="_blank">
+      <v-icon icon="mdi-github"/>
+      PlexRipper
     </v-btn>
 
   </v-app-bar>
 </template>
-
-
-<style lang="scss">
-.app-header-title {
-
-}
-
-.app-bar-link {
-  color: red;
-}
-</style>
