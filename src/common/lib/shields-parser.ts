@@ -1,8 +1,5 @@
-// Urlcat is not a function fix on production:
-// https://github.com/balazsbotond/urlcat/issues/171
-import urlcatM, { ParamMap } from "urlcat";
-// @ts-ignore
-const urlcat = urlcatM.default;
+import urlbat, { Params } from "urlbat";
+
 
 export interface IShield {
     label?: string;
@@ -16,7 +13,7 @@ export function transform(shields: IShield[]): IShield[] {
 
     for (let shield of shields) {
 
-        let params: ParamMap = {
+        let params: Params = {
             style
         }
         if (shield.label) {
@@ -25,7 +22,7 @@ export function transform(shields: IShield[]): IShield[] {
         if (shield.fileName) {
             params.filename = shield.fileName;
         }
-        shield.src = urlcat(shield.src, params)
+        shield.src = urlbat(shield.src, params)
     }
 
     return shields;
