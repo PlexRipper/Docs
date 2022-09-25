@@ -27,6 +27,6 @@
     "nuxt": "^3.0.0-rc.11",
     "sass": "^1.55.0",
     "vite-plugin-vuetify": "^1.0.0-alpha.17",
-    "vuetify": "^3.0.0-beta.10"
+    "vuetify": "^3.0.0-beta.11"
   }
 }
