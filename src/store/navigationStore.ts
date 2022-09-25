@@ -32,7 +32,7 @@ export const useNavigationStore = defineStore('navigationStore', {
                 },
                 {
                     label: 'Contributing',
-                    path: `/${ PAGE.CONTRIBUTING }`,
+                    path: `/${ PAGE.CONTRIBUTING }/overview`,
                 },
                 {
                     label: 'Acknowledgements',
@@ -60,6 +60,9 @@ export const useNavigationStore = defineStore('navigationStore', {
         },
         getGuidesNavItems: (state) => {
             return state.navItems.find(x => x._path.substring(1) === PAGE.GUIDES)?.children.filter(x => x._path !== `/${ PAGE.GUIDES }`) ?? [];
+        },
+        getContributingNavItems: (state) => {
+            return state.navItems.find(x => x._path.substring(1) === PAGE.CONTRIBUTING)?.children.filter(x => x._path !== `/${ PAGE.CONTRIBUTING }`) ?? [];
         }
     }
 })
