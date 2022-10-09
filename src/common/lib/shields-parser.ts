@@ -1,4 +1,6 @@
-import urlbat, { Params } from "urlbat";
+import urlcatM, { ParamMap } from "urlcat";
+
+const urlcat = (urlcatM as unknown as { default: typeof urlcatM }).default;
 
 
 export interface IShield {
@@ -13,7 +15,7 @@ export function transform(shields: IShield[]): IShield[] {
 
     for (let shield of shields) {
 
-        let params: Params = {
+        let params: ParamMap = {
             style
         }
         if (shield.label) {
@@ -22,7 +24,7 @@ export function transform(shields: IShield[]): IShield[] {
         if (shield.fileName) {
             params.filename = shield.fileName;
         }
-        shield.src = urlbat(shield.src, params)
+        shield.src = urlcat(shield.src, params)
     }
 
     return shields;
