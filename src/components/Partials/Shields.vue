@@ -110,10 +110,10 @@ const stableShields = transform([
         <tbody>
         <tr v-for="(_, index) in Math.min(devShields.length, stableShields.length)" :key="index">
           <td>
-            <img class="mt-1" :src="devShields[index].src" :alt="devShields[index].label">
+            <img class="mt-2" :src="devShields[index].src" :alt="devShields[index].label">
           </td>
           <td>
-            <img class="mt-1" :src="stableShields[index].src" :alt="stableShields[index].label">
+            <img class="mt-2" :src="stableShields[index].src" :alt="stableShields[index].label">
           </td>
         </tr>
         </tbody>
