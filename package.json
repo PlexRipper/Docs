@@ -12,13 +12,13 @@
     "npm-upgrade-packages": "npm-upgrade"
   },
   "dependencies": {
+    "@jasonlandbridge/url-tools": "^1.0.5",
     "@mdi/font": "^7.0.96",
     "@nuxtjs/axios": "^5.13.6",
-    "@pinia/nuxt": "^0.4.2",
-    "pinia": "^2.0.22",
+    "@pinia/nuxt": "^0.4.3",
+    "pinia": "^2.0.23",
     "prettier": "^2.7.1",
     "three": "^0.123.0",
-    "urlcat": "^2.0.4",
     "vanta": "^0.5.24"
   },
   "devDependencies": {

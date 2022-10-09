@@ -1,7 +1,4 @@
-import urlcatM, { ParamMap } from "urlcat";
-
-const urlcat = (urlcatM as unknown as { default: typeof urlcatM }).default;
-
+import { ParamsMap, urlMerge } from "@jasonlandbridge/url-tools";
 
 export interface IShield {
     label?: string;
@@ -15,7 +12,7 @@ export function transform(shields: IShield[]): IShield[] {
 
     for (let shield of shields) {
 
-        let params: ParamMap = {
+        let params: ParamsMap = {
             style
         }
         if (shield.label) {
@@ -24,7 +21,8 @@ export function transform(shields: IShield[]): IShield[] {
         if (shield.fileName) {
             params.filename = shield.fileName;
         }
-        shield.src = urlcat(shield.src, params)
+
+        shield.src = urlMerge(shield.src, params);
     }
 
     return shields;
