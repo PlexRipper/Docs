@@ -29,7 +29,7 @@ onMounted(() => {
     shininess: 43.0,
     waveHeight: 4.0,
     waveSpeed: 0.5,
-    zoom: 2.45,
+    zoom: 0.45,
   });
 })
 

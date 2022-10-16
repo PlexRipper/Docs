@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, ref } from "#imports";
+import { definePageMeta, queryContent, ref, useRouter } from "#imports";
 import PAGE from "const/page-name-constants";
-import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { IAnnouncement } from "~/common/types/IAnnouncement";
+import { format } from "date-fns"
 
 definePageMeta({
   title: 'Announcements',
   page: PAGE.ANNOUNCEMENTS,
 })
+const router = useRouter();
 
-const currentPage = ref<ParsedContent[]>();
-currentPage.value = await queryContent(PAGE.ANNOUNCEMENTS).find()
+const currentPage = ref<IAnnouncement[]>();
+currentPage.value = await queryContent(PAGE.ANNOUNCEMENTS).find() as IAnnouncement[]
 
+function openAvatarLink(path: string) {
+  window.open(path, '_blank');
+}
 
 </script>
 
@@ -24,19 +29,27 @@ currentPage.value = await queryContent(PAGE.ANNOUNCEMENTS).find()
       </v-row>
 
       <v-row justify="left">
-        <v-col cols="3" v-for="(item, index) in currentPage" :key="index">
+        <v-col cols="3" v-for="(item, i) in currentPage" :key="i">
           <v-card width="400" :to="item._path">
             <div class="logo-container">
               <Logo/>
             </div>
             <v-card-title> {{ item.title }}</v-card-title>
             <v-card-subtitle> {{ item.description }}</v-card-subtitle>
-            <v-card-subtitle> {{ item.date }}</v-card-subtitle>
+            <v-card-actions v-if="item.authors">
+              <v-row class="ma-0">
+                <v-col cols="auto">
+                  <v-btn v-for="(avatar, j) in item.authors" :key='j' icon @click.prevent="openAvatarLink(avatar.link)">
+                    <v-avatar :image="avatar.avatarUrl"/>
+                  </v-btn>
+                </v-col>
+                <v-col cols="auto" align-self="center">
+                  <span>{{ item.authors[0].name }}</span><br/>
+                  <span class="subtitle">{{ format(Date.parse(item.date), 'PPP') }}</span>
+                </v-col>
+              </v-row>
+            </v-card-actions>
           </v-card>
-          <pre>
-            {{ currentPage }}
-          </pre>
-
         </v-col>
       </v-row>
     </v-col>

@@ -12,7 +12,6 @@ const store = useNavigationStore();
 const route = useRoute()
 
 const currentPage = ref<ParsedContent>();
-
 currentPage.value = await queryContent(route.path).findOne()
 
 </script>
@@ -24,5 +23,3 @@ currentPage.value = await queryContent(route.path).findOne()
     </template>
   </ContentRenderer>
 </template>
-
-

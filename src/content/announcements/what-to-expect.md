@@ -4,11 +4,11 @@ description: A year has gone by, what does the future hold.
 authors:
 
 - name: "Jason Landbridge"
-  avatarUrl: https://pbs.twimg.com/profile_images/1042510623962275840/1Iw_Mvud_400x400.jpg
-  link: https://twitter.com/Atinux
+  avatarUrl: "https://avatars.githubusercontent.com/u/15127381"
+  link: "https://github.com/JasonLandbridge"
 
 ---
 
 # What to expect
 
-The past year has gone by quick where I (@JasonLandbridge) have been busy with work 
+The past year has gone by quick where I, [JasonLandbridge](https://github.com/JasonLandbridge), have been busy with work 
