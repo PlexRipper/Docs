@@ -33,13 +33,13 @@ v-navigation-drawer
 */
 .v-navigation-drawer {
   &.v-theme--dark {
-    background-color: $dark-theme-navigation-drawer-background !important;
+    background-color: $dark-theme-secondary-background !important;
     color: white !important;
     border-right-color: $dark-theme-border-color;
   }
 
   &.v-theme--light {
-    background-color: $light-theme-navigation-drawer-background !important;
+    background-color: $light-theme-secondary-background !important;
     color: black !important;
     border-right-color: $dark-theme-border-color;
   }
@@ -71,6 +71,43 @@ v-table
 }
 
 /*
+v-card
+*/
+.v-card {
+  border: 2px solid !important;
+
+  .logo-container {
+    text-align: center;
+
+    img {
+      margin: 30px 0;
+    }
+  }
+
+  &.v-theme--dark {
+    background-color: $dark-theme-secondary-background !important;
+    border-color: $dark-theme-border-color !important;
+    color: white;
+    transition: .5s;
+
+    &:hover {
+      border-color: red !important;
+    }
+  }
+
+  &.v-theme--light {
+    background-color: $light-theme-secondary-background !important;
+    border-color: $light-theme-border-color !important;
+    transition: .5s;
+    color: black;
+
+    &:hover {
+      border-color: red !important;
+    }
+  }
+}
+
+/*
 v-expansion-panels
 */
 .v-expansion-panels, {
@@ -80,7 +117,7 @@ v-expansion-panels
     border-right-color: $dark-theme-border-color;
 
     .v-expansion-panel {
-      background-color: $dark-theme-navigation-drawer-background !important;
+      background-color: $dark-theme-secondary-background !important;
 
       .v-expansion-panel-title {
         font-weight: bold;
@@ -99,7 +136,7 @@ v-expansion-panels
     border-right-color: $dark-theme-border-color;
 
     .v-expansion-panel {
-      background-color: $light-theme-navigation-drawer-background !important;
+      background-color: $light-theme-secondary-background !important;
 
       .v-expansion-panel-title {
         font-weight: bold;

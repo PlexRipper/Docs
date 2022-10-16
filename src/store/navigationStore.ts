@@ -15,6 +15,10 @@ export const useNavigationStore = defineStore('navigationStore', {
         return {
             pageItems: [
                 {
+                    label: 'Announcements',
+                    path: `/${ PAGE.ANNOUNCEMENTS }`,
+                },
+                {
                     label: 'Guides',
                     path: `/${ PAGE.GUIDES }/overview/what-is-plexripper`,
                 },
