@@ -8,3 +8,8 @@ h2 {
 ul {
   margin-left: 32px;
 }
+
+// Used to keep the vanta.js background in place and overwrite the built-in position: absolute;
+.vanta-canvas {
+  position: fixed !important;
+}
