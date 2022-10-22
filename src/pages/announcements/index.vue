@@ -28,7 +28,7 @@ function openAvatarLink(path: string) {
         </v-col>
       </v-row>
 
-      <v-row justify="left">
+      <v-row justify="start">
         <v-col cols="3" v-for="(item, i) in currentPage" :key="i">
           <v-card width="400" :to="item._path">
             <div class="logo-container">
