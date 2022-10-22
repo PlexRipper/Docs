@@ -39,6 +39,17 @@ sense.
 
 The dev branch contains all the latest under development changes.
 
+## Which browsers are supported by PlexRipper?
+
+Officially, all chromium based browsers such as [Google Chrome](https://www.google.com/chrome/)
+and [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium).
+
+Brave works as well, just disable the Brave shields functionality on PlexRipper. See
+this [issue](https://github.com/brave/brave-browser/issues/19037#issuecomment-1287769602).
+
+It "should" however work with all browsers, except ancient ones like Internet
+Explorer and trash ones like Safari. Don't expect support for either of those.
+
 ## Is this project dead? Why no updates? Can you hurry up?
 
 Check the [homepage](/) for what is currently happening.
