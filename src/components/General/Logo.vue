@@ -10,6 +10,6 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <img :height="size" :width="size" src="/img/logo/full-logo-256.png" alt="PlexRipper Docs"/>
+  <img :height="size" :width="size" src="/img/logo/full-logo-256.png" alt="PlexRipper Docs Logo"/>
 </template>
 
