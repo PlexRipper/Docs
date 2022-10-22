@@ -37,17 +37,7 @@ function openAvatarLink(path: string) {
             <v-card-title> {{ item.title }}</v-card-title>
             <v-card-subtitle> {{ item.description }}</v-card-subtitle>
             <v-card-actions v-if="item.authors">
-              <v-row class="ma-0">
-                <v-col cols="auto">
-                  <v-btn v-for="(avatar, j) in item.authors" :key='j' icon @click.prevent="openAvatarLink(avatar.link)">
-                    <v-avatar :image="avatar.avatarUrl"/>
-                  </v-btn>
-                </v-col>
-                <v-col cols="auto" align-self="center">
-                  <span>{{ item.authors[0].name }}</span><br/>
-                  <span class="subtitle">{{ format(Date.parse(item.date), 'PPP') }}</span>
-                </v-col>
-              </v-row>
+              <Authors :authors="item.authors" :date="item.date"/>
             </v-card-actions>
           </v-card>
         </v-col>
