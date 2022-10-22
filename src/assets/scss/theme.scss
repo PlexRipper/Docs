@@ -20,6 +20,10 @@ v-app-bar
   &.v-theme--dark {
     background-color: $dark-theme-background !important;
     color: white !important;
+
+    a {
+      color: white;
+    }
   }
 
   &.v-theme--light {

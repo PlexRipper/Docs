@@ -1,13 +1,8 @@
-@import "./image.scss";
+@import "./primitives.scss";
+@import "./helpers.scss";
 @import "./theme.scss";
+@import "./image.scss";
 
-h2 {
-  margin: 16px 0;
-}
-
-ul {
-  margin-left: 32px;
-}
 
 // Used to keep the vanta.js background in place and overwrite the built-in position: absolute;
 .vanta-canvas {

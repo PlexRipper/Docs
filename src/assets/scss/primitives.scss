@@ -1,0 +1,21 @@
+a {
+  color: #d20000;
+  text-decoration: none;
+
+  &:hover {
+    color: #FF0000;
+  }
+
+}
+
+p {
+  margin: 16px 0;
+}
+
+h2, h3, h4 {
+  margin: 16px 0;
+}
+
+ul {
+  margin-left: 32px;
+}
