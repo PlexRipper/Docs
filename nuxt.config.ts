@@ -1,6 +1,7 @@
 import vuetify from 'vite-plugin-vuetify';
 import { defineNuxtConfig } from 'nuxt/config';
 import { fileURLToPath } from 'url';
+import { NuxtConfig } from "@nuxt/schema";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -10,6 +11,9 @@ export default defineNuxtConfig({
     target: "static",
     content: {
         documentDriven: true,
+        markdown: {
+            anchorLinks: false,
+        }
     },
     css: ['vuetify/styles', '@/assets/scss/style.scss'],
     build: {
