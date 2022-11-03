@@ -20,32 +20,18 @@ const rootClasses = computed(() => {
   }
 })
 
-const listClasses = computed(() => {
-  return {
-    "table-of-contents-list": true,
-    "ml-0": props.root,
-  }
-})
 </script>
 
 <template>
   <div :class="rootClasses">
     <span v-if="root" style="font-weight: bold">Table of Contents</span>
-    <ul v-if="links" :class="listClasses">
+    <ul v-if="links" :class="[props.root ? 'ml-0' : '']" style="list-style-type: none">
       <li v-for="link in links" :key="link.text">
         <a :href="`#${link.id}`">
           {{ link.text }}
         </a>
-
         <TableOfContent v-if="link.children" :links="link.children"/>
       </li>
     </ul>
   </div>
 </template>
-
-<style type="text/css">
-
-.table-of-contents-list {
-  list-style-type: none;
-}
-</style>
