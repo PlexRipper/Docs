@@ -25,22 +25,33 @@ function onClick(path: string) {
     <v-list :opened="store.getSidebarState(sidebarKey)"
             @update:opened="store.setSidebarState(sidebarKey, $event)"
             open-strategy="list">
-      <v-list-group v-for="parent in items" :value="parent.title">
-        <template v-slot:activator="{ props }">
-          <v-list-item
-              v-bind="props"
-              :title="parent.title"
-          ></v-list-item>
-        </template>
 
+      <template v-for="item in items">
+        <!-- Display as list-group when there are children -->
+        <v-list-group v-if="item.children.length > 0" :value="item.title">
+          <template v-slot:activator="{ props }">
+            <v-list-item
+                v-bind="props"
+                :title="item.title"
+            ></v-list-item>
+          </template>
+
+          <v-list-item
+              v-for="child in item.children"
+              :key="child._id"
+              :value="child._path"
+              :title="child.title"
+              @click="onClick(child._path);"
+          />
+        </v-list-group>
+        <!-- Display as normal list-item when there are no children -->
         <v-list-item
-            v-for="child in parent.children"
-            :key="child._id"
-            :value="child._path"
-            :title="child.title"
-            @click="onClick(child._path);"
+            v-else
+            :value="item._path"
+            :title="item.title"
+            @click="onClick(item._path);"
         />
-      </v-list-group>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>

@@ -63,13 +63,32 @@ export const useNavigationStore = defineStore('navigationStore', {
             return (key) => state.sideBarState.get(key)
         },
         getGuidesNavItems: (state) => {
-            return state.navItems.find(x => x._path.substring(1) === PAGE.GUIDES)?.children.filter(x => x._path !== `/${ PAGE.GUIDES }`) ?? [];
+            return cleanNavItems(PAGE.GUIDES, state.navItems);
         },
         getContributingNavItems: (state) => {
-            return state.navItems.find(x => x._path.substring(1) === PAGE.CONTRIBUTING)?.children.filter(x => x._path !== `/${ PAGE.CONTRIBUTING }`) ?? [];
+            return cleanNavItems(PAGE.CONTRIBUTING, state.navItems);
         }
     }
 })
+
+/**
+ * Formats the navItems by removing duplicate navItems that can be the same for the parent and child
+ * @param {string} pageKey
+ * @param {NavItem[]} navItems
+ */
+function cleanNavItems(pageKey: string, navItems: NavItem[]): NavItem[] {
+    const pageNavItems = navItems.find(x => x._path.substring(1) === pageKey)?.children ?? [];
+    return pageNavItems.map(navItem => {
+        if (navItem.children.length === 0) {
+            return navItem;
+        }
+
+        return {
+            ...navItem,
+            children: navItem.children.filter(child => navItem._path !== child._path && navItem.title !== child._path),
+        }
+    })
+}
 
 // Added to make hot module reloading work during development
 if (import.meta.hot) {
