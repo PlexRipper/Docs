@@ -41,8 +41,7 @@ hope is users in the community can write guides or other useful texts in order t
 
 ## What will happen next?
 
-Starting from the 1st of november 2022 I will take time off work for at least 2 months, maybe
-longer. Which I intend to use to work full-time on PlexRipper and fix a lot of issues and push for a 0.9.0 release. If
+The upcoming months I intend to spend more time on PlexRipper and fix a lot of issues and push for a 0.9.0 release. If
 you have any questions or comments, then leave them in this issue.
 
 Please note that the stable branch will not receive anymore updates so please use the dev branch for now when testing.
