@@ -6,10 +6,26 @@ v-app
 .v-application {
   &.v-theme--dark {
     background-color: $dark-theme-background !important;
+
+    a {
+      color: #ff7044;
+
+      &:hover {
+        color: #FF0000;
+      }
+    }
   }
 
   &.v-theme--light {
     background-color: $light-theme-background !important;
+
+    a {
+      color: #601d0a;
+
+      &:hover {
+        color: #FF0000;
+      }
+    }
   }
 }
 
@@ -17,6 +33,8 @@ v-app
 v-app-bar
 */
 .v-app-bar {
+
+
   &.v-theme--dark {
     background-color: $dark-theme-background !important;
     color: white !important;
@@ -29,6 +47,10 @@ v-app-bar
   &.v-theme--light {
     background-color: $dark-theme-background !important;
     color: white !important;
+
+    a {
+      color: white;
+    }
   }
 }
 
