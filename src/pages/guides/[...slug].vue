@@ -2,31 +2,22 @@
 import NavigationDrawer from "~/components/Sidebar/NavigationDrawer.vue";
 import { useNavigationStore } from "~/store/navigationStore";
 import { definePageMeta, queryContent, ref, useRoute } from "#imports";
-import PAGE from "const/page-name-constants";
-import { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 definePageMeta({
   title: 'Guides',
-  page: PAGE.GUIDES,
 })
 
 const store = useNavigationStore();
 const route = useRoute()
-const guidesKey = PAGE.GUIDES;
-const currentPage = ref<ParsedContent>();
-
-currentPage.value = await queryContent(route.path).findOne()
+const currentPage = await queryContent(route.path).findOne()
 
 </script>
 
+<!-- Pages need a single root element to make page transition work -->
 <template>
   <div>
-    <NavigationDrawer :sidebar-key="guidesKey" :items="store.getGuidesNavItems"/>
-    <ContentRenderer :value="currentPage">
-      <template #empty>
-        <h3>No content found.</h3>
-      </template>
-    </ContentRenderer>
+    <NavigationDrawer sidebar-key="guides" :items="store.getGuidesNavItems"/>
+    <PageRenderer :page="currentPage"/>
   </div>
 </template>
 

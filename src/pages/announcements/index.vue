@@ -1,22 +1,13 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, ref, useRouter } from "#imports";
-import PAGE from "const/page-name-constants";
+import { definePageMeta, queryContent, useRouter } from "#imports";
 import { IAnnouncement } from "~/common/types/IAnnouncement";
-import { format } from "date-fns"
 
 definePageMeta({
   title: 'Announcements',
-  page: PAGE.ANNOUNCEMENTS,
 })
 const router = useRouter();
 
-const currentPage = ref<IAnnouncement[]>();
-currentPage.value = await queryContent(PAGE.ANNOUNCEMENTS).find() as IAnnouncement[]
-
-function openAvatarLink(path: string) {
-  window.open(path, '_blank');
-}
-
+const currentPage: IAnnouncement[] = await queryContent('announcements').find() as IAnnouncement[]
 </script>
 
 <template>
