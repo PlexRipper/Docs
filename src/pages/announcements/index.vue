@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, useRouter } from "#imports";
+import { definePageMeta, queryContent, useRoute } from "#imports";
 import { IAnnouncement } from "~/common/types/IAnnouncement";
 
 definePageMeta({
   title: 'Announcements',
 })
-const router = useRouter();
-
-const currentPage: IAnnouncement[] = await queryContent('announcements').find() as IAnnouncement[]
+const route = useRoute();
+const currentPage: IAnnouncement[] = await queryContent(route.path).find() as IAnnouncement[]
 </script>
 
 <template>
