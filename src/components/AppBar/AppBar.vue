@@ -48,7 +48,6 @@ const icon = computed(() => {
              :key="index" :to="link.path" outlined nuxt>
         {{ link.label }}
       </v-btn>
-
     </div>
     <v-spacer></v-spacer>
     <!-- Theme Toggle -->

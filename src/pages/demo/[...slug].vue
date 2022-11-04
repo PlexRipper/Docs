@@ -1,29 +1,20 @@
 <script setup lang="ts">
 import { useNavigationStore } from "~/store/navigationStore";
-import { definePageMeta, queryContent, ref, useRoute } from "#imports";
-import PAGE from "const/page-name-constants";
-import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { definePageMeta, queryContent, useRoute } from "#imports";
 
 definePageMeta({
   title: 'Demo',
-  page: PAGE.DEMO,
 })
 
 const store = useNavigationStore();
 const route = useRoute()
-
-const currentPage = ref<ParsedContent>();
-
-currentPage.value = await queryContent(route.path).findOne()
+const currentPage = await queryContent(route.path).findOne()
 
 </script>
 
+<!-- Pages need a single root element to make page transition work -->
 <template>
-  <ContentRenderer :value="currentPage">
-    <template #empty>
-      <h3>No content found.</h3>
-    </template>
-  </ContentRenderer>
+  <PageRenderer :page="currentPage"/>
 </template>
 
 

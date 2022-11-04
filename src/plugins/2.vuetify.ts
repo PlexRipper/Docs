@@ -1,3 +1,4 @@
+// CSS import here is needed otherwise icons won't display
 import '@mdi/font/css/materialdesignicons.css';
 import { mdi } from 'vuetify/lib/iconsets/mdi';
 

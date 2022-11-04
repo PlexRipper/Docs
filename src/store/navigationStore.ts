@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import { fetchContentNavigation, queryContent, useAsyncData } from "#imports";
+import { fetchContentNavigation, useAsyncData } from "#imports";
 import PAGE from "const/page-name-constants";
 import { NavItem } from "@nuxt/content/dist/runtime/types";
 import { IPageLink } from "~/common/types/IPageLink";
@@ -60,7 +60,7 @@ export const useNavigationStore = defineStore('navigationStore', {
     getters: {
         getPageNavItems: (state) => state.pageItems,
         getSidebarState: (state) => {
-            return (key) => state.sideBarState.get(key)
+            return (key: string) => state.sideBarState.get(key)
         },
         getGuidesNavItems: (state) => {
             return cleanNavItems(PAGE.GUIDES, state.navItems);
@@ -79,7 +79,7 @@ export const useNavigationStore = defineStore('navigationStore', {
 function cleanNavItems(pageKey: string, navItems: NavItem[]): NavItem[] {
     const pageNavItems = navItems.find(x => x._path.substring(1) === pageKey)?.children ?? [];
     return pageNavItems.map(navItem => {
-        if (navItem.children.length === 0) {
+        if (!navItem.children || navItem.children.length === 0) {
             return navItem;
         }
 

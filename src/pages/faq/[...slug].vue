@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, ref } from "#imports";
-import PAGE from "const/page-name-constants";
+import { definePageMeta, queryContent } from "#imports";
 import { MarkdownNode, MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 
 interface Question {
@@ -10,11 +9,9 @@ interface Question {
 
 definePageMeta({
   title: 'Frequently Asked Questions',
-  page: PAGE.FAQ,
 })
 
-const currentPage = ref<MarkdownParsedContent>();
-currentPage.value = await queryContent(PAGE.FAQ).findOne() as MarkdownParsedContent
+const currentPage = await queryContent('faq').findOne() as MarkdownParsedContent
 const questions = parseQuestions();
 
 function parseQuestions() {
@@ -66,18 +63,17 @@ function parseQuestions() {
 </script>
 
 <template>
-  <main>
-    <v-container>
-      <h1>Frequently Asked Questions</h1>
-      <v-expansion-panels class="my-4">
-        <template v-for="(question, index) in questions" :key="index">
-          <v-expansion-panel :title="question.title" eager>
-            <template #text>
-              <ContentRenderer v-if="question.answer" :value="question.answer"/>
-            </template>
-          </v-expansion-panel>
-        </template>
-      </v-expansion-panels>
-    </v-container>
-  </main>
+  <v-container>
+    <h1>Frequently Asked Questions</h1>
+    <v-expansion-panels class="my-4">
+      <template v-for="(question, index) in questions" :key="index">
+        <v-expansion-panel :title="question.title" eager>
+          <template #text>
+            <ContentRenderer v-if="question.answer" :value="question.answer"/>
+          </template>
+        </v-expansion-panel>
+      </template>
+    </v-expansion-panels>
+    <EditThisPage :path="currentPage._file"/>
+  </v-container>
 </template>

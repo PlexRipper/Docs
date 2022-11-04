@@ -2,16 +2,19 @@
 import { computed, ref, useRouter } from "#imports";
 import { NavItem } from "@nuxt/content/dist/runtime/types";
 import { useNavigationStore } from "store/navigationStore";
+import { PropType } from "@vue/runtime-core";
 
+defineProps({
+  sidebarKey: {
+    type: String,
+  },
+  items: {
+    type: Array as PropType<NavItem[]>,
+  }
+});
 
-interface Props {
-  items: NavItem[]
-  sidebarKey: string;
-}
-
-const tree = ref([])
-const props = defineProps<Props>()
 const emit = defineEmits<{ (e: 'change', path: string): void }>()
+
 const store = useNavigationStore();
 
 function onClick(path: string) {
