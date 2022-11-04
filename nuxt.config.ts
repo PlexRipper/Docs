@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     modules: [
         '@nuxt/content',
         '@pinia/nuxt',
+        'vue-plausible',
         async (options, nuxt) => {
             // @ts-ignore
             // Source: https://www.the-koi.com/projects/how-to-set-up-a-project-with-nuxt3-and-vuetify3-with-a-quick-overview/
