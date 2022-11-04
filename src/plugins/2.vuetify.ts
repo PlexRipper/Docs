@@ -1,3 +1,5 @@
+// CSS import here is needed otherwise icons won't display
+import '@mdi/font/css/materialdesignicons.css';
 import { mdi } from 'vuetify/lib/iconsets/mdi';
 
 import { defineNuxtPlugin } from '#app';
@@ -22,5 +24,3 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     nuxtApp.vueApp.use(vuetify);
 });
-// http://localhost:4000/api/_content/query?_params={%22where%22:[{%22_path%22:%22--REGEX+/^%5C%5C/announcements/%22}],%22sort%22:[{%22_file%22:1,%22$numeric%22:true}]}&previewToken
-// http://localhost:4000/api/_content/query?_params={%22where%22:[{%22_path%22:%22/announcements%22}],%22first%22:true,%22sort%22:[{%22_file%22:1,%22$numeric%22:true}]}&previewToken
