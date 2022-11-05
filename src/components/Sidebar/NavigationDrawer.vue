@@ -17,10 +17,6 @@ const emit = defineEmits<{ (e: 'change', path: string): void }>()
 
 const store = useNavigationStore();
 
-function onClick(path: string) {
-  useRouter().push(path).then(() => emit('change', path))
-}
-
 </script>
 
 <template>
@@ -44,7 +40,7 @@ function onClick(path: string) {
               :key="child._id"
               :value="child._path"
               :title="child.title"
-              @click="onClick(child._path);"
+              :to="child._path"
           />
         </v-list-group>
         <!-- Display as normal list-item when there are no children -->
@@ -52,7 +48,7 @@ function onClick(path: string) {
             v-else
             :value="item._path"
             :title="item.title"
-            @click="onClick(item._path);"
+            :to="item._path"
         />
       </template>
     </v-list>
