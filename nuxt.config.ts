@@ -1,7 +1,6 @@
 import vuetify from 'vite-plugin-vuetify';
 import { defineNuxtConfig } from 'nuxt/config';
 import { fileURLToPath } from 'url';
-import { NuxtConfig } from "@nuxt/schema";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
