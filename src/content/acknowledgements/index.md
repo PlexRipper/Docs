@@ -4,7 +4,7 @@ title: Acknowledgements
 
 # Acknowledgements
 
-Thus far, PlexRipper has been created and developed  by [JasonLandbridge](https://github.com/JasonLandbridge), but this
+Thus far, PlexRipper has been created and developed by [JasonLandbridge](https://github.com/JasonLandbridge), but this
 could not have been done without the exceptional help of many others.
 
 An absolute massive thank you to the following people!
