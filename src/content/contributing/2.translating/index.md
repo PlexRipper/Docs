@@ -8,7 +8,7 @@ Make PlexRipper easier to use for everyone by translating it to your native lang
 
 ## Languages
 
-All current translations are available in the [lang folder](https://github.com/PlexRipper/PlexRipper/tree/dev/src/WebAPI/ClientApp/src/lang) on the dev branch. To keep things organized, it is best to keep discussions related to translations in a single issue. That way translators can watch a specific issue for their preferred languages. If you have any questions or would like a quick Discord call to help you get started, then ping [@JasonLandbridge](https://github.com/JasonLandbridge)
+All current translations are available in the [lang folder](https://github.com/PlexRipper/PlexRipper/tree/dev/src/WebAPI/ClientApp/src/lang) on the dev branch. To keep things organized, it is best to keep discussions related to translations in a single issue. That way translators can watch a specific issue for their preferred languages. If you have any questions or would like a quick Discord call to help you get started, then ping [@JasonLandbridge](https://github.com/JasonLandbridge).
 
 Current language issues:
 
@@ -21,7 +21,7 @@ Current language issues:
 ### Preparation
 
 1. Ensure your preferred language isn't already in the [lang folder](https://github.com/PlexRipper/PlexRipper/tree/dev/src/WebAPI/ClientApp/src/lang).
-2. Check the GitHub issues if someone else is already translating to your language. This is to avoid multiple people translating to the same language
+2. Check the GitHub issues if someone else is already translating to your language. This is to avoid multiple people translating to the same language.
 3. If not, ping [@JasonLandbridge](https://github.com/JasonLandbridge) about the language you want to translate.
     - He will create a GitHub issue for the language you're about to translate and setup PlexRipper to work with the new language. You don't have to wait for this, you can continue with the next few steps.
 
@@ -33,18 +33,18 @@ Current language issues:
    ``
 
 2. Make a copy of the [en-US.json](https://github.com/PlexRipper/PlexRipper/blob/dev/src/WebAPI/ClientApp/src/lang/en-US.json) into the "lang" folder and rename it to your language in a code format. e.g. "nl-NL.json (Dutch), lt-LT.json (Lithuanian)".
-    - See [lingohub](https://lingohub.com/developers/supported-locales/language-designators-with-regions) for language-code examples
+    - See [lingohub](https://lingohub.com/developers/supported-locales/language-designators-with-regions) for language-code examples.
 
 ### I don't know how pull requests work
 
 1. Make a copy of the [en-US.json](https://github.com/PlexRipper/PlexRipper/blob/dev/src/WebAPI/ClientApp/src/lang/en-US.json) and rename it to your language in a code format. e.g. "nl-NL.json (Dutch), lt-LT.json (Lithuanian)".
-    - See [lingohub](https://lingohub.com/developers/supported-locales/language-designators-with-regions) for language-code examples
+    - See [lingohub](https://lingohub.com/developers/supported-locales/language-designators-with-regions) for language-code examples.
 
 ### How to translate
 
 #### Recommended way
 
-I would highly recommend you use [BabelEdit](https://www.codeandweb.com/babeledit). This gives you a very clear overview what needs to yet be translated, if continuing from an existing translation, and it ensures the language files are formatted correctly. It is paid software however, but it has a free trial for the first 7 days without the need to enter any credit card info. When using BabelEdit, you can open the file [babel_edit.babel](https://github.com/PlexRipper/PlexRipper/blob/dev/src/WebAPI/ClientApp/src/lang/babel_edit.babel) and immediately have all the correct settings needed to start translating
+I would highly recommend you use [BabelEdit](https://www.codeandweb.com/babeledit). This gives you a very clear overview what needs to yet be translated, if continuing from an existing translation, and it ensures the language files are formatted correctly. It is paid software however, but it has a free trial for the first 7 days without the need to enter any credit card info. When using BabelEdit, you can open the file [babel_edit.babel](https://github.com/PlexRipper/PlexRipper/blob/dev/src/WebAPI/ClientApp/src/lang/babel_edit.babel) and immediately have all the correct settings needed to start translating.
 
 #### Manual way
 
