@@ -6,7 +6,7 @@ title: Frequently Asked Questions
 
 ## How can I help?
 
-Check the [contributing page](/contributing/overview) to see what you can do to help!
+Check the [Contributing page](/contributing/overview) to see what you can do to help!
 
 ## How can I show my appreciation?
 
