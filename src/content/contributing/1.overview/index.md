@@ -7,21 +7,21 @@ title: Overview
 Any help is greatly appreciated! Be it in the form of reporting issues, giving feedback, making pull requests,
 translating and or saying how you're a fan of the project, it all helps!
 
-The more people help, the faster everything goes and the more people that can fully enjoy the project! Helping out will
+The more people help, the faster everything goes and the more people can fully enjoy the project! Helping out will
 give you a very honorable mention on the [Acknowledgements](/acknowledgements) page.
 
-## What can everyone do:
+## What anyone can do:
 
 - You can give a star on the GitHub pages for [PlexRipper](https://github.com/PlexRipper/PlexRipper)
   and [Docs](https://github.com/PlexRipper/Docs).
 - You can give a star on the Docker page for [PlexRipper](https://hub.docker.com/r/plexripper/plexripper/).
 
-## What you can do if you love writing texts:
+## What you can do if you love writing:
 
 - You can create translations for PlexRipper in your (native)
-  language. [See the translating section!](/contributing/translating).
-- You can write guides and other documentation for the www.plexripper.rocks
-  website. [See the documentation section!](/contributing/documentation).
+  language. [See the translating section](/contributing/translating)!
+- You can write guides and other documentation for the www.PlexRipper.rocks
+  website. [See the documentation section](/contributing/documentation)!
 
 ## What you can do if you love programming:
 

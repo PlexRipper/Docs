@@ -4,14 +4,14 @@ title: Acknowledgements
 
 # Acknowledgements
 
-PlexRipper has been created and developed thus far by ([JasonLandbridge](https://github.com/JasonLandbridge)), but this
+Thus far, PlexRipper has been created and developed by [JasonLandbridge](https://github.com/JasonLandbridge), but this
 could not have been done without the exceptional help of many others.
 
 An absolute massive thank you to the following people!
 
 ## General
 
-- [Lenty Sprangers](https://github.com/LentySprangers) for the logo design!
+- [Lenty Sprangers](https://github.com/LentySprangers) for the logo design and proof reading! 
 
 ## Developers
 
