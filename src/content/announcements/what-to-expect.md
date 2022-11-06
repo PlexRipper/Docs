@@ -33,16 +33,16 @@ integration and unit tests. Unfortunately, due to the scope of this, it became s
 more time than I anticipated initially. Which is why it has been in "limbo" for the past year. The highest priority is
 getting this version released.
 
-### Launch of www.plexripper.rocks
+### Launch of www.PlexRipper.rocks
 
-In the past few weeks I've created a documentation website on www.plexripper.rocks. Mainly due to
-the many questions I receive, that are better answered here. And keeping track of project documentation in general. My
+In the past few weeks I've created a documentation website on [www.PlexRipper.rocks](https://www.plexripper.rocks/). Mainly due to
+the many questions I receive; those will be answered thoroughly here. I will also be keeping track of project documentation in general on this website, so everyone can stay up to date. My
 hope is users in the community can write guides or other useful texts in order to help others with using PlexRipper.
 
 ## What will happen next?
 
 The upcoming months I intend to spend more time on PlexRipper and fix a lot of issues and push for a 0.9.0 release. If
-you have any questions or comments, then leave them in this issue.
+you have any questions or comments, please leave them in this issue.
 
 Please note that the stable branch will not receive anymore updates so please use the dev branch for now when testing.
 Version 0.9.0 will be pushed to stable once it is stable.
