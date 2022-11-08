@@ -120,7 +120,9 @@ const themeIcon = computed(() => {
           :prepend-icon="themeIcon"
           @click.stop="toggleTheme"
       />
-      <pre>{{ store.getPageKey(route.fullPath) }}</pre>
+
+      <v-divider/>
+
       <NavigationList :sidebar-key="store.getPageKey(route.fullPath)"/>
     </v-navigation-drawer>
   </div>
@@ -180,5 +182,4 @@ const themeIcon = computed(() => {
     display: none;
   }
 }
-
 </style>
