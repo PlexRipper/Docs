@@ -3,6 +3,7 @@ import { fetchContentNavigation, useAsyncData, useRoute } from "#imports";
 import PAGE from "const/page-name-constants";
 import { NavItem } from "@nuxt/content/dist/runtime/types";
 import { IPageLink } from "~/common/types/IPageLink";
+import Log from "consola";
 
 interface INavigationState {
     pageItems: IPageLink[],
@@ -16,7 +17,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             pageItems: [
                 {
                     label: 'Announcements',
-                    path: `/${ PAGE.ANNOUNCEMENTS }`,
+                    path: `/${ PAGE.ANNOUNCEMENTS }/`,
                 },
                 {
                     label: 'Guides',
@@ -24,23 +25,23 @@ export const useNavigationStore = defineStore('navigationStore', {
                 },
                 {
                     label: 'Demo',
-                    path: `/${ PAGE.DEMO }`,
+                    path: `/${ PAGE.DEMO }/`,
                 },
                 {
                     label: 'FAQ',
-                    path: `/${ PAGE.FAQ }`,
+                    path: `/${ PAGE.FAQ }/`,
                 },
                 {
                     label: 'Roadmap',
-                    path: `/${ PAGE.ROADMAP }`,
+                    path: `/${ PAGE.ROADMAP }/`,
                 },
                 {
                     label: 'Contributing',
-                    path: `/${ PAGE.CONTRIBUTING }/overview`,
+                    path: `/${ PAGE.CONTRIBUTING }/overview/`,
                 },
                 {
                     label: 'Acknowledgements',
-                    path: `/${ PAGE.ACKNOWLEDGEMENTS }`,
+                    path: `/${ PAGE.ACKNOWLEDGEMENTS }/`,
                 },
             ],
             navItems: [],
@@ -51,7 +52,7 @@ export const useNavigationStore = defineStore('navigationStore', {
         async setup() {
             const { data } = await useAsyncData(() => fetchContentNavigation());
             this.navItems = data.value ?? [];
-            
+
         },
         setSidebarState(key: string, selected: string[]) {
             this.sideBarState.set(key, selected)
