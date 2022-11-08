@@ -3,13 +3,12 @@ import { useNavigationStore } from "~/store/navigationStore";
 import { queryContent, useHead, useRoute } from "#imports";
 
 const store = useNavigationStore();
-
-useHead({
-  title: 'Guides',
-})
-
 const route = useRoute()
 const currentPage = await queryContent(route.path).findOne()
+
+useHead({
+  title: `Guides - ${ currentPage.title }`,
+})
 
 </script>
 
