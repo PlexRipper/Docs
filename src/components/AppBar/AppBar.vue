@@ -39,13 +39,16 @@ const themeIcon = computed(() => {
         clipped
     >
       <template v-slot:prepend>
-        <v-app-bar-nav-icon class="app-bar-drawer-button" @click.stop="toggleSidebar"/>
-        <v-btn to="/" outlined :ripple="false">
-          <div class="d-flex align-center app-header-title">
-            <logo :size="36"/>
-            <span class="ml-2">PlexRipper Docs</span>
-          </div>
-        </v-btn>
+        <v-row no-gutters>
+          <v-col align-self="center">
+            <v-btn to="/" outlined :ripple="false">
+              <div class="d-flex align-center app-header-title">
+                <logo :size="36"/>
+                <span class="ml-2">PlexRipper Docs</span>
+              </div>
+            </v-btn>
+          </v-col>
+        </v-row>
       </template>
 
 
@@ -78,6 +81,7 @@ const themeIcon = computed(() => {
             PlexRipper
           </v-btn>
         </div>
+        <!-- Menu drawer toggle button -->
         <v-app-bar-nav-icon class="app-bar-drawer-button" @click.stop="toggleSidebar"/>
       </template>
     </v-app-bar>
@@ -94,7 +98,8 @@ const themeIcon = computed(() => {
           :title="link.label"
       />
 
-      <v-divider></v-divider>
+      <v-divider/>
+
       <v-list density="compact" nav>
         <v-list-item
             prepend-icon="mdi-github"
@@ -107,12 +112,14 @@ const themeIcon = computed(() => {
             href="https://github.com/PlexRipper/Docs"
             target="_blank"/>
       </v-list>
-      <v-divider></v-divider>
+
+      <v-divider/>
+
       <v-list-item
           :title="!isDark ? 'Dark Mode' : 'Light Mode'"
           :prepend-icon="themeIcon"
           @click.stop="toggleTheme"
-      ></v-list-item>
+      />
       <pre>{{ store.getPageKey(route.fullPath) }}</pre>
       <NavigationList :sidebar-key="store.getPageKey(route.fullPath)"/>
     </v-navigation-drawer>
@@ -169,7 +176,7 @@ const themeIcon = computed(() => {
 }
 
 .app-bar-drawer-button {
-  @include media('xl-and-up') {
+  @include media('lg-and-up') {
     display: none;
   }
 }
