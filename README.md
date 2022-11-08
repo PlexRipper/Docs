@@ -1,6 +1,10 @@
-# Docs
+# PlexRipper Docs
 
-# Content v2 Minimal Starter
+The documentation website for [PlexRipper](https://github.com/PlexRipper/PlexRipper).
+
+Hosted on https://www.plexripper.rocks/
+
+# Created with Nuxt Content v2
 
 Look at the [Content documentation](https://content-v2.nuxtjs.org/) to learn more.
 
