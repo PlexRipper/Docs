@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import { fetchContentNavigation, useAsyncData } from "#imports";
+import { fetchContentNavigation, useAsyncData, useRoute } from "#imports";
 import PAGE from "const/page-name-constants";
 import { NavItem } from "@nuxt/content/dist/runtime/types";
 import { IPageLink } from "~/common/types/IPageLink";
@@ -51,6 +51,7 @@ export const useNavigationStore = defineStore('navigationStore', {
         async setup() {
             const { data } = await useAsyncData(() => fetchContentNavigation());
             this.navItems = data.value ?? [];
+            
         },
         setSidebarState(key: string, selected: string[]) {
             this.sideBarState.set(key, selected)
@@ -58,16 +59,26 @@ export const useNavigationStore = defineStore('navigationStore', {
     },
 
     getters: {
+        getPageKey: () => {
+            return (fullPath: string) => {
+                if (fullPath === '/') {
+                    return 'home';
+                }
+                return fullPath.split('/')[1]
+            }
+        },
         getPageNavItems: (state) => state.pageItems,
         getSidebarState: (state) => {
             return (key: string) => state.sideBarState.get(key)
         },
-        getGuidesNavItems: (state) => {
-            return cleanNavItems(PAGE.GUIDES, state.navItems);
+        getNavItems: (state) => {
+            return (key: string) => {
+                if (!key) {
+                    return [];
+                }
+                return cleanNavItems(key, state.navItems);
+            }
         },
-        getContributingNavItems: (state) => {
-            return cleanNavItems(PAGE.CONTRIBUTING, state.navItems);
-        }
     }
 })
 

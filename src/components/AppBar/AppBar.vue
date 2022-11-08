@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import Log from 'consola';
 import { computed, ref, useRoute } from "#imports";
 import { useNavigationStore } from "store";
 import { useTheme } from "vuetify";
 
-const theme = useTheme()
+const theme = useTheme();
+const route = useRoute();
 
 const store = useNavigationStore();
 
 const drawer = ref(false);
+Log.info('', route.fullPath);
 
 function toggleTheme() {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
@@ -36,6 +39,7 @@ const themeIcon = computed(() => {
         clipped
     >
       <template v-slot:prepend>
+        <v-app-bar-nav-icon class="app-bar-drawer-button" @click.stop="toggleSidebar"/>
         <v-btn to="/" outlined :ripple="false">
           <div class="d-flex align-center app-header-title">
             <logo :size="36"/>
@@ -74,7 +78,7 @@ const themeIcon = computed(() => {
             PlexRipper
           </v-btn>
         </div>
-        <v-app-bar-nav-icon class="app-bar-drawer-button" @click.stop="toggleSidebar"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon class="app-bar-drawer-button" @click.stop="toggleSidebar"/>
       </template>
     </v-app-bar>
     <!-- Mobile menu item drawer -->
@@ -109,6 +113,8 @@ const themeIcon = computed(() => {
           :prepend-icon="themeIcon"
           @click.stop="toggleTheme"
       ></v-list-item>
+      <pre>{{ store.getPageKey(route.fullPath) }}</pre>
+      <NavigationList :sidebar-key="store.getPageKey(route.fullPath)"/>
     </v-navigation-drawer>
   </div>
 </template>

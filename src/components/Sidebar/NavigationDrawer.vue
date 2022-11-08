@@ -1,56 +1,19 @@
 <script setup lang="ts">
-import { computed, ref, useRouter } from "#imports";
-import { NavItem } from "@nuxt/content/dist/runtime/types";
 import { useNavigationStore } from "store/navigationStore";
-import { PropType } from "@vue/runtime-core";
+
+const store = useNavigationStore();
 
 defineProps({
   sidebarKey: {
     type: String,
+    default: '',
   },
-  items: {
-    type: Array as PropType<NavItem[]>,
-  }
 });
-
-const emit = defineEmits<{ (e: 'change', path: string): void }>()
-
-const store = useNavigationStore();
 
 </script>
 
 <template>
   <v-navigation-drawer app clipped>
-    <v-list :opened="store.getSidebarState(sidebarKey)"
-            @update:opened="store.setSidebarState(sidebarKey, $event)"
-            open-strategy="list">
-
-      <template v-for="item in items">
-        <!-- Display as list-group when there are children -->
-        <v-list-group v-if="item.children.length > 0" :value="item.title">
-          <template v-slot:activator="{ props }">
-            <v-list-item
-                v-bind="props"
-                :title="item.title"
-            ></v-list-item>
-          </template>
-
-          <v-list-item
-              v-for="child in item.children"
-              :key="child._id"
-              :value="child._path"
-              :title="child.title"
-              :to="child._path"
-          />
-        </v-list-group>
-        <!-- Display as normal list-item when there are no children -->
-        <v-list-item
-            v-else
-            :value="item._path"
-            :title="item.title"
-            :to="item._path"
-        />
-      </template>
-    </v-list>
+    <NavigationList :sidebar-key="sidebarKey"/>
   </v-navigation-drawer>
 </template>
