@@ -4,11 +4,6 @@
 @import "./image.scss";
 
 
-// Used to keep the vanta.js background in place and overwrite the built-in position: absolute;
-.vanta-canvas {
-  position: fixed !important;
-}
-
 .subtitle {
   font-size: 0.875rem;
   opacity: 0.6;

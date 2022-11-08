@@ -24,7 +24,7 @@ onMounted(() => {
     minHeight: 800.0,
     minWidth: 800.0,
     scale: 1.0,
-    scaleMobile: 1.0,
+    scaleMobile: 0.5,
     color: 0x880000,
     shininess: 43.0,
     waveHeight: 4.0,
@@ -46,3 +46,10 @@ onBeforeUnmount(() => {
 );
 
 </script>
+
+<style lang="scss">
+// Used to keep the vanta.js background in place and overwrite the built-in position: absolute;
+.vanta-canvas {
+  position: fixed !important;
+}
+</style>
