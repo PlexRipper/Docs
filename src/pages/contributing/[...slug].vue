@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import NavigationDrawer from "~/components/Sidebar/NavigationDrawer.vue";
-import { useNavigationStore } from "~/store/navigationStore";
 import { definePageMeta, queryContent, useRoute } from "#imports";
+import { useNavigationStore } from "store";
+
+const store = useNavigationStore();
 
 definePageMeta({
   title: 'Contributing',
 })
 
-const store = useNavigationStore();
 const route = useRoute()
 const currentPage = await queryContent(route.path).findOne()
 
@@ -15,10 +15,7 @@ const currentPage = await queryContent(route.path).findOne()
 
 <!-- Pages need a single root element to make page transition work -->
 <template>
-  <div>
-    <NavigationDrawer sidebar-key="contributing" :items="store.getContributingNavItems"/>
-    <PageRenderer :page="currentPage"/>
-  </div>
+  <PageRenderer :page="currentPage" :sidebar-key="store.getPageKey(route.fullPath)"/>
 </template>
 
 

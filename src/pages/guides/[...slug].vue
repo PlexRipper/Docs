@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import NavigationDrawer from "~/components/Sidebar/NavigationDrawer.vue";
 import { useNavigationStore } from "~/store/navigationStore";
 import { definePageMeta, queryContent, ref, useRoute } from "#imports";
+
+const store = useNavigationStore();
 
 definePageMeta({
   title: 'Guides',
 })
 
-const store = useNavigationStore();
 const route = useRoute()
 const currentPage = await queryContent(route.path).findOne()
 
@@ -15,10 +15,8 @@ const currentPage = await queryContent(route.path).findOne()
 
 <!-- Pages need a single root element to make page transition work -->
 <template>
-  <div>
-    <NavigationDrawer sidebar-key="guides" :items="store.getGuidesNavItems"/>
-    <PageRenderer :page="currentPage"/>
-  </div>
+  <PageRenderer :page="currentPage" :sidebar-key="store.getPageKey(route.fullPath)"/>
 </template>
+
 
 
