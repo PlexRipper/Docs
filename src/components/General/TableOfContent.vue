@@ -16,6 +16,7 @@ const props = defineProps({
 
 const rootClasses = computed(() => {
   return {
+    'table-of-content': true,
     fixed: props.root,
   }
 })
@@ -27,7 +28,7 @@ const rootClasses = computed(() => {
     <span v-if="root" style="font-weight: bold">Table of Contents</span>
     <ul v-if="links" :class="[props.root ? 'ml-0' : '']" style="list-style-type: none">
       <li v-for="link in links" :key="link.text">
-        <a :href="`#${link.id}`">
+        <a :href="`#${link.id}`" class="no-underline">
           {{ link.text }}
         </a>
         <TableOfContent v-if="link.children" :links="link.children"/>

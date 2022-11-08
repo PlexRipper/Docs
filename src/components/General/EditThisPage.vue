@@ -14,7 +14,7 @@ const link = computed(() => {
 
 <template>
   <div class="mt-8">
-    <NuxtLink :href="link" target="_blank" rel="noopener">
+    <NuxtLink :href="link" class="no-underline" target="_blank" rel="noopener">
       <v-icon>mdi-open-in-new</v-icon>
       <span class="vertical-middle">Edit this page on GitHub</span>
     </NuxtLink>
