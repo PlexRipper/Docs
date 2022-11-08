@@ -30,8 +30,5 @@
     "sass": "^1.55.0",
     "vite-plugin-vuetify": "^1.0.0",
     "vuetify": "^3.0.0"
-  },
-  "optionalDependencies": {
-    "fsevents": "^2.3.2"
   }
 }
