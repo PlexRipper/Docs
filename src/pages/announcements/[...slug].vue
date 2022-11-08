@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { format } from 'date-fns';
 import { useNavigationStore } from "~/store/navigationStore";
-import { computed, definePageMeta, queryContent, useContent, useRoute } from "#imports";
+import { computed, definePageMeta, queryContent, useContent, useHead, useRoute } from "#imports";
 import { IAnnouncement } from "~/common/types/IAnnouncement";
 
 definePageMeta({
@@ -13,6 +13,10 @@ const store = useNavigationStore();
 const route = useRoute()
 
 const currentPage = await queryContent(route.path).findOne() as IAnnouncement;
+
+useHead({
+  title: currentPage.title,
+})
 
 const bannerPath = computed(() => {
   const date = format(Date.parse(currentPage.date), 'yyyy-MM-dd');

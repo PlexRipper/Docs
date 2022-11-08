@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent } from "#imports";
+import { queryContent, useHead } from "#imports";
 import { MarkdownNode, MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 
 interface Question {
@@ -7,7 +7,7 @@ interface Question {
   answer: MarkdownParsedContent,
 }
 
-definePageMeta({
+useHead({
   title: 'Frequently Asked Questions',
 })
 

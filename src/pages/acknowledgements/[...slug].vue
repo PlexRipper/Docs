@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useNavigationStore } from "~/store/navigationStore";
-import { definePageMeta, queryContent, useRoute } from "#imports";
+import { queryContent, useHead, useRoute } from "#imports";
 
-definePageMeta({
+useHead({
   title: 'Acknowledgements',
 })
 

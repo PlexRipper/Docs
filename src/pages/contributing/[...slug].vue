@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, useRoute } from "#imports";
+import { queryContent, useRoute } from "#imports";
 import { useNavigationStore } from "store";
+import { useHead } from "#head";
 
 const store = useNavigationStore();
 
-definePageMeta({
+useHead({
   title: 'Contributing',
 })
 

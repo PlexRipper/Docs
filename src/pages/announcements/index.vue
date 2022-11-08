@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, useRoute } from "#imports";
+import { definePageMeta, queryContent, useHead, useRoute } from "#imports";
 import { IAnnouncement } from "~/common/types/IAnnouncement";
 
-definePageMeta({
+useHead({
   title: 'Announcements',
 })
 const route = useRoute();

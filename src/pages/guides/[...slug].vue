@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useNavigationStore } from "~/store/navigationStore";
-import { definePageMeta, queryContent, ref, useRoute } from "#imports";
+import { queryContent, useHead, useRoute } from "#imports";
 
 const store = useNavigationStore();
 
-definePageMeta({
+useHead({
   title: 'Guides',
 })
 
