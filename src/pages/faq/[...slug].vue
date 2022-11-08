@@ -15,10 +15,13 @@ const currentPage = await queryContent('faq').findOne() as MarkdownParsedContent
 const questions = parseQuestions();
 
 function parseQuestions() {
-  if (!currentPage.value) {
+  if (!currentPage) {
     return [];
   }
-  const children = currentPage.value?.body.children ?? [];
+  const children = currentPage?.body.children ?? [];
+  if (!children) {
+    return []
+  }
   let questionIndices = []
   // Remove FAQ title
   children.splice(0, 1);
@@ -34,7 +37,12 @@ function parseQuestions() {
   const lastIndex = children.length - 1;
   for (let i = 0; i < questionIndices.length; i++) {
     const questionIndex = questionIndices[i];
-    const title = children[questionIndex].children[0].value;
+    const parent = children[questionIndex];
+    if (!parent.children) {
+      continue;
+    }
+
+    const title = parent.children[0].value ?? 'Title not found';
     let answerChildren: MarkdownNode[] = [];
 
     if (i < lastIndex) {
@@ -47,7 +55,7 @@ function parseQuestions() {
     result.push({
       title,
       answer: {
-        ...currentPage.value,
+        ...currentPage,
         body: {
           type: 'root',
           children: answerChildren,
@@ -63,7 +71,7 @@ function parseQuestions() {
 </script>
 
 <template>
-  <v-container>
+  <article>
     <h1>Frequently Asked Questions</h1>
     <v-expansion-panels class="my-4">
       <template v-for="(question, index) in questions" :key="index">
@@ -75,5 +83,5 @@ function parseQuestions() {
       </template>
     </v-expansion-panels>
     <EditThisPage :path="currentPage._file"/>
-  </v-container>
+  </article>
 </template>
