@@ -5,6 +5,13 @@ import { IAnnouncement } from "~/common/types/IAnnouncement";
 useHead({
   title: 'Announcements',
 })
+
+// This is added due to missing document 404 errors popping up in the console
+// Source: https://github.com/nuxt/content/issues/1656
+definePageMeta({
+  documentDriven: false
+})
+
 const route = useRoute();
 const currentPage: IAnnouncement[] = await queryContent(route.path).find() as IAnnouncement[]
 </script>
