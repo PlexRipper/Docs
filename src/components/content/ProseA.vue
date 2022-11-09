@@ -11,9 +11,9 @@ const props = defineProps({
     default: false
   }
 })
-
+const regExp = new RegExp('^(?:[a-z+]+:)?//', 'i');
 const isRelative = computed(() => {
-  return props.href.startsWith('/');
+  return !regExp.test(props.href)
 })
 </script>
 
