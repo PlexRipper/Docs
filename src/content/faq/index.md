@@ -56,6 +56,17 @@ this [issue](https://github.com/brave/brave-browser/issues/19037#issuecomment-12
 It "should" however work with all browsers, except ancient ones like Internet
 Explorer and trash ones like Safari. Don't expect support for either of those.
 
+## I tried to use my username to setup my Plex account in PlexRipper but it's not working?
+
+Make sure that the "Allow username to be used when signing in" is checked.
+
+1. Go to [plex.tv](https://www.plex.tv/) and sign-in
+2. Go to Settings -> Account
+3. Click on the username and the below option will appear
+4. Make sure it's checked and then click "Save Changes"
+
+![](/img/faq/username-plex-question.png){.responsive-img}
+
 ## Is this project dead? Why no updates? Can you hurry up?
 
 Check the [homepage](/) for what is currently happening.
