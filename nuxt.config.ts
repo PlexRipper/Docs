@@ -12,6 +12,10 @@ export default defineNuxtConfig({
         documentDriven: true,
         markdown: {
             anchorLinks: false,
+        },
+        highlight: {
+            theme: 'github-dark',
+            preload: ['ts', 'js', 'css', 'json', 'bash'],
         }
     },
     css: ['vuetify/styles', '@/assets/scss/style.scss'],

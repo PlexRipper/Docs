@@ -12,9 +12,9 @@ All current translations are available in the [lang folder](https://github.com/P
 
 Current language issues:
 
-- [American English](https://github.com/PlexRipper/PlexRipper/issues/140) (main language)
-- [German](https://github.com/PlexRipper/PlexRipper/issues/142)
-- [French](https://github.com/PlexRipper/PlexRipper/issues/141)
+- [American English](https://github.com/PlexRipper/PlexRipper/discussions/166) (main language)
+- [German](https://github.com/PlexRipper/PlexRipper/discussions/164)
+- [French](https://github.com/PlexRipper/PlexRipper/discussions/165)
 
 ## Steps to start translating:
 
@@ -28,9 +28,9 @@ Current language issues:
 ### I know how pull requests work
 
 1. If you know how pull requests work then fork the [dev branch](https://github.com/PlexRipper/PlexRipper/tree/dev) and navigate to the lang folder:
-   ``
+   ```bash
    [repository folder]/src/WebAPI/ClientApp/src/lang
-   ``
+   ```
 
 2. Make a copy of the [en-US.json](https://github.com/PlexRipper/PlexRipper/blob/dev/src/WebAPI/ClientApp/src/lang/en-US.json) into the "lang" folder and rename it to your language in a code format. e.g. "nl-NL.json (Dutch), lt-LT.json (Lithuanian)".
     - See [lingohub](https://lingohub.com/developers/supported-locales/language-designators-with-regions) for language-code examples.
@@ -51,7 +51,7 @@ I would highly recommend you use [BabelEdit](https://www.codeandweb.com/babeledi
 Every language file is in a specific JSON format. It is very important that the format is maintained as is.
 Let's take a look at an example:
 
-```json
+```json [en-us.json]
 {
   "general": {
     "name": "PlexRipper",
@@ -64,15 +64,18 @@ Let's take a look at an example:
 } 
 ```
 
-You see that there are many curly brackets "{" and "}", these should be ignored as they are needed for the file to be working as intended. 
+You see that there are many curly brackets "{" and "}", these should be ignored as they are needed for the file to be working as intended.
 
 JSON works in key-value pairs. for example:
+
 ```json
  "name": "PlexRipper"
  ```
+
 Above you see a pair, where `"name"` is the key, and `"PlexRipper"` is the value. All you need to do is translate whatever is inside of the quotation marks on the value-side, and leave the keys untouched.
 
 Simply said, ONLY translate the text after the colon ":"!
+
 ### Done
 
 When finished, either create a pull request or send it attached in an e-mail to [plexripper@protonmail.com](mailto:plexripper@protonmail.com?subject=[PlexRipper%20Translation]).
