@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     },
     css: ['vuetify/styles', '@/assets/scss/style.scss'],
     build: {
-        extractCSS: true,
+        // extractCSS: true,
         transpile: ['vuetify'],
     },
     vite: {
@@ -34,13 +34,17 @@ export default defineNuxtConfig({
     modules: [
         '@nuxt/content',
         '@pinia/nuxt',
-        'vue-plausible',
+        '@nuxtjs/plausible',
         async (options, nuxt) => {
             // @ts-ignore
             // Source: https://www.the-koi.com/projects/how-to-set-up-a-project-with-nuxt3-and-vuetify3-with-a-quick-overview/
             nuxt.hooks.hook('vite:extendConfig', config => config.plugins.push(vuetify({ styles: 'sass' })));
         },
     ],
+    plausible: {
+        autoOutboundTracking: true,
+        // domain: 'plexripper.rocks'
+    },
     /*
      ** Auto-import components
      *  Doc: https://github.com/nuxt/components
