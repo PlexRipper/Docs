@@ -1,8 +1,8 @@
 {
   "ignore": {
     "three": {
-      "versions": "^0.146.0",
-      "reason": "Not compatible with current vanta.js"
+      "versions": ">0.143.0",
+      "reason": "Incompatible with Vanta"
     }
   }
 }
