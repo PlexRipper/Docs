@@ -11,7 +11,8 @@ An absolute massive thank you to the following people!
 
 ## General
 
-- [Lenty Sprangers](https://github.com/LentySprangers) for the logo design and proof reading! 
+- [Lenty Sprangers](https://github.com/LentySprangers) for the logo design and proofreading!
+- [Braeden Slatyer](https://github.com/bslatyer) for feedback and providing valuable accounts to test with!
 
 ## Developers
 
