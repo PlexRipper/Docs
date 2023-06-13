@@ -31,10 +31,10 @@ export const useNavigationStore = defineStore('navigationStore', {
                     label: 'FAQ',
                     path: `/${ PAGE.FAQ }/`,
                 },
-                {
-                    label: 'Roadmap',
-                    path: `/${ PAGE.ROADMAP }/`,
-                },
+                // {
+                //     label: 'Roadmap',
+                //     path: `/${ PAGE.ROADMAP }/`,
+                // },
                 {
                     label: 'Contributing',
                     path: `/${ PAGE.CONTRIBUTING }/overview/`,
