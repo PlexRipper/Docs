@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { queryContent, useRoute } from "#imports";
+import { queryContent, useRoute, useHead } from "#imports";
 import { useNavigationStore } from "store";
-import { useHead } from "#head";
 
 const store = useNavigationStore();
 const route = useRoute()
