@@ -67,6 +67,10 @@ Make sure that the "Allow username to be used when signing in" is checked.
 
 ![](/img/faq/username-plex-question.png){.responsive-img}
 
+## The background of PlexRipper is dark gray, is that normal?
+
+No it should be the almost the same background you see on this website. Make sure you're not running an extensions such as [Dark Reader](https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh?hl=en) that makes the websites you visit dark
+
 ## Is this project dead? Why no updates? Can you hurry up?
 
 Check the [homepage](/) for what is currently happening.
