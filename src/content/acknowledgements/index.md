@@ -37,6 +37,7 @@ special thank you!
 ## Translation
 
 - [Starnakin](https://github.com/starnakin) for his awesome work on translating PlexRipper to French!
+- [Artugr18](https://github.com/Artugr18) for his awesome work on translating PlexRipper to Polish!
 
 ## Inspiration
 
