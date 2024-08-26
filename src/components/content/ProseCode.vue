@@ -1,30 +1,30 @@
 <script lang="ts">
-import { defineComponent } from '#imports'
+import { defineComponent } from '#imports';
 
 export default defineComponent({
-  props: {
-    code: {
-      type: String,
-      default: ''
-    },
-    language: {
-      type: String,
-      default: null
-    },
-    filename: {
-      type: String,
-      default: null
-    },
-    highlights: {
-      type: Array as () => number[],
-      default: () => []
-    }
-  }
-})
+	props: {
+		code: {
+			type: String,
+			default: '',
+		},
+		language: {
+			type: String,
+			default: null,
+		},
+		filename: {
+			type: String,
+			default: null,
+		},
+		highlights: {
+			type: Array as () => number[],
+			default: () => [],
+		},
+	},
+});
 </script>
 
 <template>
-  <slot/>
+	<slot />
 </template>
 
 <style>

@@ -1,11 +1,23 @@
 <template>
-  <v-main class="mt-10">
-    <v-container>
-      <v-row justify="center" no-gutters>
-        <v-col cols="12" lg="9" xl="6">
-          <slot/>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-main>
+	<FlexContainer full-height>
+		<v-app class="glass-background">
+			<AppBar />
+			<slot />
+			<Background />
+		</v-app>
+	</FlexContainer>
 </template>
+
+<script setup lang="ts">
+import { useNavigationStore } from 'store/navigationStore';
+import { useHead } from '#imports';
+
+const store = useNavigationStore();
+await store.setup();
+
+useHead({
+	title: 'PlexRipper Docs',
+	meta: [{ name: 'description', content: 'Documentation website for the PlexRipper project' }],
+	link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+});
+</script>

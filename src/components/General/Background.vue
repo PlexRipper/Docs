@@ -1,50 +1,18 @@
 <template>
-  <div>
-    <slot/>
-  </div>
+	<div id="background">
+		<slot />
+	</div>
 </template>
 
-<script setup lang="ts">
-import Log from 'consola';
-import { onActivated, onBeforeUnmount, onMounted } from "#imports";
-import * as THREE from 'three';
-import WAVES from 'vanta/dist/vanta.waves.min.js';
+<script lang="ts" setup>
+import { onBeforeUnmount, onMounted } from '#imports';
+import { destroyBackgroundEffect, setupBackgroundEffect } from '@/public/background-effect.js';
 
-let vantaEffect: any = {};
+onMounted(() => setupBackgroundEffect());
 
-onMounted(() => {
-  Log.info('Wave effect created!');
+// onActivated(() => setTimeout(() => vantaEffect.resize(), 2000))
 
-  vantaEffect = WAVES({
-    THREE,
-    el: 'body',
-    mouseControls: false,
-    touchControls: false,
-    gyroControls: false,
-    minHeight: 800.0,
-    minWidth: 800.0,
-    scale: 1.0,
-    scaleMobile: 0.5,
-    color: 0x880000,
-    shininess: 43.0,
-    waveHeight: 4.0,
-    waveSpeed: 0.5,
-    zoom: 0.45,
-  });
-})
-
-onActivated(() => {
-  setTimeout(() => vantaEffect.resize(), 2000);
-})
-
-onBeforeUnmount(() => {
-      if (vantaEffect) {
-        Log.info('Wave effect destroyed!');
-        vantaEffect.destroy();
-      }
-    }
-);
-
+onBeforeUnmount(() => destroyBackgroundEffect());
 </script>
 
 <style lang="scss">
