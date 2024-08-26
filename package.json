@@ -15,6 +15,7 @@
   "dependencies": {
     "@jasonlandbridge/url-tools": "^1.0.5",
     "@mdi/font": "^7.4.47",
+    "@nuxt/image": "^1.7.0",
     "@nuxtjs/axios": "^5.13.6",
     "@pinia/nuxt": "^0.5.4",
     "@primevue/nuxt-module": "^4.0.5",
@@ -22,6 +23,7 @@
     "date-fns": "^3.6.0",
     "pinia": "^2.2.2",
     "prettier": "^3.3.3",
+    "primeflex": "^3.3.1",
     "primevue": "^4.0.5",
     "three": "^0.123.0",
     "vanta": "^0.5.24"
