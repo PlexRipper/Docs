@@ -4,7 +4,7 @@ title: Demo
 
 # Screenshots
 
-Welcome screen and initual setup
+Welcome screen and initial setup
 ![image](/img/demo/37b43186-aa9d-4d59-b19b-70ad26a99407.png)
 ![image](/img/demo/b63af874-fc26-471f-b4ad-8901d686379f.png)
 ![image](/img/demo/a761e86b-823e-45b2-bb43-39a7d5b38913.png)

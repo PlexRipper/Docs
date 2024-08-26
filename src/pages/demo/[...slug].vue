@@ -1,9 +1,14 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useNavigationStore } from "~/store/navigationStore";
-import { queryContent, useHead, useRoute } from "#imports";
+import { definePageMeta, queryContent, useHead, useRoute } from "#imports";
 
 useHead({
   title: 'Demo',
+})
+
+definePageMeta({
+  layout: 'empty',
+  documentDriven: false
 })
 
 const store = useNavigationStore();
@@ -14,7 +19,9 @@ const currentPage = await queryContent(route.path).findOne()
 
 <!-- Pages need a single root element to make page transition work -->
 <template>
-  <PageRenderer :page="currentPage"/>
+  <div class="test">
+    <PageRenderer :page="currentPage"/>
+  </div>
 </template>
 
 
