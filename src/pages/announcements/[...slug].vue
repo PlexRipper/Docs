@@ -1,19 +1,35 @@
+<template>
+	<Page>
+		<FlexContainer justify="between">
+			<FlexContainer column>
+				<h1>{{ currentPage.title }}</h1>
+				<span>{{ currentPage.description }}</span>
+				<Authors
+					:authors="currentPage.authors"
+					:date="currentPage.date" />
+				<Image
+					:src="bannerPath"
+					:alt="altDescription" />
+
+				<PageRenderer :page="currentPage" />
+			</FlexContainer>
+			<TableOfContent
+				root
+				:links="currentPage.body.toc.links" />
+		</FlexContainer>
+	</Page>
+</template>
+
 <script setup lang="ts">
 import { format } from 'date-fns';
 import { useNavigationStore } from '~/store/navigationStore';
-import { computed, definePageMeta, queryContent, useContent, useHead, useRoute } from '#imports';
-import type { IAnnouncement } from '~/common/types/IAnnouncement';
+import { computed, queryContent, useHead, useRoute } from '#imports';
 
-definePageMeta({
-	layout: 'text-layout',
-});
-
-const { toc } = useContent();
 const store = useNavigationStore();
 const route = useRoute();
 
-const currentPage = await queryContent(route.path).findOne() as IAnnouncement;
-
+const currentPage = await queryContent(route.path).findOne();
+console.log(currentPage);
 useHead({
 	title: currentPage.title,
 });
@@ -27,28 +43,3 @@ const altDescription = computed(() => {
 	return `${currentPage.title} Banner`;
 });
 </script>
-
-<template>
-	<v-row justify="center">
-		<v-col>
-			<h1>{{ currentPage.title }}</h1>
-			<span>{{ currentPage.description }}</span>
-			<Authors
-				:authors="currentPage.authors"
-				:date="currentPage.date"
-			/>
-			<v-img
-				:src="bannerPath"
-				:alt="altDescription"
-			/>
-
-			<PageRenderer :page="currentPage" />
-		</v-col>
-		<v-col cols="auto">
-			<TableOfContent
-				root
-				:links="toc.links"
-			/>
-		</v-col>
-	</v-row>
-</template>

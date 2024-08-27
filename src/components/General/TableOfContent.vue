@@ -1,7 +1,31 @@
+<template>
+	<div class="table-of-content">
+		<span
+			v-if="root"
+			style="font-weight: bold">
+			Table of Contents
+		</span>
+		<ul
+			v-if="links"
+			:class="['p-0', props.root ? 'ml-1' : '']"
+			style="list-style-type: none">
+			<li
+				v-for="link in links"
+				:key="link.text">
+				<NuxtLink	:to="`#${link.id}`">
+					{{ link.text }}
+				</NuxtLink>
+				<TableOfContent
+					v-if="link.children"
+					:links="link.children" />
+			</li>
+		</ul>
+	</div>
+</template>
+
 <script setup lang="ts">
-import type { TocLink } from '@nuxt/content/dist/runtime/types';
+import type { TocLink } from '@nuxt/content';
 import type { PropType } from 'vue';
-import { computed } from '#imports';
 
 const props = defineProps({
 	links: {
@@ -13,41 +37,15 @@ const props = defineProps({
 		default: false,
 	},
 });
-
-const rootClasses = computed(() => {
-	return {
-		'table-of-content': true,
-		fixed: props.root,
-	};
-});
 </script>
 
-<template>
-	<div :class="rootClasses">
-		<span
-			v-if="root"
-			style="font-weight: bold"
-		>Table of Contents</span>
-		<ul
-			v-if="links"
-			:class="[props.root ? 'ml-0' : '']"
-			style="list-style-type: none"
-		>
-			<li
-				v-for="link in links"
-				:key="link.text"
-			>
-				<a
-					:href="`#${link.id}`"
-					class="no-underline"
-				>
-					{{ link.text }}
-				</a>
-				<TableOfContent
-					v-if="link.children"
-					:links="link.children"
-				/>
-			</li>
-		</ul>
-	</div>
-</template>
+<style lang="scss">
+@use 'primeflex/primeflex.scss';
+
+.table-of-content {
+  @extend .fixed;
+  @extend .mt-4;
+  @extend .right-0;
+  @extend .h-full;
+}
+</style>

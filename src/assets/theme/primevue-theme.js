@@ -19,7 +19,7 @@ const MyPreset = definePreset(Aura, {
 		colorScheme: {
 			light: {
 				surface: {
-					0: '#000000b3',
+					0: 'rgb(0,0,0)',
 					50: '{zinc.50}',
 					100: '{zinc.100}',
 					200: '{zinc.200}',
@@ -35,18 +35,25 @@ const MyPreset = definePreset(Aura, {
 			},
 			dark: {
 				surface: {
-					0: 'rgba(0,0,0,0.70)',
-					50: '{slate.50}',
-					100: '{slate.100}',
-					200: '{slate.200}',
-					300: '{slate.300}',
-					400: '{slate.400}',
-					500: '{slate.500}',
-					600: '{slate.600}',
-					700: '{slate.700}',
+					0: 'rgb(255,255,255)',
+					10: 'rgb(183,181,181)',
+					50: 'rgba(0,0,0,0.5)',
+					100: 'rgba(0,0,0,0.10)',
+					200: 'rgba(0,0,0,0.20)',
+					300: 'rgba(0,0,0,0.30)',
+					400: 'rgba(0,0,0,0.40)',
+					500: 'rgba(0,0,0,0.50)',
+					600: 'rgba(0,0,0,0.60)',
+					700: 'rgba(0,0,0,0.70)',
 					800: 'rgba(0,0,0,0.80)',
 					900: 'rgba(0,0,0,0.85)',
 					950: 'rgba(0,0,0,0.90)',
+				},
+				text: {
+					color: '{surface.0}',
+					hoverColor: '{surface.800}',
+					mutedColor: '{surface.10}',
+					hoverMutedColor: '{surface.600}',
 				},
 				panelmenu: {
 					panel: {

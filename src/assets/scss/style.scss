@@ -31,18 +31,20 @@ html {
   }
 
   // Light theme
-  background-color: $light-theme-background !important;
+  & {
+    background-color: $light-theme-background !important;
 
-  article, .table-of-content {
-    a {
-      color: #601d0a;
+    article, .table-of-content {
+      a {
+        color: #601d0a;
 
-      &:hover {
-        color: #FF0000;
+        &:hover {
+          color: #FF0000;
+        }
       }
     }
-  }
 
+  }
 }
 
 a {
@@ -68,7 +70,7 @@ ul {
 
 
 .background-overlay {
-  background-color: var(--p-surface-0);
+  background-color: var(--p-surface-700);
 }
 
 .background-overlay-darker {

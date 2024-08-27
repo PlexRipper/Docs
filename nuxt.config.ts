@@ -7,8 +7,11 @@ export default defineNuxtConfig({
 	// Doc: https://v3.nuxtjs.org/api/configuration/nuxt.config#srcdir
 	srcDir: 'src/',
 
-	ssr: true, dev: false, content: {
-		documentDriven: true, markdown: {
+	ssr: true,
+	dev: false,
+	content: {
+		documentDriven: false,
+		markdown: {
 			anchorLinks: false,
 		}, highlight: {
 			theme: 'github-dark', preload: ['ts', 'js', 'css', 'json', 'bash'],

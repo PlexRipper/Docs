@@ -1,8 +1,8 @@
 <template>
 	<div id="layout-container">
 		<AppBar />
-		<SidebarDrawer />
-		<div	id="page-container">
+		<SidebarDrawer v-if="hasSidebar" />
+		<div id="page-container">
 			<slot />
 		</div>
 	</div>
@@ -13,14 +13,16 @@
 import { useNavigationStore } from 'store/navigationStore';
 import { useHead } from '#imports';
 
-const store = useNavigationStore();
-await store.setup();
-
 useHead({
 	title: 'PlexRipper Docs',
 	meta: [{ name: 'description', content: 'Documentation website for the PlexRipper project' }],
 	link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 });
+
+const store = useNavigationStore();
+await store.setup();
+
+const hasSidebar = computed(() => useAttrs().hasOwnProperty('sidebar') && useAttrs().sidebar === true);
 </script>
 
 <style lang="scss">

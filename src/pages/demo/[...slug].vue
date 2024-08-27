@@ -1,23 +1,31 @@
 <template>
 	<Page>
-		<Galleria
-			:circular="true"
-			:num-visible="5"
-			:responsive-options="responsiveOptions"
-			:value="images">
-			<template #item="slotProps">
-				<img
-					:alt="slotProps.item.alt"
-					:src="slotProps.item.src"
-					style="width: 100%; display: block">
-			</template>
-			<template #thumbnail="slotProps">
-				<img
-					:alt="slotProps.item.alt"
-					:src="slotProps.item.src"
-					style="width: 100%; display: block">
-			</template>
-		</Galleria>
+		<ClientOnly>
+			<Galleria
+				:dt="styling"
+
+				circular
+				:num-visible="5"
+				:responsive-options="responsiveOptions"
+				:value="images"
+				container-style="max-width: 1920px">
+				<template #item="{ item }">
+					<img
+						:alt="item.text"
+						:src="item.src"
+						style="width: 100%; display: block">
+				</template>
+				<template #thumbnail="{ item }">
+					<img
+						:alt="item.text"
+						:src="item.src"
+						style="width: 100%; display: block">
+				</template>
+				<!--				<template #caption="{ item }"> -->
+				<!--					<h4>{{ item.text }}</h4> -->
+				<!--				</template> -->
+			</Galleria>
+		</ClientOnly>
 	</Page>
 </template>
 
@@ -34,34 +42,40 @@ const store = useNavigationStore();
 const route = useRoute();
 const currentPage = await queryContent(route.path).findOne();
 
-const images = [{
-	text: 'Welcome screen and initial setup',
-	src: '/img/demo/37b43186-aa9d-4d59-b19b-70ad26a99407.png',
-},
-{
-	text: 'Exploring a category in Poster Mode',
-	src: '/img/demo/b63af874-fc26-471f-b4ad-8901d686379f.png',
-},
-{
-	text: 'Exploring a category in Table mode',
-	src: '/img/demo/a13891fa-1ece-4d41-99ce-857c313a01d5.png',
-},
-{
-	text: 'Downloading a movie',
-	src: '/img/demo/ffc01987-f02b-405e-9a7c-8976d69b5405.png',
-},
-{
-	text: 'Download progress',
-	src: '/img/demo/9e208810-69e6-421a-b4e6-940f939192cd.png',
-},
-{
-	text: 'Language configuration',
-	src: '/img/demo/5d02fc10-c886-4fdc-9d44-0c19a6489cad.png',
-},
-{
-	text: 'Another image',
-	src: '/img/demo/c36662aa-877b-4a5e-9d40-aab689555202.png',
-}];
+const images = [
+	{
+		text: 'Welcome screen and initial setup',
+		src: '/img/demo/screenshot_1.png',
+	},
+	{
+		text: 'Welcome screen and initial setup',
+		src: '/img/demo/screenshot_2.png',
+	},
+	{
+		text: 'Welcome screen and initial setup',
+		src: '/img/demo/screenshot_3.png',
+	},
+	{
+		text: 'Welcome screen and initial setup',
+		src: '/img/demo/screenshot_4.png',
+	},
+	{
+		text: 'Exploring a category in Poster Mode',
+		src: '/img/demo/screenshot_5.png',
+	},
+	{
+		text: 'Exploring a category in Table mode',
+		src: '/img/demo/screenshot_6.png',
+	},
+	{
+		text: 'Downloading a movie',
+		src: '/img/demo/screenshot_7.png',
+	},
+	{
+		text: 'Download progress',
+		src: '/img/demo/screenshot_8.png',
+	},
+];
 
 const responsiveOptions = ref([
 	{
@@ -73,4 +87,27 @@ const responsiveOptions = ref([
 		numVisible: 1,
 	},
 ]);
+
+const styling = ref({
+	colorScheme: {
+		light: {
+			root: {
+				thumbnailNavButtonColor: '{white}',
+			},
+		},
+		dark: {
+			root: {
+				thumbnailNavButtonColor: '{surface.0}',
+			},
+		},
+	},
+});
 </script>
+
+<style lang="scss">
+//.p-galleria {
+// height: calc(100vh - 4rem);
+// min-height: calc(100vh - 4rem);
+//
+//}
+</style>

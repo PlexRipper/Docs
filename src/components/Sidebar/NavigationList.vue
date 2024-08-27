@@ -89,6 +89,7 @@ const styling = ref({
 				panelFirstBorderWidth: '0',
 				panelLastBorderWidth: '0',
 				itemBorderRadius: '0',
+				submenuIndent: '0',
 				itemFocusBackground: 'rgba(255,255,255,0.35)',
 			},
 		},
@@ -108,8 +109,8 @@ onMounted(() => {
 <style lang="scss">
 @use 'primeflex/primeflex.scss';
 
-.p-panelmenu-item {
-  // @extend .h-3rem;
+.p-panelmenu-item-content a{
+  @extend .ml-3;
 }
 
 .p-panelmenu-header-content, .p-panelmenu-item-content {

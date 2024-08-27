@@ -1,3 +1,27 @@
+<template>
+	<Page>
+		<article>
+			<h1>Frequently Asked Questions</h1>
+			<VExpansionPanels class="my-4">
+				<template
+					v-for="(question, index) in questions"
+					:key="index">
+					<VExpansionPanel
+						:title="question.title"
+						eager>
+						<template #text>
+							<ContentRenderer
+								v-if="question.answer"
+								:value="question.answer" />
+						</template>
+					</VExpansionPanel>
+				</template>
+			</VExpansionPanels>
+			<EditThisPage :path="currentPage._file" />
+		</article>
+	</Page>
+</template>
+
 <script setup lang="ts">
 import type { MarkdownNode, MarkdownParsedContent } from '@nuxt/content';
 import { queryContent, useHead } from '#imports';
@@ -67,28 +91,3 @@ function parseQuestions() {
 	return result;
 }
 </script>
-
-<template>
-	<article>
-		<h1>Frequently Asked Questions</h1>
-		<v-expansion-panels class="my-4">
-			<template
-				v-for="(question, index) in questions"
-				:key="index"
-			>
-				<v-expansion-panel
-					:title="question.title"
-					eager
-				>
-					<template #text>
-						<ContentRenderer
-							v-if="question.answer"
-							:value="question.answer"
-						/>
-					</template>
-				</v-expansion-panel>
-			</template>
-		</v-expansion-panels>
-		<EditThisPage :path="currentPage._file" />
-	</article>
-</template>
