@@ -33,6 +33,12 @@ export function setupBackgroundEffect() {
 	}
 }
 
+export function resizeBackgroundEffect() {
+	if (window.waveEffect) {
+		window.waveEffect.resize();
+	}
+}
+
 export function destroyBackgroundEffect() {
 	if (window.waveEffect) {
 		window.waveEffect.destroy();

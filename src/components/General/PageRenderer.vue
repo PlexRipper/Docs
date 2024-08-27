@@ -1,24 +1,5 @@
-<script setup lang="ts">
-import type { PropType } from 'vue';
-import type { ParsedContent } from '@nuxt/content';
-
-const props = defineProps({
-	page: {
-		type: Object as PropType<ParsedContent>,
-	},
-	sidebarKey: {
-		type: String,
-		default: '',
-	},
-});
-</script>
-
 <template>
-	<div>
-		<NavigationDrawer
-			v-if="sidebarKey"
-			:sidebar-key="sidebarKey"
-		/>
+	<Page>
 		<!-- Pages need a single root element to make page transition work -->
 		<article>
 			<ContentRenderer :value="page">
@@ -30,5 +11,16 @@ const props = defineProps({
 			<div style="height: 100px" />
 			<EditThisPage :path="page._file" />
 		</article>
-	</div>
+	</Page>
 </template>
+
+<script setup lang="ts">
+import type { PropType } from 'vue';
+import type { ParsedContent } from '@nuxt/content';
+
+defineProps({
+	page: {
+		type: Object as PropType<ParsedContent>,
+	},
+});
+</script>

@@ -2,83 +2,92 @@ import { acceptHMRUpdate, defineStore } from 'pinia';
 import PAGE from 'const/page-name-constants';
 import type { NavItem } from '@nuxt/content';
 import type { IPageLink } from '~/common/types/IPageLink';
-import { fetchContentNavigation, useAsyncData, useRoute } from '#imports';
+import { fetchContentNavigation, useAsyncData } from '#imports';
 
-interface INavigationState {
-	pageItems: IPageLink[];
-	sideBarState: Map<string, string[]>;
-	navItems: NavItem[];
-}
+export const useNavigationStore = defineStore('navigationStore', () => {
+	const state = reactive<{
+		/**
+		 * Page items that are displayed in the navigation
+		 */
+		pageItems: IPageLink[];
+		sideBarState: Map<string, Record<string, boolean>>;
+		navItems: NavItem[];
+		drawerState: boolean;
+	}> ({
+		navItems: [],
+		drawerState: true,
+		sideBarState: new Map<string, Record<string, boolean>>(),
+		pageItems: [
+			{
+				label: 'Announcements',
+				path: `/${PAGE.ANNOUNCEMENTS}/`,
+			},
+			{
+				label: 'Guides',
+				path: `/${PAGE.GUIDES}/overview/what-is-plexripper`,
+			},
+			{
+				label: 'Demo',
+				path: `/${PAGE.DEMO}/`,
+			},
+			{
+				label: 'FAQ',
+				path: `/${PAGE.FAQ}/`,
+			},
+			// {
+			//     label: 'Roadmap',
+			//     path: `/${ PAGE.ROADMAP }/`,
+			// },
+			{
+				label: 'Contributing',
+				path: `/${PAGE.CONTRIBUTING}/overview/`,
+			},
+			{
+				label: 'Acknowledgements',
+				path: `/${PAGE.ACKNOWLEDGEMENTS}/`,
+			},
+		],
 
-export const useNavigationStore = defineStore('navigationStore', {
-	state: (): INavigationState => {
-		return {
-			pageItems: [
-				{
-					label: 'Announcements',
-					path: `/${PAGE.ANNOUNCEMENTS}/`,
-				},
-				{
-					label: 'Guides',
-					path: `/${PAGE.GUIDES}/overview/what-is-plexripper`,
-				},
-				{
-					label: 'Demo',
-					path: `/${PAGE.DEMO}/`,
-				},
-				{
-					label: 'FAQ',
-					path: `/${PAGE.FAQ}/`,
-				},
-				// {
-				//     label: 'Roadmap',
-				//     path: `/${ PAGE.ROADMAP }/`,
-				// },
-				{
-					label: 'Contributing',
-					path: `/${PAGE.CONTRIBUTING}/overview/`,
-				},
-				{
-					label: 'Acknowledgements',
-					path: `/${PAGE.ACKNOWLEDGEMENTS}/`,
-				},
-			],
-			navItems: [],
-			sideBarState: new Map<string, string[]>(),
-		};
-	},
-	actions: {
+	});
+
+	// Actions
+	const actions = {
 		async setup() {
 			const { data } = await useAsyncData(() => fetchContentNavigation());
-			this.navItems = data.value ?? [];
+			state.navItems = data.value ?? [];
 		},
-		setSidebarState(key: string, selected: string[]) {
-			this.sideBarState.set(key, selected);
-		},
-	},
+		setSidebarState(key: string, selected: Record<string, boolean>) {
+			console.log('setSidebarState', selected);
 
-	getters: {
-		getPageKey: () => {
-			return (fullPath: string) => {
-				if (fullPath === '/') {
-					return 'home';
-				}
-				return fullPath.split('/')[1];
-			};
+			state.sideBarState.set(key, selected);
 		},
-		getPageNavItems: (state) => state.pageItems,
-		getSidebarState: (state) => {
-			return (key: string) => state.sideBarState.get(key);
+	};
+
+	// Getters
+	const getters = {
+		getPageKey(fullPath: string) {
+			if (fullPath === '/') {
+				return 'home';
+			}
+			return fullPath.split('/')[1];
 		},
-		getNavItems: (state) => {
-			return (key: string) => {
-				if (!key) {
-					return [];
-				}
-				return cleanNavItems(key, state.navItems);
-			};
+		getPageNavItems: computed(() => state.pageItems),
+		getSidebarState(key: string): Record<string, boolean> {
+			return state.sideBarState.get(key) ?? {};
 		},
-	},
+		getNavItems(key: string) {
+			if (!key) {
+				return [];
+			}
+			return cleanNavItems(key, state.navItems);
+		},
+	};
+
+	return {
+		...toRefs(state),
+		...actions,
+		...getters,
+	};
 });
 
 /**

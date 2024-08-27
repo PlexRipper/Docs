@@ -1,3 +1,57 @@
+<template>
+	<GridContainer>
+		<GridColumn col="8">
+			<GridContainer>
+				<GridColumn
+					v-for="(link, index) in shields"
+					:key="index"
+					col="auto">
+					<img
+						class="mx-2"
+						:src="link.src"
+						:alt="link.label">
+				</GridColumn>
+				<GridColumn col="12">
+					<table>
+						<thead>
+							<tr>
+								<th class="text-left">
+									<h3>
+										Development
+									</h3>
+								</th>
+								<th class="text-left">
+									<h3>
+										Stable
+									</h3>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								v-for="(_, index) in Math.max(devShields.length, stableShields.length)"
+								:key="index">
+								<td v-if="devShields[index]">
+									<img
+										class="mt-2"
+										:src="devShields[index].src"
+										:alt="devShields[index].label">
+								</td>
+								<td v-if="stableShields[index]">
+									<img
+										class="mt-2"
+										:src="stableShields[index].src"
+										:alt="stableShields[index].label">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</GridColumn>
+			</GridContainer>
+		</GridColumn>
+	</GridContainer>
+</template>
+
 <script setup lang="ts">
 import { transform } from '~/common/lib/shields-parser';
 
@@ -55,8 +109,8 @@ const devShields = transform([
 		src: 'https://img.shields.io/github/last-commit/PlexRipper/PlexRipper/dev',
 	},
 	{
-		label: 'Unit Tests Development',
-		src: 'https://img.shields.io/github/workflow/status/plexripper/plexripper/Execute%20Unit%20Tests/dev',
+		label: 'Commits since last release on Dev Branch',
+		src: 'https://img.shields.io/github/commits-since/plexripper/plexripper/latest',
 	},
 ]);
 
@@ -71,71 +125,8 @@ const stableShields = transform([
 		src: 'https://img.shields.io/docker/image-size/plexripper/plexripper/latest',
 	},
 	{
-		label: 'Last Commit on Master Branch',
-		src: 'https://img.shields.io/github/last-commit/PlexRipper/PlexRipper/master',
-	},
-	{
-		label: 'Unit Tests Stable',
-		src: 'https://img.shields.io/github/workflow/status/plexripper/plexripper/Execute%20Unit%20Tests/master',
+		label: 'Last Release',
+		src: 'https://img.shields.io/github/release-date/plexripper/plexripper',
 	},
 ]);
 </script>
-
-<template>
-	<v-row>
-		<v-col cols="12">
-			<v-row justify="center">
-				<v-col
-					v-for="(link, index) in shields"
-					:key="index"
-					cols="auto"
-				>
-					<img
-						:src="link.src"
-						:alt="link.label"
-					>
-				</v-col>
-			</v-row>
-		</v-col>
-
-		<v-col>
-			<v-table>
-				<thead>
-					<tr>
-						<th class="text-left">
-							<h3>
-								Development
-							</h3>
-						</th>
-						<th class="text-left">
-							<h3>
-								Stable
-							</h3>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr
-						v-for="(_, index) in Math.min(devShields.length, stableShields.length)"
-						:key="index"
-					>
-						<td>
-							<img
-								class="mt-2"
-								:src="devShields[index].src"
-								:alt="devShields[index].label"
-							>
-						</td>
-						<td>
-							<img
-								class="mt-2"
-								:src="stableShields[index].src"
-								:alt="stableShields[index].label"
-							>
-						</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</v-col>
-	</v-row>
-</template>

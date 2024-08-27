@@ -4,7 +4,6 @@ title: Demo
 
 # Screenshots
 
-
 ![image](/img/demo/b63af874-fc26-471f-b4ad-8901d686379f.png)
 ![image](/img/demo/a761e86b-823e-45b2-bb43-39a7d5b38913.png)
 Exploring a category in Poster Mode
@@ -17,6 +16,7 @@ Download progress
 ![image](/img/demo/5d02fc10-c886-4fdc-9d44-0c19a6489cad.png)
 Language configuration
 ![image](/img/demo/c36662aa-877b-4a5e-9d40-aab689555202.png)
+
 
 
 

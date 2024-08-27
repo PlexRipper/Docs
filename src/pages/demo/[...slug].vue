@@ -1,13 +1,33 @@
+<template>
+	<Page>
+		<Galleria
+			:circular="true"
+			:num-visible="5"
+			:responsive-options="responsiveOptions"
+			:value="images">
+			<template #item="slotProps">
+				<img
+					:alt="slotProps.item.alt"
+					:src="slotProps.item.src"
+					style="width: 100%; display: block">
+			</template>
+			<template #thumbnail="slotProps">
+				<img
+					:alt="slotProps.item.alt"
+					:src="slotProps.item.src"
+					style="width: 100%; display: block">
+			</template>
+		</Galleria>
+	</Page>
+</template>
+
+<!-- Pages need a single root element to make page transition work -->
 <script lang="ts" setup>
 import { useNavigationStore } from '~/store/navigationStore';
 import { definePageMeta, queryContent, useHead, useRoute } from '#imports';
 
 useHead({
 	title: 'Demo',
-});
-
-definePageMeta({
-	layout: 'empty',
 });
 
 const store = useNavigationStore();
@@ -54,31 +74,3 @@ const responsiveOptions = ref([
 	},
 ]);
 </script>
-
-<!-- Pages need a single root element to make page transition work -->
-<template>
-	<div>
-		<Galleria
-			:circular="true"
-			:num-visible="5"
-			:responsive-options="responsiveOptions"
-			:value="images"
-			container-style="max-width: 640px"
-		>
-			<template #item="slotProps">
-				<img
-					:alt="slotProps.item.alt"
-					:src="slotProps.item.src"
-					style="width: 100%; display: block"
-				>
-			</template>
-			<template #thumbnail="slotProps">
-				<img
-					:alt="slotProps.item.alt"
-					:src="slotProps.item.src"
-					style="width: 100%; display: block"
-				>
-			</template>
-		</Galleria>
-	</div>
-</template>

@@ -1,11 +1,12 @@
 <template>
-	<FlexContainer full-height>
-		<v-app class="glass-background">
-			<AppBar />
+	<div id="layout-container">
+		<AppBar />
+		<SidebarDrawer />
+		<div	id="page-container">
 			<slot />
-			<Background />
-		</v-app>
-	</FlexContainer>
+		</div>
+	</div>
+	<Background />
 </template>
 
 <script setup lang="ts">
@@ -21,3 +22,29 @@ useHead({
 	link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 });
 </script>
+
+<style lang="scss">
+@use 'primeflex/primeflex.scss';
+
+#layout-container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-areas:
+        "header header"
+        "side main"
+        "side footer";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 64px auto 48px;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+#page-container {
+  overflow: auto;
+  height: calc(100vh - 4rem);
+  grid-area: main;
+}
+</style>

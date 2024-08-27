@@ -1,8 +1,79 @@
-@import "./primitives.scss";
-@import "./helpers.scss";
+@use 'primeflex/primeflex.scss';
+
 @import "./theme.scss";
 @import "./image.scss";
 
+
+html,
+body,
+#__nuxt {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*
+v-app
+*/
+html {
+  &.dark {
+    background-color: $dark-theme-background !important;
+
+    article, .table-of-content {
+      a {
+        color: #ff7044;
+
+        &:hover {
+          color: #FF0000;
+        }
+      }
+    }
+  }
+
+  // Light theme
+  background-color: $light-theme-background !important;
+
+  article, .table-of-content {
+    a {
+      color: #601d0a;
+
+      &:hover {
+        color: #FF0000;
+      }
+    }
+  }
+
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited, a:focus, a:active {
+  color: inherit;
+}
+
+
+p {
+  margin: 16px 0;
+}
+
+h2, h3, h4 {
+  margin: 16px 0;
+}
+
+ul {
+  margin-left: 32px;
+}
+
+
+.background-overlay {
+  background-color: var(--p-surface-0);
+}
+
+.background-overlay-darker {
+  background-color: var(--p-surface-900);
+}
 
 .subtitle {
   font-size: 0.875rem;

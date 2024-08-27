@@ -6,11 +6,11 @@
 
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted } from '#imports';
-import { destroyBackgroundEffect, setupBackgroundEffect } from '@/public/background-effect.js';
+import { destroyBackgroundEffect, resizeBackgroundEffect, setupBackgroundEffect } from '@/public/background-effect.js';
 
 onMounted(() => setupBackgroundEffect());
 
-// onActivated(() => setTimeout(() => vantaEffect.resize(), 2000))
+onActivated(() => setTimeout(() => resizeBackgroundEffect(), 2000));
 
 onBeforeUnmount(() => destroyBackgroundEffect());
 </script>

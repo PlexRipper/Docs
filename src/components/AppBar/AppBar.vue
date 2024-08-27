@@ -1,145 +1,111 @@
 <template>
-	<div>
-		<Toolbar>
-			<template #start>
-				<div class="d-flex align-center app-header-title">
-					<Button
-						as="router-link"
-						to="/">
-						<Logo :size="36" />
-						<span class="ml-2">PlexRipper Docs</span>
-					</Button>
-				</div>
-			</template>
+	<Toolbar id="app-bar">
+		<template #start>
+			<Button
+				as="router-link"
+				text
+				to="/">
+				<Logo :size="36" />
+			</Button>
+		</template>
 
-			<template #center>
-				<FlexContainer>
-					<Button
-						v-for="(link, index) in store.getPageNavItems"
-						:key="index"
-						as="router-link"
-						:to="link.path"
-						outlined
-						text>
-						{{ link.label }}
-					</Button>
-				</FlexContainer>
-			</template>
+		<template #center>
+			<FlexContainer>
+				<Button
+					v-for="(link, index) in store.getPageNavItems"
+					:key="index"
+					:to="link.path"
+					as="router-link"
+					severity="contrast"
+					size="large"
+					text>
+					{{ link.label }}
+				</Button>
+			</FlexContainer>
+		</template>
 
-			<template #end>
-				<!-- Theme Toggle -->
+		<template #end>
+			<!-- Github Docs Link -->
+			<Button
+				as="a"
+
+				class="mx-2"
+				href="https://github.com/PlexRipper/Docs"
+				icon=""
+				rel="noopener"
+				target="_blank">
+				<Icon name="mdi-github" />
+				Docs
+			</Button>
+
+			<!-- Github PlexRipper Link -->
+			<Button
+				as="a"
+				class="mx-2"
+				href="https://github.com/PlexRipper/PlexRipper"
+				icon=""
+				rel="noopener"
+				target="_blank">
+				<Icon name="mdi-github" />
+				PlexRipper
+			</Button>
+
+			<!-- Dark Mode Toggle -->
+			<ClientOnly>
 				<Button
 					class="mx-2"
-					:icon="themeIcon"
-					@click="toggleTheme()" />
-
-				<!-- Github Docs Link -->
-				<Button
-					icon="mdi-github"
-					href="https://github.com/PlexRipper/Docs"
-					target="_blank">
-					Docs
+					icon=""
+					@click="toggleTheme">
+					<Icon
+						v-if="isDark"
+						name="mdi-white-balance-sunny" />
+					<Icon
+						v-else
+						name="mdi-moon-waxing-crescent" />
 				</Button>
-
-				<!-- Github PlexRipper Link -->
-				<Button
-					icon="mdi-github"
-					href="https://github.com/PlexRipper/PlexRipper"
-					target="_blank">
-					PlexRipper
-				</Button>
-			</template>
-		</Toolbar>
-
-		<!--    <v-app-bar -->
-		<!--        color="primary" -->
-		<!--        density="compact" -->
-		<!--        app -->
-		<!--        clipped -->
-		<!--    > -->
-
-		<!--      &lt;!&ndash; Menu Items &ndash;&gt; -->
-		<!--      <div class="app-bar-menu-items"> -->
-
-		<!--      </div> -->
-
-		<!--      <template v-slot:append> -->
-		<!-- Menu drawer toggle button -->
-
-		<!--      </template> -->
-		<!--    </v-app-bar> -->
-		<!--    &lt;!&ndash; Mobile menu item drawer &ndash;&gt; -->
-		<!--    <v-navigation-drawer -->
-		<!--        v-model="drawer" -->
-		<!--        temporary -->
-		<!--        location="right" -->
-		<!--    > -->
-
-		<!--      <v-list-item -->
-		<!--          v-for="(link, index) in store.getPageNavItems" -->
-		<!--          :key="index" :to="link.path" -->
-		<!--          :title="link.label" -->
-		<!--      /> -->
-
-		<!--      <v-divider/> -->
-
-		<!--      <v-list density="compact" nav> -->
-		<!--        <v-list-item -->
-		<!--            prepend-icon="mdi-github" -->
-		<!--            title="PlexRipper" -->
-		<!--            href="https://github.com/PlexRipper/PlexRipper" -->
-		<!--            target="_blank"/> -->
-		<!--        <v-list-item -->
-		<!--            prepend-icon="mdi-github" -->
-		<!--            title="Docs" -->
-		<!--            href="https://github.com/PlexRipper/Docs" -->
-		<!--            target="_blank"/> -->
-		<!--      </v-list> -->
-
-		<!--      <v-divider/> -->
-
-		<!--      <v-list-item -->
-		<!--          :title="!isDark ? 'Dark Mode' : 'Light Mode'" -->
-		<!--          :prepend-icon="themeIcon" -->
-		<!--          @click.stop="toggleTheme" -->
-		<!--      /> -->
-
-		<!--      <v-divider/> -->
-
-		<!--      <NavigationList :sidebar-key="store.getPageKey(route.fullPath)"/> -->
-		<!--    </v-navigation-drawer> -->
-	</div>
+			</ClientOnly>
+		</template>
+	</Toolbar>
 </template>
 
-<script setup lang="ts">
-import Log from 'consola';
+<script lang="ts" setup>
 import { useNavigationStore } from 'store';
-import { computed, ref, useRoute } from '#imports';
-
-const route = useRoute();
+import { get, set, useDark } from '@vueuse/core';
 
 const store = useNavigationStore();
 
-const drawer = ref(false);
-Log.info('', route.fullPath);
+const isDark = useDark();
 
 function toggleTheme() {
-	theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
+	set(isDark, !get(isDark));
 }
-
-function toggleSidebar() {
-	drawer.value = !drawer.value;
-}
-
-const isDark = computed(() => {
-	return theme.global.name.value === 'dark';
-});
-
-const themeIcon = computed(() => {
-	return isDark.value ? 'mdi-white-balance-sunny' : 'mdi-moon-waxing-crescent';
-});
 </script>
 
 <style lang="scss">
+@use 'primeflex/primeflex.scss';
 
+html {
+  &.dark {
+    #app-bar {
+      color: white !important;
+    }
+  }
+
+  #app-bar {
+    @extend .m-0;
+    @extend .py-0;
+    @extend .w-full;
+    @extend .h-4rem;
+    @extend .border-noround;
+    @extend .border-none;
+    @extend .shadow-4;
+    @extend .fixed;
+
+    grid-area: header;
+
+   a, a:visited, a:focus, a:active {
+      color: white !important;
+    }
+  }
+}
 </style>
