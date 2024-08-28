@@ -56,5 +56,5 @@ providing us with free licenses of their great tools!
 
 ## Thanks, but no thanks
 
-- Several Reddit users over in [/r/Plex](https://www.reddit.com/r/PleX/) for being a pain in the ass and motivating me
+- Several pretentious "holier than thou" Reddit users over in [/r/Plex](https://www.reddit.com/r/PleX/) for being a pain in the ass and motivating me
   to create PlexRipper.

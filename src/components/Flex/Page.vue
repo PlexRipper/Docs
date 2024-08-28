@@ -5,6 +5,8 @@
 			:column="column && !row"
 			:gap="gap"
 			:layout="layout"
+			:justify="justify"
+			:align-items="alignItems"
 			:row="row && !column"
 			full-width
 			grow="1">
@@ -19,6 +21,8 @@ withDefaults(
 		sidebar?: boolean;
 		column?: boolean;
 		row?: boolean;
+		justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
+		alignItems?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
 		gap?: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 		layout?: '1' | 'auto' | 'initial' | 'none';
 	}>(),
@@ -28,6 +32,7 @@ withDefaults(
 		row: false,
 		gap: '0',
 		layout: 'initial',
+		alignItems: 'center',
 	},
 );
 </script>

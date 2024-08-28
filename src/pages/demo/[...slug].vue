@@ -1,29 +1,29 @@
 <template>
-	<Page>
+	<Page
+		align-items="center">
 		<ClientOnly>
 			<Galleria
 				:dt="styling"
-
 				circular
 				:num-visible="5"
 				:responsive-options="responsiveOptions"
 				:value="images"
-				container-style="max-width: 1920px">
+				show-item-navigators>
 				<template #item="{ item }">
-					<img
+					<NuxtImg
 						:alt="item.text"
 						:src="item.src"
-						style="width: 100%; display: block">
+						style="width: 100%; display: block" />
 				</template>
 				<template #thumbnail="{ item }">
-					<img
+					<NuxtImg
 						:alt="item.text"
 						:src="item.src"
-						style="width: 100%; display: block">
+						style="width: 100%; display: block" />
 				</template>
-				<!--				<template #caption="{ item }"> -->
-				<!--					<h4>{{ item.text }}</h4> -->
-				<!--				</template> -->
+				<template #caption="{ item }">
+					<span class="text-2xl">{{ item.text }}</span>
+				</template>
 			</Galleria>
 		</ClientOnly>
 	</Page>
@@ -31,16 +31,11 @@
 
 <!-- Pages need a single root element to make page transition work -->
 <script lang="ts" setup>
-import { useNavigationStore } from '~/store/navigationStore';
-import { definePageMeta, queryContent, useHead, useRoute } from '#imports';
+import { useHead } from '#imports';
 
 useHead({
 	title: 'Demo',
 });
-
-const store = useNavigationStore();
-const route = useRoute();
-const currentPage = await queryContent(route.path).findOne();
 
 const images = [
 	{
@@ -56,24 +51,32 @@ const images = [
 		src: '/img/demo/screenshot_3.png',
 	},
 	{
-		text: 'Welcome screen and initial setup',
+		text: 'Poster view of movie library',
 		src: '/img/demo/screenshot_4.png',
 	},
 	{
-		text: 'Exploring a category in Poster Mode',
+		text: 'Poster view of movie library',
 		src: '/img/demo/screenshot_5.png',
 	},
 	{
-		text: 'Exploring a category in Table mode',
+		text: 'Folder path settings',
 		src: '/img/demo/screenshot_6.png',
 	},
 	{
-		text: 'Downloading a movie',
+		text: 'Localization settings',
 		src: '/img/demo/screenshot_7.png',
 	},
 	{
-		text: 'Download progress',
+		text: 'Table view of movie library',
 		src: '/img/demo/screenshot_8.png',
+	},
+	{
+		text: 'Download confirmation',
+		src: '/img/demo/screenshot_9.png',
+	},
+	{
+		text: 'Downloads overview',
+		src: '/img/demo/screenshot_10.png',
 	},
 ];
 
@@ -93,11 +96,15 @@ const styling = ref({
 		light: {
 			root: {
 				thumbnailNavButtonColor: '{white}',
+				captionColor: '{white}',
+				navButtonColor: '{white}',
 			},
 		},
 		dark: {
 			root: {
 				thumbnailNavButtonColor: '{surface.0}',
+				captionColor: '{surface.0}',
+				navButtonColor: '{surface.0}',
 			},
 		},
 	},
@@ -105,9 +112,14 @@ const styling = ref({
 </script>
 
 <style lang="scss">
-//.p-galleria {
-// height: calc(100vh - 4rem);
-// min-height: calc(100vh - 4rem);
-//
-//}
+@use 'primeflex/primeflex.scss';
+
+.p-galleria, .p-galleria-content {
+// max-width: 1920px;
+//  max-height: calc(100vh - 4rem)
+}
+
+.p-galleria-caption {
+  @extend .text-center;
+}
 </style>

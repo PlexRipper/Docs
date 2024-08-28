@@ -7,11 +7,8 @@ export default defineNuxtConfig({
 	// Doc: https://v3.nuxtjs.org/api/configuration/nuxt.config#srcdir
 	srcDir: 'src/',
 
-	ssr: true,
-	dev: false,
-	content: {
-		documentDriven: false,
-		markdown: {
+	ssr: true, dev: false, content: {
+		documentDriven: false, markdown: {
 			anchorLinks: false,
 		}, highlight: {
 			theme: 'github-dark', preload: ['ts', 'js', 'css', 'json', 'bash'],
@@ -31,7 +28,7 @@ export default defineNuxtConfig({
 
 	css: ['@/assets/scss/style.scss'],
 
-	modules: ['@nuxt/content', '@pinia/nuxt', '@nuxtjs/plausible', '@primevue/nuxt-module', '@nuxt/eslint', '@nuxt/icon'],
+	modules: ['@nuxt/content', '@pinia/nuxt', '@nuxtjs/plausible', '@primevue/nuxt-module', '@nuxt/eslint', '@nuxt/icon', '@nuxt/image'],
 
 	primevue: {
 		importTheme: { from: './assets/theme/primevue-theme.js' },
