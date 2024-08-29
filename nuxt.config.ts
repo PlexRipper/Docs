@@ -18,7 +18,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      script: [{ src: 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js' }, { src: 'https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js' }],
+      script: [
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js' },
+        { src: 'https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js' },
+      ],
       noscript: [{ children: 'JavaScript is required' }],
       link: [{
         rel: 'stylesheet',
@@ -37,7 +40,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image'],
-
   primevue: {
     options: { ripple: true }, importTheme: { from: './assets/theme/primevue-theme.js' },
   },
@@ -59,11 +61,11 @@ export default defineNuxtConfig({
   },
 
   alias: {
-    img: fileURLToPath(new URL('./src/assets/img', import.meta.url)),
     const: fileURLToPath(new URL('./src/common/constants', import.meta.url)),
     store: fileURLToPath(new URL('./src/store', import.meta.url)),
     components: fileURLToPath(new URL('./src/components', import.meta.url)),
-  }, eslint: {
+  },
+  eslint: {
     config: {
       stylistic: {
         indent: 2,

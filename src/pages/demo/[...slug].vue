@@ -2,34 +2,32 @@
   <Page
     no-max-width
     align-items="center">
-    <ClientOnly>
-      <Galleria
-        id="demo-gallery"
-        :dt="styling"
-        circular
-        :num-visible="5"
-        :responsive-options="responsiveOptions"
-        :value="images"
-        :container-style="{ 'max-width': maxWidth }"
-        show-item-navigators
-        @update:visible="resizeGallery()">
-        <template #item="{ item }">
-          <NuxtImg
-            :alt="item.text"
-            :src="item.src"
-            style="width: 100%; display: block" />
-        </template>
-        <template #thumbnail="{ item }">
-          <NuxtImg
-            :alt="item.text"
-            :src="item.src"
-            style="width: 100%; display: block" />
-        </template>
-        <template #caption="{ item }">
-          <span class="text-2xl">{{ item.text }}</span>
-        </template>
-      </Galleria>
-    </ClientOnly>
+    <Galleria
+      id="demo-gallery"
+      :dt="styling"
+      circular
+      :num-visible="5"
+      :responsive-options="responsiveOptions"
+      :value="images"
+      :container-style="{ 'max-width': maxWidth }"
+      show-item-navigators
+      @update:visible="resizeGallery()">
+      <template #item="{ item }">
+        <img
+          :alt="item.text"
+          :src="item.src"
+          style="width: 100%; display: block">
+      </template>
+      <template #thumbnail="{ item }">
+        <img
+          :alt="item.text"
+          :src="item.src"
+          style="width: 100%; display: block">
+      </template>
+      <template #caption="{ item }">
+        <span class="text-2xl">{{ item.text }}</span>
+      </template>
+    </Galleria>
   </Page>
 </template>
 
@@ -44,7 +42,6 @@ const initialSet = ref(false);
 const { height } = useWindowSize();
 
 function resizeGallery() {
-  console.log('resizeGallery');
   const elPageContainer = document.getElementById('page-container');
   const elGallery = document.getElementById('demo-gallery');
 
@@ -56,8 +53,6 @@ function resizeGallery() {
   const { height: galleryHeight, width: galleryWidth } = useElementSize(elGallery);
 
   const galleryRatio = get(galleryWidth) / get(galleryHeight);
-  console.log('galleryRatio', galleryRatio);
-  console.log('pageheight', get(pageHeight));
 
   set(maxWidth, ((get(pageHeight) - 24) * galleryRatio) + 'px');
   if (!get(initialSet)) {
@@ -81,46 +76,52 @@ useHead({
   title: 'Demo',
 });
 
+const img = useImage();
+
+function setImg(path: string) {
+  return img(path, { width: 1920, height: 1080 });
+}
+
 const images = [
   {
     text: 'Welcome screen and initial setup',
-    src: '/img/demo/screenshot_1.png',
+    src: setImg('/img/demo/screenshot_1.png'),
   },
   {
     text: 'Welcome screen and initial setup',
-    src: '/img/demo/screenshot_2.png',
+    src: setImg('/img/demo/screenshot_2.png'),
   },
   {
     text: 'Welcome screen and initial setup',
-    src: '/img/demo/screenshot_3.png',
+    src: setImg('/img/demo/screenshot_3.png'),
   },
   {
     text: 'Poster view of movie library',
-    src: '/img/demo/screenshot_4.png',
+    src: setImg('/img/demo/screenshot_4.png'),
   },
   {
     text: 'Poster view of movie library',
-    src: '/img/demo/screenshot_5.png',
+    src: setImg('/img/demo/screenshot_5.png'),
   },
   {
     text: 'Folder path settings',
-    src: '/img/demo/screenshot_6.png',
+    src: setImg('/img/demo/screenshot_6.png'),
   },
   {
     text: 'Localization settings',
-    src: '/img/demo/screenshot_7.png',
+    src: setImg('/img/demo/screenshot_7.png'),
   },
   {
     text: 'Table view of movie library',
-    src: '/img/demo/screenshot_8.png',
+    src: setImg('/img/demo/screenshot_8.png'),
   },
   {
     text: 'Download confirmation',
-    src: '/img/demo/screenshot_9.png',
+    src: setImg('/img/demo/screenshot_9.png'),
   },
   {
     text: 'Downloads overview',
-    src: '/img/demo/screenshot_10.png',
+    src: setImg('/img/demo/screenshot_10.png'),
   },
 ];
 

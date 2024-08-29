@@ -41,7 +41,6 @@
       <!-- Github Docs Link -->
       <Button
         as="a"
-
         class="mx-2"
         href="https://github.com/PlexRipper/Docs"
         icon=""
