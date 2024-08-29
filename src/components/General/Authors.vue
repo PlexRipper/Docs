@@ -32,15 +32,11 @@
 import { format } from 'date-fns';
 import type { IAuthor } from '~/common/types/IAnnouncement';
 
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
 	authors: IAuthor[];
 	date: string;
 }>(), {
 	authors: () => [],
 	date: '',
 });
-
-function openAvatarLink(path: string) {
-	window.open(path, '_blank');
-}
 </script>

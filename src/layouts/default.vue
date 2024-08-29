@@ -5,8 +5,8 @@
 		<div id="page-container">
 			<slot />
 		</div>
+		<Background />
 	</div>
-	<Background />
 </template>
 
 <script lang="ts" setup>

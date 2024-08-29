@@ -5,8 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted } from '#imports';
-import { destroyBackgroundEffect, resizeBackgroundEffect, setupBackgroundEffect } from '@/public/background-effect.js';
+import { resizeBackgroundEffect } from '@/public/background-effect.js';
 
 onActivated(() => setTimeout(() => resizeBackgroundEffect(), 2000));
 </script>
