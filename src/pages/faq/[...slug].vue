@@ -2,21 +2,19 @@
 	<Page>
 		<h1>Frequently Asked Questions</h1>
 
-		<ClientOnly>
-			<Accordion
-				:dt="styling"
-				class="w-full">
-				<AccordionPanel
-					v-for="(question, index) in questions"
-					:key="index"
-					:value="index">
-					<AccordionHeader>{{ question.title }}</AccordionHeader>
-					<AccordionContent v-if="question.answer">
-						<ContentRenderer :value="question.answer" />
-					</AccordionContent>
-				</AccordionPanel>
-			</Accordion>
-		</ClientOnly>
+		<Accordion
+			:dt="styling"
+			class="w-full">
+			<AccordionPanel
+				v-for="(question, index) in questions"
+				:key="index"
+				:value="index">
+				<AccordionHeader>{{ question.title }}</AccordionHeader>
+				<AccordionContent v-if="question.answer">
+					<ContentRenderer :value="question.answer" />
+				</AccordionContent>
+			</AccordionPanel>
+		</Accordion>
 
 		<EditThisPage :path="currentPage._file" />
 	</Page>

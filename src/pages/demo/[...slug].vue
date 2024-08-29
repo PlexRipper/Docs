@@ -2,31 +2,29 @@
 	<Page
 		no-max-width
 		align-items="center">
-		<ClientOnly>
-			<Galleria
-				:dt="styling"
-				circular
-				:num-visible="5"
-				:responsive-options="responsiveOptions"
-				:value="images"
-				show-item-navigators>
-				<template #item="{ item }">
-					<NuxtImg
-						:alt="item.text"
-						:src="item.src"
-						style="width: 100%; display: block" />
-				</template>
-				<template #thumbnail="{ item }">
-					<NuxtImg
-						:alt="item.text"
-						:src="item.src"
-						style="width: 100%; display: block" />
-				</template>
-				<template #caption="{ item }">
-					<span class="text-2xl">{{ item.text }}</span>
-				</template>
-			</Galleria>
-		</ClientOnly>
+		<Galleria
+			:dt="styling"
+			circular
+			:num-visible="5"
+			:responsive-options="responsiveOptions"
+			:value="images"
+			show-item-navigators>
+			<template #item="{ item }">
+				<NuxtImg
+					:alt="item.text"
+					:src="item.src"
+					style="width: 100%; display: block" />
+			</template>
+			<template #thumbnail="{ item }">
+				<NuxtImg
+					:alt="item.text"
+					:src="item.src"
+					style="width: 100%; display: block" />
+			</template>
+			<template #caption="{ item }">
+				<span class="text-2xl">{{ item.text }}</span>
+			</template>
+		</Galleria>
 	</Page>
 </template>
 

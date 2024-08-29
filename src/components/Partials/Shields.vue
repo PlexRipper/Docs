@@ -81,6 +81,10 @@ const shields = transform([
 		src: 'https://img.shields.io/github/issues/plexripper/plexripper',
 	},
 	{
+		label: 'Created At',
+		src: 'https://img.shields.io/github/created-at/plexripper/plexripper',
+	},
+	{
 		label: 'License',
 		src: 'https://img.shields.io/github/license/plexripper/plexripper',
 	},
@@ -119,6 +123,10 @@ const stableShields = transform([
 	{
 		label: 'Last Release',
 		src: 'https://img.shields.io/github/release-date/plexripper/plexripper',
+	},
+	{
+		label: 'Contributors',
+		src: 'https://img.shields.io/github/contributors/plexripper/plexripper',
 	},
 ]);
 </script>

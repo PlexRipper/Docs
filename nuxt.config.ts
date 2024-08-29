@@ -5,7 +5,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
 	srcDir: 'src/',
 
-	ssr: true, dev: false, content: {
+	ssr: false, dev: false, content: {
 		documentDriven: false, markdown: {
 			anchorLinks: false,
 		}, highlight: {

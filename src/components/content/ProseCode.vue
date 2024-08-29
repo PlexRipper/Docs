@@ -15,6 +15,10 @@ export default defineComponent({
 			type: String,
 			default: null,
 		},
+		meta: {
+			type: String,
+			default: null,
+		},
 		filename: {
 			type: String,
 			default: null,

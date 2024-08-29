@@ -8,11 +8,7 @@
 import { onBeforeUnmount, onMounted } from '#imports';
 import { destroyBackgroundEffect, resizeBackgroundEffect, setupBackgroundEffect } from '@/public/background-effect.js';
 
-onMounted(() => setupBackgroundEffect());
-
 onActivated(() => setTimeout(() => resizeBackgroundEffect(), 2000));
-
-onBeforeUnmount(() => destroyBackgroundEffect());
 </script>
 
 <style lang="scss">

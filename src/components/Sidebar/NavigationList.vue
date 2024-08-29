@@ -92,6 +92,7 @@ const styling = ref({
 				panelBackground: '{transparent}',
 				itemFocusBackground: '{transparent}',
 				itemFocusColor: '{red.50}',
+				panelPadding: '0',
 			},
 		},
 	},
@@ -127,7 +128,7 @@ onMounted(() => {
 }
 
 .p-panelmenu-header-content, .p-panelmenu-item-content {
-  @extend .text-xl;
+  @extend .text-lg;
   @extend .line-height-4 ;
 }
 </style>
