@@ -1,7 +1,7 @@
 <template>
   <div id="layout-container">
     <AppBar />
-    <SidebarDrawer v-if="hasSidebar" />
+    <SidebarDrawer />
     <div id="page-container">
       <slot />
     </div>
@@ -22,7 +22,7 @@ useHead({
 const store = useNavigationStore();
 await store.setup();
 
-const hasSidebar = computed(() => Object.prototype.hasOwnProperty.call(useAttrs(), 'sidebar') && useAttrs().sidebar === true);
+console.log(useAttrs());
 
 // Always set the dark mode
 const isDark = useDark();

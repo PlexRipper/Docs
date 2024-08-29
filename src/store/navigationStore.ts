@@ -79,6 +79,9 @@ export const useNavigationStore = defineStore('navigationStore', () => {
       }
       return cleanNavItems(key, state.navItems);
     },
+    hasSidebar(key: string): boolean {
+      return (state.navItems.find((x) => x._path.substring(1) === key)?.children ?? []).length > 1;
+    },
   };
 
   return {

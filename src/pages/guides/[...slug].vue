@@ -1,7 +1,5 @@
 <template>
-  <Page
-    sidebar
-    align-items="start">
+  <Page align-items="start">
     <PageRenderer :page="currentPage" />
   </Page>
 </template>

@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       script: [
         { src: 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js' },

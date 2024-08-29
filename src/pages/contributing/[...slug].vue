@@ -1,5 +1,5 @@
 <template>
-  <Page sidebar>
+  <Page>
     <PageRenderer :page="currentPage" />
   </Page>
 </template>

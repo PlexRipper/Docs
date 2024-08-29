@@ -1,6 +1,8 @@
 <template>
-  <aside class="sidebar-drawer">
-    <NavigationList :sidebar-key="store.getPageKey(route.fullPath)" />
+  <aside
+    v-if="store.hasSidebar(sidebarKey)"
+    class="sidebar-drawer">
+    <NavigationList :sidebar-key="sidebarKey" />
   </aside>
 </template>
 
@@ -10,6 +12,8 @@ import { useRoute } from '#imports';
 
 const store = useNavigationStore();
 const route = useRoute();
+
+const sidebarKey = computed(() => store.getPageKey(route.fullPath));
 </script>
 
 <style lang="scss">

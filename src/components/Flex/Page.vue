@@ -1,25 +1,22 @@
 <template>
-  <NuxtLayout :sidebar="sidebar">
-    <FlexContainer
-      id="page"
-      :align-items="alignItems"
-      :column="column && !row"
-      :gap="gap"
-      :justify="justify"
-      :layout="layout"
-      :row="row && !column"
-      full-width
-      :class="{ 'no-max-width': noMaxWidth }"
-      grow="1">
-      <slot />
-    </FlexContainer>
-  </NuxtLayout>
+  <FlexContainer
+    id="page"
+    :align-items="alignItems"
+    :column="column && !row"
+    :gap="gap"
+    :justify="justify"
+    :layout="layout"
+    :row="row && !column"
+    full-width
+    :class="{ 'no-max-width': noMaxWidth }"
+    grow="1">
+    <slot />
+  </FlexContainer>
 </template>
 
 <script lang="ts" setup>
 withDefaults(
   defineProps<{
-    sidebar?: boolean;
     column?: boolean;
     row?: boolean;
     justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
@@ -29,7 +26,6 @@ withDefaults(
     noMaxWidth?: boolean;
   }>(),
   {
-    sidebar: false,
     column: true,
     row: false,
     gap: '0',
