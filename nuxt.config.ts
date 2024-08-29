@@ -1,10 +1,8 @@
 import { fileURLToPath } from 'url';
 import { defineNuxtConfig } from 'nuxt/config';
-import Aura from '@primevue/themes/aura';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-	// Doc: https://v3.nuxtjs.org/api/configuration/nuxt.config#srcdir
 	srcDir: 'src/',
 
 	ssr: true, dev: false, content: {
@@ -31,17 +29,15 @@ export default defineNuxtConfig({
 	modules: ['@nuxt/content', '@pinia/nuxt', '@nuxtjs/plausible', '@primevue/nuxt-module', '@nuxt/eslint', '@nuxt/icon', '@nuxt/image'],
 
 	primevue: {
-		importTheme: { from: './assets/theme/primevue-theme.js' },
-	},
-
-	plausible: {
-		autoOutboundTracking: true, // domain: 'plexripper.rocks'
-	},
-
-	/*
-** Auto-import components
-*  Doc: https://github.com/nuxt/components
-*/
+		options: { ripple: true }, importTheme: { from: './assets/theme/primevue-theme.js' },
+	}, build: {
+		transpile: ['primevue'],
+	}, plausible: {
+		autoOutboundTracking: true,
+	}, /*
+	** Auto-import components
+	*  Doc: https://github.com/nuxt/components
+	*/
 	components: {
 		loader: true, dirs: [// Components directory
 			{

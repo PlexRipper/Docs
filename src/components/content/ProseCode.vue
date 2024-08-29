@@ -1,3 +1,7 @@
+<template>
+	<slot />
+</template>
+
 <script lang="ts">
 import { defineComponent } from '#imports';
 
@@ -22,10 +26,6 @@ export default defineComponent({
 	},
 });
 </script>
-
-<template>
-	<slot />
-</template>
 
 <style>
 pre code .line {

@@ -57,8 +57,6 @@ export const useNavigationStore = defineStore('navigationStore', () => {
 			state.navItems = data.value ?? [];
 		},
 		setSidebarState(key: string, selected: Record<string, boolean>) {
-			console.log('setSidebarState', selected);
-
 			state.sideBarState.set(key, selected);
 		},
 	};
