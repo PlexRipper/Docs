@@ -1,9 +1,9 @@
 <template>
-	<Page
-		sidebar
-		align-items="start">
-		<PageRenderer :page="currentPage" />
-	</Page>
+  <Page
+    sidebar
+    align-items="start">
+    <PageRenderer :page="currentPage" />
+  </Page>
 </template>
 
 <!-- Pages need a single root element to make page transition work -->
@@ -14,6 +14,6 @@ const route = useRoute();
 const currentPage = await queryContent(route.path).findOne();
 
 useHead({
-	title: `Guides - ${currentPage.title}`,
+  title: `Guides - ${currentPage.title}`,
 });
 </script>

@@ -1,7 +1,7 @@
 <template>
-	<aside class="sidebar-drawer">
-		<NavigationList :sidebar-key="store.getPageKey(route.fullPath)" />
-	</aside>
+  <aside class="sidebar-drawer">
+    <NavigationList :sidebar-key="store.getPageKey(route.fullPath)" />
+  </aside>
 </template>
 
 <script setup lang="ts">

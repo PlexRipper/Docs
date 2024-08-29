@@ -1,58 +1,58 @@
 <template>
-	<Toolbar id="app-bar">
-		<template #start>
-			<Button
-				as="router-link"
-				text
-				to="/">
-				<Logo :size="36" />
-			</Button>
-		</template>
+  <Toolbar id="app-bar">
+    <template #start>
+      <Button
+        as="router-link"
+        text
+        to="/">
+        <Logo :size="36" />
+      </Button>
+    </template>
 
-		<template #center>
-			<FlexContainer>
-				<Button
-					v-for="(link, index) in store.getPageNavItems"
-					:key="index"
-					:to="link.path"
-					as="router-link"
-					severity="contrast"
-					size="large"
-					text>
-					{{ link.label }}
-				</Button>
-			</FlexContainer>
-		</template>
+    <template #center>
+      <FlexContainer>
+        <Button
+          v-for="(link, index) in store.getPageNavItems"
+          :key="index"
+          :to="link.path"
+          as="router-link"
+          severity="contrast"
+          size="large"
+          text>
+          {{ link.label }}
+        </Button>
+      </FlexContainer>
+    </template>
 
-		<template #end>
-			<!-- Github PlexRipper Link -->
-			<Button
-				as="a"
-				class="mx-2"
-				href="https://github.com/PlexRipper/PlexRipper"
-				icon=""
-				rel="noopener"
-				outlined
-				target="_blank">
-				<Icon name="mdi-github" />
-				PlexRipper
-			</Button>
+    <template #end>
+      <!-- Github PlexRipper Link -->
+      <Button
+        as="a"
+        class="mx-2"
+        href="https://github.com/PlexRipper/PlexRipper"
+        icon=""
+        rel="noopener"
+        outlined
+        target="_blank">
+        <Icon name="mdi-github" />
+        PlexRipper
+      </Button>
 
-			<!-- Github Docs Link -->
-			<Button
-				as="a"
+      <!-- Github Docs Link -->
+      <Button
+        as="a"
 
-				class="mx-2"
-				href="https://github.com/PlexRipper/Docs"
-				icon=""
-				outlined
-				rel="noopener"
-				target="_blank">
-				<Icon name="mdi-github" />
-				Docs
-			</Button>
-		</template>
-	</Toolbar>
+        class="mx-2"
+        href="https://github.com/PlexRipper/Docs"
+        icon=""
+        outlined
+        rel="noopener"
+        target="_blank">
+        <Icon name="mdi-github" />
+        Docs
+      </Button>
+    </template>
+  </Toolbar>
 </template>
 
 <script lang="ts" setup>

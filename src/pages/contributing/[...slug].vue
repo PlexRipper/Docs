@@ -1,7 +1,7 @@
 <template>
-	<Page sidebar>
-		<PageRenderer :page="currentPage" />
-	</Page>
+  <Page sidebar>
+    <PageRenderer :page="currentPage" />
+  </Page>
 </template>
 
 <!-- Pages need a single root element to make page transition work -->
@@ -12,6 +12,6 @@ const route = useRoute();
 const currentPage = await queryContent(route.path).findOne();
 
 useHead({
-	title: `Contributing - ${currentPage.title}`,
+  title: `Contributing - ${currentPage.title}`,
 });
 </script>

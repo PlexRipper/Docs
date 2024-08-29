@@ -1,12 +1,12 @@
 <template>
-	<div id="layout-container">
-		<AppBar />
-		<SidebarDrawer v-if="hasSidebar" />
-		<div id="page-container">
-			<slot />
-		</div>
-		<Background />
-	</div>
+  <div id="layout-container">
+    <AppBar />
+    <SidebarDrawer v-if="hasSidebar" />
+    <div id="page-container">
+      <slot />
+    </div>
+    <Background />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -15,9 +15,9 @@ import { get, set, useDark } from '@vueuse/core';
 import { useHead } from '#imports';
 
 useHead({
-	title: 'PlexRipper Docs',
-	meta: [{ name: 'description', content: 'Documentation website for the PlexRipper project' }],
-	link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+  title: 'PlexRipper Docs',
+  meta: [{ name: 'description', content: 'Documentation website for the PlexRipper project' }],
+  link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 });
 
 const store = useNavigationStore();
