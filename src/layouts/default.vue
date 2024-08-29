@@ -5,7 +5,6 @@
     <div id="page-container">
       <slot />
     </div>
-    <Background />
   </div>
 </template>
 
@@ -64,5 +63,10 @@ set(isDark, get(isDark));
   bottom: 2rem;
   display: flex;
   align-self: start;
+}
+
+// Used to keep the vanta.js background in place and overwrite the built-in position: absolute;
+.vanta-canvas {
+  position: fixed !important;
 }
 </style>

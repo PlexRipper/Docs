@@ -5,10 +5,10 @@
       :key="index"
       col="auto"
       class="m-2">
-      <NuxtImg
+      <img
         :height="height"
         :src="link.src"
-        :alt="link.label" />
+        :alt="link.label">
     </GridColumn>
   </GridContainer>
   <GridContainer justify="center">
@@ -33,18 +33,18 @@
             v-for="(_, index) in Math.max(devShields.length, stableShields.length)"
             :key="index">
             <td v-if="devShields[index]">
-              <NuxtImg
+              <img
                 class="mt-2"
                 :height="height"
                 :src="devShields[index].src"
-                :alt="devShields[index].label" />
+                :alt="devShields[index].label">
             </td>
             <td v-if="stableShields[index]">
-              <NuxtImg
+              <img
                 class="mt-2"
                 :height="height"
                 :src="stableShields[index].src"
-                :alt="stableShields[index].label" />
+                :alt="stableShields[index].label">
             </td>
           </tr>
         </tbody>
