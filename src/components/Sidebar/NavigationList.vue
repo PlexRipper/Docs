@@ -137,6 +137,13 @@ onMounted(() => {
 @use 'primeflex/primeflex.scss';
 @use '@/assets/scss/style.scss';
 
+.p-panelmenu-panel {
+  @extend .p-0;
+  @extend .line-height-4;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
 .navigation-link {
   @extend .block;
   @extend .cursor-pointer;
@@ -154,6 +161,10 @@ onMounted(() => {
 
 .p-panelmenu-header-content, .p-panelmenu-item-content {
   @extend .text-lg;
-  @extend .line-height-4 ;
+  @extend .line-height-4;
+}
+
+.p-panelmenu-item-content {
+  transition: none !important;
 }
 </style>

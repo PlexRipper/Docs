@@ -1,9 +1,11 @@
 <template>
-  <aside
-    v-if="store.hasSidebar(sidebarKey)"
-    class="sidebar-drawer">
-    <NavigationList :sidebar-key="sidebarKey" />
-  </aside>
+  <Transition>
+    <aside
+      v-if="store.hasSidebar(sidebarKey)"
+      class="sidebar-drawer">
+      <NavigationList :sidebar-key="sidebarKey" />
+    </aside>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -23,9 +25,20 @@ const sidebarKey = computed(() => store.getPageKey(route.fullPath));
   grid-area: side;
   display: grid;
   grid-template-rows: 64px 92px 64px auto 48px;
-  font-size: 14px;
   width: 280px;
-  -webkit-transition: width .4s;
-  transition: width .4s;
+
+  transition: all 0.2s;
+
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.4s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
 </style>
