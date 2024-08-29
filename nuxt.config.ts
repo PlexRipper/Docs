@@ -39,7 +39,8 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@nuxt/eslint',
     '@nuxt/icon',
-    '@nuxt/image'],
+    '@nuxt/image',
+  ],
   primevue: {
     options: { ripple: true }, importTheme: { from: './assets/theme/primevue-theme.js' },
   },
@@ -70,7 +71,16 @@ export default defineNuxtConfig({
     store: fileURLToPath(new URL('./src/store', import.meta.url)),
     components: fileURLToPath(new URL('./src/components', import.meta.url)),
   },
-
+  image: {
+    provider: 'static',
+  },
+  nitro: {
+    awsAmplify: {
+      imageSettings: {
+        dangerouslyAllowSVG: true,
+      },
+    },
+  },
   eslint: {
     config: {
       stylistic: {

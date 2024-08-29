@@ -1,14 +1,13 @@
 import { defineNuxtPlugin } from '#app';
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.hook('app:created', () => {
+  nuxtApp.hook('app:beforeMount', () => {
     setupBackgroundEffect();
   });
 });
 
 function setupBackgroundEffect() {
   if (!document) {
-    console.info('document was invalid!');
     return;
   }
   // Check if WebGL is available.
