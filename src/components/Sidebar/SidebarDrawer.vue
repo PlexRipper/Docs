@@ -1,5 +1,5 @@
 <template>
-	<aside class="sidebar-drawer background-overlay-darker">
+	<aside class="sidebar-drawer">
 		<NavigationList :sidebar-key="store.getPageKey(route.fullPath)" />
 	</aside>
 </template>
@@ -14,6 +14,7 @@ const route = useRoute();
 
 <style lang="scss">
 .sidebar-drawer {
+  background-color: var(--p-surface-400);
   overflow-x: hidden;
   grid-area: side;
   display: grid;

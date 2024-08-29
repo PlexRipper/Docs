@@ -9,7 +9,7 @@
 	<Background />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useNavigationStore } from 'store/navigationStore';
 import { get, set, useDark } from '@vueuse/core';
 import { useHead } from '#imports';
@@ -60,7 +60,9 @@ set(isDark, get(isDark));
 
 #footer {
   grid-area: footer;
-position: fixed;
+  position: fixed;
   bottom: 2rem;
+  display: flex;
+  align-self: start;
 }
 </style>

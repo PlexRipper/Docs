@@ -47,10 +47,13 @@ const styling = ref({
 		},
 		dark: {
 			root: {
+				headerColor: '{surface.0}',
 				headerBackground: '{surface.400}',
 				contentBackground: '{transparent}',
-				headerActiveBackground: '{surface.400}',
-				headerHoverBackground: '{surface.200}',
+				headerHoverBackground: '{surface.600}',
+				headerActiveBackground: '{surface.600}',
+				headerActiveHoverBackground: '{surface.600}',
+				transitionDuration: '0.3s',
 			},
 		},
 	},
@@ -119,5 +122,6 @@ function parseQuestions() {
 
 .p-accordionpanel-active {
   @extend .my-4;
+  transition: all 0.3s;
 }
 </style>

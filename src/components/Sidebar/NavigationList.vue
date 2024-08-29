@@ -8,7 +8,7 @@
 		<template #item="{ item, active }">
 			<NuxtLink
 				v-if="item.items?.length"
-				class="block cursor-pointer">
+				class="navigation-link">
 				<FlexContainer
 					justify="between"
 					align-items="center">
@@ -21,7 +21,7 @@
 			<NuxtLink
 				v-else
 				:to="item.route"
-				class="block cursor-pointer">
+				class="navigation-link">
 				<FlexContainer align-items="center">
 					<span :class="item.icon" />
 					<span class="ml-2">{{ item.label }}</span>
@@ -81,7 +81,6 @@ const styling = ref({
 		},
 		dark: {
 			root: {
-				panelBackground: 'transparent',
 				itemColor: 'white',
 				gap: '0rem',
 				panelBorderWidth: '0',
@@ -90,7 +89,9 @@ const styling = ref({
 				panelLastBorderWidth: '0',
 				itemBorderRadius: '0',
 				submenuIndent: '0',
-				itemFocusBackground: 'rgba(255,255,255,0.35)',
+				panelBackground: '{transparent}',
+				itemFocusBackground: '{transparent}',
+				itemFocusColor: '{red.50}',
 			},
 		},
 	},
@@ -108,17 +109,25 @@ onMounted(() => {
 
 <style lang="scss">
 @use 'primeflex/primeflex.scss';
+@use '@/assets/scss/style.scss';
+
+.navigation-link {
+  @extend .block;
+  @extend .cursor-pointer;
+  @extend .white-link;
+}
 
 .p-panelmenu-item-content a{
   @extend .ml-3;
 }
 
+.p-panelmenu-header:hover, .p-panelmenu-item:hover {
+  box-shadow: 0 2px 0 rgba(255, 0, 0, 0.60);
+  transition: all 0.1s;
+}
+
 .p-panelmenu-header-content, .p-panelmenu-item-content {
   @extend .text-xl;
   @extend .line-height-4 ;
-
-  a:visited, a:focus, a:active {
-    color: inherit;
-  }
 }
 </style>

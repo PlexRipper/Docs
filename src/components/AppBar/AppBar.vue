@@ -25,6 +25,19 @@
 		</template>
 
 		<template #end>
+			<!-- Github PlexRipper Link -->
+			<Button
+				as="a"
+				class="mx-2"
+				href="https://github.com/PlexRipper/PlexRipper"
+				icon=""
+				rel="noopener"
+				outlined
+				target="_blank">
+				<Icon name="mdi-github" />
+				PlexRipper
+			</Button>
+
 			<!-- Github Docs Link -->
 			<Button
 				as="a"
@@ -37,19 +50,6 @@
 				target="_blank">
 				<Icon name="mdi-github" />
 				Docs
-			</Button>
-
-			<!-- Github PlexRipper Link -->
-			<Button
-				as="a"
-				class="mx-2"
-				href="https://github.com/PlexRipper/PlexRipper"
-				icon=""
-				rel="noopener"
-				outlined
-				target="_blank">
-				<Icon name="mdi-github" />
-				PlexRipper
 			</Button>
 		</template>
 	</Toolbar>
@@ -80,6 +80,8 @@ html {
     @extend .border-none;
     @extend .shadow-4;
     @extend .fixed;
+
+    background-color: var(--p-surface-400);
 
     grid-area: header;
 

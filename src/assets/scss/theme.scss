@@ -17,30 +17,7 @@ v-navigation-drawer
   }
 }
 
-/*
-v-table
-*/
-.v-table {
-  &.v-theme--dark {
-    background-color: transparent !important;
-    color: white;
 
-    th, td, tr {
-      border-top-color: $dark-theme-border-color !important;
-      border-bottom-color: $dark-theme-border-color !important;
-    }
-  }
-
-  &.v-theme--light {
-    background-color: transparent !important;
-    color: black;
-
-    th, td, tr {
-      border-top-color: $light-theme-border-color !important;
-      border-bottom-color: $light-theme-border-color !important;
-    }
-  }
-}
 
 /*
 v-card

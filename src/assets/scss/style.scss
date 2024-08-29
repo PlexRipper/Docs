@@ -21,15 +21,13 @@ a, a:visited, a:focus, a:active {
   }
 }
 
-a.white-link, a.white-link:visited, a.white-link:focus, a.white-link:active {
+.white-link, .white-link:visited, .white-link:focus, .white-link:active {
   text-decoration: none;
-  color: inherit;
+  color: inherit !important;
   &:hover {
-    color: inherit;
+    color: inherit !important;
   }
 }
-
-
 
 
 .p-button-outlined {
@@ -41,12 +39,29 @@ p {
   line-height: 1.5rem;
 }
 
+li {
+  line-height: 2rem;
+}
+
 h2, h3, h4 {
   margin: 16px 0;
 }
 
 ul {
   margin-left: 32px;
+}
+
+
+table {
+  border-spacing: 0;
+  th, td, tr {
+    @extend .text-left;
+    @extend .px-3;
+    line-height: 2.5rem;
+    border-bottom: 1px solid var(--p-primary-700);
+    border-right: none;
+  }
+
 }
 
 
