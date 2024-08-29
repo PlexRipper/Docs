@@ -72,7 +72,7 @@ export default defineNuxtConfig({
     components: fileURLToPath(new URL('./src/components', import.meta.url)),
   },
   image: {
-    provider: 'static',
+    provider: 'ipx',
   },
   nitro: {
     awsAmplify: {
