@@ -1,45 +1,53 @@
+<template>
+  <Page>
+    <FlexContainer
+      column
+      align-items="stretch">
+      <!-- Meta -->
+      <FlexContainer
+        justify="between"
+        align-items="center"
+        class="my-4">
+        <FlexContainer
+          column>
+          <span class="text-3xl font-bold mb-3">{{ currentPage.title }}</span>
+          <span>{{ currentPage.description }}</span>
+        </FlexContainer>
+        <Authors
+          :authors="currentPage.authors"
+          :date="currentPage.date" />
+      </FlexContainer>
+      <!-- Banner -->
+      <NuxtImg
+        :src="bannerPath"
+        :alt="altDescription" />
+
+      <PageRenderer :page="currentPage" />
+    </FlexContainer>
+    <TableOfContent
+      root
+      :links="currentPage.body?.toc?.links" />
+  </Page>
+</template>
+
 <script setup lang="ts">
 import { format } from 'date-fns';
-import { useNavigationStore } from "~/store/navigationStore";
-import { computed, definePageMeta, queryContent, useContent, useHead, useRoute } from "#imports";
-import { IAnnouncement } from "~/common/types/IAnnouncement";
+import { computed, queryContent, useHead, useRoute } from '#imports';
 
-definePageMeta({
-  layout: 'text-layout',
-})
+const route = useRoute();
 
-const { toc } = useContent()
-const store = useNavigationStore();
-const route = useRoute()
-
-const currentPage = await queryContent(route.path).findOne() as IAnnouncement;
+const currentPage = await queryContent(route.path).findOne();
 
 useHead({
   title: currentPage.title,
-})
+});
 
 const bannerPath = computed(() => {
   const date = format(Date.parse(currentPage.date), 'yyyy-MM-dd');
-  return `/img/announcements/${ date }/banner.jpg`
-})
+  return `/img/announcements/${date}/banner.jpg`;
+});
 
 const altDescription = computed(() => {
-  return `${ currentPage.title } Banner`
-})
+  return `${currentPage.title} Banner`;
+});
 </script>
-
-<template>
-  <v-row justify="center">
-    <v-col>
-      <h1>{{ currentPage.title }}</h1>
-      <span>{{ currentPage.description }}</span>
-      <Authors :authors="currentPage.authors" :date="currentPage.date"/>
-      <v-img :src="bannerPath" :alt="altDescription"/>
-
-      <PageRenderer :page="currentPage"/>
-    </v-col>
-    <v-col cols="auto">
-      <TableOfContent root :links="toc.links"/>
-    </v-col>
-  </v-row>
-</template>

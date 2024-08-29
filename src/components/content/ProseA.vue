@@ -1,24 +1,24 @@
+<template>
+  <NuxtLink
+    :href="href"
+    :target="isRelative ? '_self' : '_blank' ">
+    <slot />
+  </NuxtLink>
+</template>
+
 <script setup lang="ts">
-import { computed } from "#imports";
+import { computed } from '#imports';
 
 const props = defineProps({
   href: {
     type: String,
-    default: ''
+    default: '',
   },
   blank: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 const regExp = new RegExp('^(?:[a-z+]+:)?//', 'i');
-const isRelative = computed(() => {
-  return !regExp.test(props.href)
-})
+const isRelative = computed(() => !regExp.test(props.href));
 </script>
-
-<template>
-  <NuxtLink :href="href" :target="isRelative ? '_self' : '_blank' ">
-    <slot/>
-  </NuxtLink>
-</template>
