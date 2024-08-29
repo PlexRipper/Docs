@@ -1,35 +1,43 @@
 <template>
 	<Page>
-		<FlexContainer justify="between">
-			<FlexContainer column>
-				<h1>{{ currentPage.title }}</h1>
-				<span>{{ currentPage.description }}</span>
+		<FlexContainer
+			column
+			align-items="stretch">
+			<!-- Meta -->
+			<FlexContainer
+				justify="between"
+				align-items="center"
+				class="my-4">
+				<FlexContainer
+					column>
+					<span class="text-3xl font-bold mb-3">{{ currentPage.title }}</span>
+					<span>{{ currentPage.description }}</span>
+				</FlexContainer>
 				<Authors
 					:authors="currentPage.authors"
 					:date="currentPage.date" />
-				<Image
-					:src="bannerPath"
-					:alt="altDescription" />
-
-				<PageRenderer :page="currentPage" />
 			</FlexContainer>
-			<TableOfContent
-				root
-				:links="currentPage.body.toc.links" />
+			<!-- Banner -->
+			<NuxtImg
+				:src="bannerPath"
+				:alt="altDescription" />
+
+			<PageRenderer :page="currentPage" />
 		</FlexContainer>
+		<TableOfContent
+			root
+			:links="currentPage.body?.toc?.links" />
 	</Page>
 </template>
 
 <script setup lang="ts">
 import { format } from 'date-fns';
-import { useNavigationStore } from '~/store/navigationStore';
 import { computed, queryContent, useHead, useRoute } from '#imports';
 
-const store = useNavigationStore();
 const route = useRoute();
 
 const currentPage = await queryContent(route.path).findOne();
-console.log(currentPage);
+
 useHead({
 	title: currentPage.title,
 });

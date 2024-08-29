@@ -11,6 +11,8 @@ const props = withDefaults(
 		fullWidth?: boolean;
 		fullHeight?: boolean;
 		grow?: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
+		alignItems?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
+		justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 	}>(),
 	{
 		noGutter: false,
@@ -37,6 +39,14 @@ const classes = computed(() => {
 
 	if (props.grow !== '0') {
 		result.push(`flex-grow-${props.grow}`);
+	}
+
+	if (props.justify !== 'start') {
+		result.push(`justify-content-${props.justify}`);
+	}
+
+	if (props.alignItems !== 'start') {
+		result.push(`align-items-${props.alignItems}`);
 	}
 
 	return result;

@@ -2,7 +2,6 @@
 	<FlexContainer
 		v-for="(avatar, j) in authors"
 		:key="j"
-		full-width
 		align-items="center"
 		class="ma-0">
 		<NuxtLink
@@ -19,6 +18,7 @@
 		<div>
 			<NuxtLink
 				:href="avatar.link"
+				class="white-link"
 				external
 				target="_blank">
 				<span>{{ avatar.name }}</span><br>

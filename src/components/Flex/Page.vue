@@ -2,11 +2,11 @@
 	<NuxtLayout :sidebar="sidebar">
 		<FlexContainer
 			id="page"
+			:align-items="alignItems"
 			:column="column && !row"
 			:gap="gap"
-			:layout="layout"
 			:justify="justify"
-			:align-items="alignItems"
+			:layout="layout"
 			:row="row && !column"
 			full-width
 			grow="1">
@@ -42,13 +42,46 @@ withDefaults(
 @import '@/assets/scss/style.scss';
 
 #page {
-  @extend .m-0;
   @extend .px-8;
-  @extend .background-overlay;
+  margin: 0 auto;
   min-height: calc(100vh - 4rem);
+  max-width: 1200px;
+  padding: 0 1rem;
+}
 
-  .page-content {
+/* Media query for large screens */
+@media (min-width: 1600px) {
+  #page {
     max-width: 1200px;
+  }
+}
+
+/* Media query for medium screens */
+@media (max-width: 1200px) {
+  #page {
+    max-width: 1000px;
+  }
+}
+
+/* Media query for small screens */
+@media (max-width: 992px) {
+  #page {
+    max-width: 800px;
+  }
+}
+
+/* Media query for very small screens */
+@media (max-width: 768px) {
+  #page {
+    max-width: 600px;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 576px) {
+  #page {
+    max-width: 100%;
+    padding: 0 1.5rem; /* Increase padding for small screens */
   }
 }
 </style>

@@ -8,17 +8,14 @@
 		</ContentRenderer>
 		<!-- Add some extra height to make reading near the end easier -->
 		<div style="height: 100px" />
-		<EditThisPage :path="page._file" />
 	</article>
+	<div id="footer">
+		<EditThisPage :path="page._file" />
+	</div>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue';
 import type { ParsedContent } from '@nuxt/content';
 
-defineProps({
-	page: {
-		type: Object as PropType<ParsedContent>,
-	},
-});
+defineProps<{ page: ParsedContent }>();
 </script>

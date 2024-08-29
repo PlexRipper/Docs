@@ -12,52 +12,33 @@ body,
   font-family: 'Roboto', sans-serif;
 }
 
-/*
-v-app
-*/
-html {
-  &.dark {
-    background-color: $dark-theme-background !important;
 
-    article, .table-of-content {
-      a {
-        color: #ff7044;
-
-        &:hover {
-          color: #FF0000;
-        }
-      }
-    }
-  }
-
-  // Light theme
-  & {
-    background-color: $light-theme-background !important;
-
-    article, .table-of-content {
-      a {
-        color: #601d0a;
-
-        &:hover {
-          color: #FF0000;
-        }
-      }
-    }
-
-  }
-}
-
-a {
+a, a:visited, a:focus, a:active {
   text-decoration: none;
+  color: #ff7044;
+  &:hover {
+    color: #FF0000;
+  }
 }
 
-a:visited, a:focus, a:active {
+a.white-link, a.white-link:visited, a.white-link:focus, a.white-link:active {
+  text-decoration: none;
   color: inherit;
+  &:hover {
+    color: inherit;
+  }
 }
 
+
+
+
+.p-button-outlined {
+  border-width: 2px !important;
+}
 
 p {
   margin: 16px 0;
+  line-height: 1.5rem;
 }
 
 h2, h3, h4 {

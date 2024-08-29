@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { useNavigationStore } from 'store/navigationStore';
+import { get, set, useDark } from '@vueuse/core';
 import { useHead } from '#imports';
 
 useHead({
@@ -22,13 +23,20 @@ useHead({
 const store = useNavigationStore();
 await store.setup();
 
-const hasSidebar = computed(() => useAttrs().hasOwnProperty('sidebar') && useAttrs().sidebar === true);
+const hasSidebar = computed(() => Object.prototype.hasOwnProperty.call(useAttrs(), 'sidebar') && useAttrs().sidebar === true);
+
+// Always set the dark mode
+const isDark = useDark();
+set(isDark, get(isDark));
 </script>
 
 <style lang="scss">
 @use 'primeflex/primeflex.scss';
+@import '@/assets/scss/style.scss';
 
 #layout-container {
+  @extend .background-overlay;
+
   position: relative;
   overflow: hidden;
   height: 100vh;
@@ -48,5 +56,11 @@ const hasSidebar = computed(() => useAttrs().hasOwnProperty('sidebar') && useAtt
   overflow: auto;
   height: calc(100vh - 4rem);
   grid-area: main;
+}
+
+#footer {
+  grid-area: footer;
+position: fixed;
+  bottom: 2rem;
 }
 </style>

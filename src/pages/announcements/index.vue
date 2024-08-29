@@ -1,5 +1,5 @@
 <template>
-	<Page>
+	<Page align-items="start">
 		<FlexContainer justify="center">
 			<h1>Announcements</h1>
 		</FlexContainer>

@@ -32,6 +32,7 @@
 				class="mx-2"
 				href="https://github.com/PlexRipper/Docs"
 				icon=""
+				outlined
 				rel="noopener"
 				target="_blank">
 				<Icon name="mdi-github" />
@@ -45,40 +46,19 @@
 				href="https://github.com/PlexRipper/PlexRipper"
 				icon=""
 				rel="noopener"
+				outlined
 				target="_blank">
 				<Icon name="mdi-github" />
 				PlexRipper
 			</Button>
-
-			<!-- Dark Mode Toggle -->
-			<ClientOnly>
-				<Button
-					class="mx-2"
-					icon=""
-					@click="toggleTheme">
-					<Icon
-						v-if="isDark"
-						name="mdi-white-balance-sunny" />
-					<Icon
-						v-else
-						name="mdi-moon-waxing-crescent" />
-				</Button>
-			</ClientOnly>
 		</template>
 	</Toolbar>
 </template>
 
 <script lang="ts" setup>
 import { useNavigationStore } from 'store';
-import { get, set, useDark } from '@vueuse/core';
 
 const store = useNavigationStore();
-
-const isDark = useDark();
-
-function toggleTheme() {
-	set(isDark, !get(isDark));
-}
 </script>
 
 <style lang="scss">

@@ -1,53 +1,49 @@
 <template>
-	<GridContainer>
-		<GridColumn col="8">
-			<GridContainer>
-				<GridColumn
-					v-for="(link, index) in shields"
-					:key="index"
-					col="auto">
-					<img
-						class="mx-2"
-						:src="link.src"
-						:alt="link.label">
-				</GridColumn>
-				<GridColumn col="12">
-					<table>
-						<thead>
-							<tr>
-								<th class="text-left">
-									<h3>
-										Development
-									</h3>
-								</th>
-								<th class="text-left">
-									<h3>
-										Stable
-									</h3>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr
-								v-for="(_, index) in Math.max(devShields.length, stableShields.length)"
-								:key="index">
-								<td v-if="devShields[index]">
-									<img
-										class="mt-2"
-										:src="devShields[index].src"
-										:alt="devShields[index].label">
-								</td>
-								<td v-if="stableShields[index]">
-									<img
-										class="mt-2"
-										:src="stableShields[index].src"
-										:alt="stableShields[index].label">
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</GridColumn>
-			</GridContainer>
+	<GridContainer justify="center">
+		<GridColumn
+			v-for="(link, index) in shields"
+			:key="index"
+			col="auto"
+			class="m-2">
+			<img
+				:src="link.src"
+				:alt="link.label">
+		</GridColumn>
+		<GridColumn col="auto">
+			<table>
+				<thead>
+					<tr>
+						<th class="text-left">
+							<h3>
+								Development
+							</h3>
+						</th>
+						<th class="text-left">
+							<h3>
+								Stable
+							</h3>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr
+						v-for="(_, index) in Math.max(devShields.length, stableShields.length)"
+						:key="index">
+						<td v-if="devShields[index]">
+							<img
+								class="mt-2"
+								:src="devShields[index].src"
+								:alt="devShields[index].label">
+						</td>
+						<td v-if="stableShields[index]">
+							<img
+								class="mt-2"
+								:src="stableShields[index].src"
+								:alt="stableShields[index].label">
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</GridColumn>
 	</GridContainer>
 </template>
@@ -59,18 +55,6 @@ const shields = transform([
 	{
 		label: 'Docker Pulls',
 		src: 'https://img.shields.io/docker/pulls/plexripper/plexripper',
-	},
-	{
-		label: 'Lines of code',
-		src: 'https://img.shields.io/tokei/lines/github/plexripper/plexripper',
-	},
-	{
-		label: 'GitHub issues',
-		src: 'https://img.shields.io/github/issues/plexripper/plexripper',
-	},
-	{
-		label: 'License',
-		src: 'https://img.shields.io/github/license/plexripper/plexripper',
 	},
 	{
 		label: 'Github Followers',
@@ -91,6 +75,14 @@ const shields = transform([
 	{
 		label: 'Docker Stars',
 		src: 'https://img.shields.io/docker/stars/plexripper/plexripper',
+	},
+	{
+		label: 'GitHub issues',
+		src: 'https://img.shields.io/github/issues/plexripper/plexripper',
+	},
+	{
+		label: 'License',
+		src: 'https://img.shields.io/github/license/plexripper/plexripper',
 	},
 ]);
 

@@ -45,7 +45,7 @@ const props = defineProps({
 .table-of-content {
   @extend .fixed;
   @extend .mt-4;
-  @extend .right-0;
   @extend .h-full;
+  right: 3rem;
 }
 </style>

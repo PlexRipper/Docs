@@ -1,28 +1,28 @@
 <template>
 	<Page>
-		<article>
-			<h1>Frequently Asked Questions</h1>
-			<VExpansionPanels class="my-4">
-				<template
+		<h1>Frequently Asked Questions</h1>
+
+		<ClientOnly>
+			<Accordion
+				:dt="styling"
+				class="w-full">
+				<AccordionPanel
 					v-for="(question, index) in questions"
-					:key="index">
-					<VExpansionPanel
-						:title="question.title"
-						eager>
-						<template #text>
-							<ContentRenderer
-								v-if="question.answer"
-								:value="question.answer" />
-						</template>
-					</VExpansionPanel>
-				</template>
-			</VExpansionPanels>
-			<EditThisPage :path="currentPage._file" />
-		</article>
+					:key="index"
+					:value="index">
+					<AccordionHeader>{{ question.title }}</AccordionHeader>
+					<AccordionContent v-if="question.answer">
+						<ContentRenderer :value="question.answer" />
+					</AccordionContent>
+				</AccordionPanel>
+			</Accordion>
+		</ClientOnly>
+
+		<EditThisPage :path="currentPage._file" />
 	</Page>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { MarkdownNode, MarkdownParsedContent } from '@nuxt/content';
 import { queryContent, useHead } from '#imports';
 
@@ -37,6 +37,24 @@ useHead({
 
 const currentPage = await queryContent('faq').findOne() as MarkdownParsedContent;
 const questions = parseQuestions();
+const styling = ref({
+	colorScheme: {
+		light: {
+			root: {
+				headerBackground: '{surface.400}',
+				contentBackground: '{surface.400}',
+			},
+		},
+		dark: {
+			root: {
+				headerBackground: '{surface.400}',
+				contentBackground: '{transparent}',
+				headerActiveBackground: '{surface.400}',
+				headerHoverBackground: '{surface.200}',
+			},
+		},
+	},
+});
 
 function parseQuestions() {
 	if (!currentPage) {
@@ -91,3 +109,15 @@ function parseQuestions() {
 	return result;
 }
 </script>
+
+<style lang="scss">
+@use 'primeflex/primeflex.scss';
+
+.p-accordioncontent {
+  background-color: var(--p-surface-400);
+}
+
+.p-accordionpanel-active {
+  @extend .my-4;
+}
+</style>
