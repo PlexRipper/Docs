@@ -1,6 +1,5 @@
 @use 'primeflex/primeflex.scss';
 
-@import "./theme.scss";
 @import "./image.scss";
 
 
@@ -67,10 +66,6 @@ table {
 
 .background-overlay {
   background-color: var(--p-surface-700);
-}
-
-.background-overlay-darker {
-  background-color: var(--p-surface-900);
 }
 
 .subtitle {

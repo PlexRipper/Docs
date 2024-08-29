@@ -54,10 +54,15 @@ export default defineNuxtConfig({
    *  Doc: https://github.com/nuxt/components
    */
   components: {
-    loader: true, dirs: [// Components directory
+    loader: true,
+    dirs: [
       {
-        path: './components', pathPrefix: false, global: true, extensions: ['vue'],
-      }],
+        path: './components',
+        pathPrefix: false,
+        global: true,
+        extensions: ['vue'],
+      },
+    ],
   },
 
   alias: {
@@ -65,6 +70,7 @@ export default defineNuxtConfig({
     store: fileURLToPath(new URL('./src/store', import.meta.url)),
     components: fileURLToPath(new URL('./src/components', import.meta.url)),
   },
+
   eslint: {
     config: {
       stylistic: {
@@ -79,5 +85,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
   compatibilityDate: '2024-08-26',
 });
