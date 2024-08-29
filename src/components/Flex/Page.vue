@@ -9,6 +9,7 @@
 			:layout="layout"
 			:row="row && !column"
 			full-width
+			:class="{ 'no-max-width': noMaxWidth }"
 			grow="1">
 			<slot />
 		</FlexContainer>
@@ -25,6 +26,7 @@ withDefaults(
 		alignItems?: 'start' | 'end' | 'center' | 'stretch' | 'baseline';
 		gap?: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 		layout?: '1' | 'auto' | 'initial' | 'none';
+		noMaxWidth?: boolean;
 	}>(),
 	{
 		sidebar: false,
@@ -33,6 +35,8 @@ withDefaults(
 		gap: '0',
 		layout: 'initial',
 		alignItems: 'center',
+		justify: 'start',
+		noMaxWidth: false,
 	},
 );
 </script>
@@ -47,6 +51,10 @@ withDefaults(
   min-height: calc(100vh - 4rem);
   max-width: 1200px;
   padding: 0 1rem;
+
+  &.no-max-width {
+    max-width: none !important;
+  }
 }
 
 /* Media query for large screens */

@@ -1,6 +1,6 @@
 {
   "name": "plex-ripper-docs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "PlexRipper Documentation",
   "author": "JasonLandbridge",
   "private": true,
@@ -10,7 +10,6 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "npm-upgrade-packages": "npm-upgrade",
-    "nuxt-rc-update": "npx nuxi@latest upgrade --force",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

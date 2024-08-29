@@ -1,5 +1,6 @@
 <template>
 	<Page
+		no-max-width
 		align-items="center">
 		<ClientOnly>
 			<Galleria
