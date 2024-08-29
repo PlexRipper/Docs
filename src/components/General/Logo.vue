@@ -1,17 +1,17 @@
 <template>
-  <img
-    :height="size"
-    :width="size"
-    src="/img/logo/full-logo-256.png"
-    alt="PlexRipper Docs Logo">
+  <ClientOnly>
+    <NuxtImg
+      :height="size"
+      :width="size"
+      src="/img/logo/full-logo-256.png"
+      alt="PlexRipper Docs Logo" />
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
-interface Props {
+withDefaults(defineProps<{
   size?: number;
-}
-
-withDefaults(defineProps<Props>(), {
+}>(), {
   size: 128,
 });
 </script>

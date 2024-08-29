@@ -5,10 +5,13 @@
       :key="index"
       col="auto"
       class="m-2">
-      <img
+      <NuxtImg
+        :height="height"
         :src="link.src"
-        :alt="link.label">
+        :alt="link.label" />
     </GridColumn>
+  </GridContainer>
+  <GridContainer justify="center">
     <GridColumn col="auto">
       <table>
         <thead>
@@ -30,16 +33,18 @@
             v-for="(_, index) in Math.max(devShields.length, stableShields.length)"
             :key="index">
             <td v-if="devShields[index]">
-              <img
+              <NuxtImg
                 class="mt-2"
+                :height="height"
                 :src="devShields[index].src"
-                :alt="devShields[index].label">
+                :alt="devShields[index].label" />
             </td>
             <td v-if="stableShields[index]">
-              <img
+              <NuxtImg
                 class="mt-2"
+                :height="height"
                 :src="stableShields[index].src"
-                :alt="stableShields[index].label">
+                :alt="stableShields[index].label" />
             </td>
           </tr>
         </tbody>
@@ -50,6 +55,8 @@
 
 <script setup lang="ts">
 import { transform } from '~/common/lib/shields-parser';
+
+const height = ref(32);
 
 const shields = transform([
   {

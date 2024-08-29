@@ -4,11 +4,14 @@ import { defineNuxtConfig } from 'nuxt/config';
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   srcDir: 'src/',
-
-  ssr: false, dev: false, content: {
-    documentDriven: false, markdown: {
+  ssr: true,
+  dev: false,
+  content: {
+    documentDriven: false,
+    markdown: {
       anchorLinks: false,
-    }, highlight: {
+    },
+    highlight: {
       theme: 'github-dark', preload: ['ts', 'js', 'css', 'json', 'bash'],
     },
   },
@@ -37,9 +40,11 @@ export default defineNuxtConfig({
 
   primevue: {
     options: { ripple: true }, importTheme: { from: './assets/theme/primevue-theme.js' },
-  }, build: {
+  },
+  build: {
     transpile: ['primevue'],
-  }, plausible: {
+  },
+  plausible: {
     autoOutboundTracking: true,
   },
   /*
@@ -71,5 +76,6 @@ export default defineNuxtConfig({
         quoteProps: 'as-needed',
       },
     },
-  }, compatibilityDate: '2024-08-26',
+  },
+  compatibilityDate: '2024-08-26',
 });

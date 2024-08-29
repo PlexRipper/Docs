@@ -2,35 +2,80 @@
   <Page
     no-max-width
     align-items="center">
-    <Galleria
-      :dt="styling"
-      circular
-      :num-visible="5"
-      :responsive-options="responsiveOptions"
-      :value="images"
-      show-item-navigators>
-      <template #item="{ item }">
-        <NuxtImg
-          :alt="item.text"
-          :src="item.src"
-          style="width: 100%; display: block" />
-      </template>
-      <template #thumbnail="{ item }">
-        <NuxtImg
-          :alt="item.text"
-          :src="item.src"
-          style="width: 100%; display: block" />
-      </template>
-      <template #caption="{ item }">
-        <span class="text-2xl">{{ item.text }}</span>
-      </template>
-    </Galleria>
+    <ClientOnly>
+      <Galleria
+        id="demo-gallery"
+        :dt="styling"
+        circular
+        :num-visible="5"
+        :responsive-options="responsiveOptions"
+        :value="images"
+        :container-style="{ 'max-width': maxWidth }"
+        show-item-navigators
+        @update:visible="resizeGallery()">
+        <template #item="{ item }">
+          <NuxtImg
+            :alt="item.text"
+            :src="item.src"
+            style="width: 100%; display: block" />
+        </template>
+        <template #thumbnail="{ item }">
+          <NuxtImg
+            :alt="item.text"
+            :src="item.src"
+            style="width: 100%; display: block" />
+        </template>
+        <template #caption="{ item }">
+          <span class="text-2xl">{{ item.text }}</span>
+        </template>
+      </Galleria>
+    </ClientOnly>
   </Page>
 </template>
 
 <!-- Pages need a single root element to make page transition work -->
 <script lang="ts" setup>
-import { useHead } from '#imports';
+import { get, set, useElementSize, useWindowSize } from '@vueuse/core';
+import { sleep } from '@antfu/utils';
+import { useHead, onMounted } from '#imports';
+
+const maxWidth = ref('none');
+const initialSet = ref(false);
+const { height } = useWindowSize();
+
+function resizeGallery() {
+  console.log('resizeGallery');
+  const elPageContainer = document.getElementById('page-container');
+  const elGallery = document.getElementById('demo-gallery');
+
+  if (!elPageContainer || !elGallery) {
+    return set(maxWidth, 'none');
+  }
+
+  const { height: pageHeight } = useElementSize(elPageContainer);
+  const { height: galleryHeight, width: galleryWidth } = useElementSize(elGallery);
+
+  const galleryRatio = get(galleryWidth) / get(galleryHeight);
+  console.log('galleryRatio', galleryRatio);
+  console.log('pageheight', get(pageHeight));
+
+  set(maxWidth, ((get(pageHeight) - 24) * galleryRatio) + 'px');
+  if (!get(initialSet)) {
+    setTimeout(() => set(initialSet, true), 1000);
+  }
+}
+
+watch(height, () => {
+  resizeGallery();
+});
+
+onMounted(async () => {
+  // Keep trying until the gallery is visible
+  while (!get(initialSet)) {
+    resizeGallery();
+    await sleep(200);
+  }
+});
 
 useHead({
   title: 'Demo',
@@ -113,12 +158,11 @@ const styling = ref({
 <style lang="scss">
 @use 'primeflex/primeflex.scss';
 
-.p-galleria, .p-galleria-content {
-// max-width: 1920px;
-//  max-height: calc(100vh - 4rem)
-}
-
 .p-galleria-caption {
   @extend .text-center;
+}
+
+.p-galleria-nav-button {
+  @extend .absolute;
 }
 </style>
