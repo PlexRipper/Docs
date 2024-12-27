@@ -3,12 +3,15 @@
     <h1>Frequently Asked Questions</h1>
 
     <Accordion
+      :value="activePanel"
       :dt="styling"
-      class="w-full">
+      class="w-full"
+      @update:value="onPanelChange">
       <AccordionPanel
         v-for="(question, index) in questions"
+        :id="kebabCase(question.title)"
         :key="index"
-        :value="index">
+        :value="kebabCase(question.title)">
         <AccordionHeader>{{ question.title }}</AccordionHeader>
         <AccordionContent v-if="question.answer">
           <ContentRenderer :value="question.answer" />
@@ -22,7 +25,8 @@
 
 <script lang="ts" setup>
 import type { MarkdownNode, MarkdownParsedContent } from '@nuxt/content';
-import { queryContent, useHead } from '#imports';
+import { kebabCase } from 'lodash-es';
+import { queryContent, useHead, useRoute, useRouter, useNuxtApp } from '#imports';
 
 interface Question {
   title: string;
@@ -33,6 +37,10 @@ useHead({
   title: 'Frequently Asked Questions',
 });
 
+const nuxtApp = useNuxtApp();
+const router = useRouter();
+const route = useRoute();
+const activePanel = ref<string | string[] | null | undefined >(null);
 const currentPage = await queryContent('faq').findOne() as MarkdownParsedContent;
 const questions = parseQuestions();
 const styling = ref({
@@ -109,6 +117,41 @@ function parseQuestions() {
 
   return result;
 }
+
+function onPanelChange(event: string | string[] | null | undefined) {
+  if (typeof event === 'string') {
+    activePanel.value = event;
+    router.replace({ hash: '#' + event });
+  }
+}
+
+nuxtApp.hook('page:finish', () => {
+  if (route.hash) {
+    const panelId = route.hash.replace('#', '');
+    activePanel.value = panelId;
+    setTimeout(() => {
+      const pageContainerElement = document.getElementById('page-container');
+      if (!pageContainerElement) {
+        return;
+      }
+
+      const targetElement = document.getElementById(panelId);
+      if (!targetElement) {
+        return;
+      }
+      const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+
+      if (targetElement) {
+        const offset = 20; // Adjust for a header or spacing
+
+        pageContainerElement.scrollTo({
+          top: elementTop - offset,
+          behavior: 'smooth',
+        });
+      }
+    }, 1000);
+  }
+});
 </script>
 
 <style lang="scss">
