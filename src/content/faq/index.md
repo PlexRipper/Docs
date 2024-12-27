@@ -35,6 +35,29 @@ Most likely not, but I do not own Plex, so I can't give guarantees. If you want 
 account, and then use that account to request access to various Plex servers. Your real account will then never be
 exposed to a Plex server its downloading from.
 
+## What is the default username and password to log into PlexRipper?  
+
+**Make sure to change this as soon as you log in!**
+
+Username: `PlexRipperRocks`
+
+Password: `Pl€XR!ℙℙ€R69`
+
+## What if I forgot my username and password to log into PlexRipper?  
+
+1. Shutdown PlexRipper
+2. You have two options:
+   1. Delete the `PlexRipper.db` file in the `/config/` folder which will reset the username and password to the default, but you will lose all PlexRipper data.
+   2. If you're technical and don't want to lose your PlexRipper data, you can also use a [SQLite editor](https://sqlitebrowser.org/) to delete all data from the following tables:
+        - `AspNetRoleClaims`
+        - `AspNetRoles`
+        - `AspNetUserClaims`
+        - `AspNetUserLogins`
+        - `AspNetUserRoles`
+        - `AspNetUserTokens`
+        - `AspNetUsers`
+3. Start PlexRipper again, and you will be able to log in with the default username and password.
+
 ## How is PlexRipper spelled?
 
 Ah yes, the main question in life. Even I, as its almighty creator, am not too sure. But in my infinite, most likely
@@ -56,7 +79,7 @@ this [issue](https://github.com/brave/brave-browser/issues/19037#issuecomment-12
 It "should" however work with all browsers, except ancient ones like Internet
 Explorer and trash ones like Safari. Don't expect support for either of those.
 
-## I tried to use my username to setup my Plex account in PlexRipper but it's not working?
+## I tried to use my username to set up my Plex account in PlexRipper, but it's not working?
 
 Make sure that the "Allow username to be used when signing in" is checked.
 
@@ -65,15 +88,15 @@ Make sure that the "Allow username to be used when signing in" is checked.
 3. Click on the username and the below option will appear
 4. Make sure it's checked and then click "Save Changes"
 
-![](/img/faq/username-plex-question.png){.responsive-img}
+![Username Plex Question](/img/faq/username-plex-question.png){.responsive-img}
 
 ## The background of PlexRipper is dark gray, is that normal?
 
-No it should be the almost the same background you see on this website. Make sure you're not running an extensions such as [Dark Reader](https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh?hl=en) that makes the websites you visit dark
+No it should be almost the same background you see on this website. Make sure you're not running an extensions such as [Dark Reader](https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh?hl=en) that makes the websites you visit dark
 
 ## Is this project dead? Why no updates? Can you hurry up?
 
-Check the [homepage](/) for what is currently happening.
+Check the [homepage](/) for what is currently happening or join the [discord](https://discord.com/invite/Qa3BtxN77g) so you can complain there about this FREE labour of love.
 
 ## I'm impressed with your work, can I hire you?
 
