@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
+    'nuxt-lodash',
   ],
   primevue: {
     options: { ripple: true }, importTheme: { from: './assets/theme/primevue-theme.js' },

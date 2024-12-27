@@ -35,5 +35,6 @@ export default defineComponent({
 pre code .line {
   display: block;
   min-height: 1rem;
+  text-wrap: auto;
 }
 </style>

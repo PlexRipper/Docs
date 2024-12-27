@@ -44,7 +44,6 @@ withDefaults(
 #page {
   @extend .px-8;
   margin: 0 auto;
-  min-height: calc(100vh - 4rem);
   max-width: 1200px;
   padding: 0 1rem;
 
