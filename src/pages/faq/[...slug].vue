@@ -18,8 +18,6 @@
         </AccordionContent>
       </AccordionPanel>
     </Accordion>
-
-    <EditThisPage :path="currentPage._file" />
   </Page>
 </template>
 

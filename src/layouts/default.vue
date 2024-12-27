@@ -5,13 +5,18 @@
     <div id="page-container">
       <slot />
     </div>
+    <div
+      v-if="editThisFile"
+      id="footer">
+      <EditThisPage :path="editThisFile" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useNavigationStore } from 'store/navigationStore';
 import { get, set, useDark } from '@vueuse/core';
-import { useHead } from '#imports';
+import { queryContent, useHead, useRoute } from '#imports';
 
 useHead({
   title: 'PlexRipper Docs',
@@ -19,8 +24,30 @@ useHead({
   link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 });
 
+const route = useRoute();
 const store = useNavigationStore();
 await store.setup();
+
+const editThisFile = ref<string | null>(null);
+watch(
+  () => route.path, // Watch the route path for changes
+  async (newPath) => {
+    try {
+      const currentPage = await queryContent(newPath).findOne();
+      const file = currentPage?._file || null;
+      console.log('Edit this file:', file);
+      if (file === 'index.md') {
+        editThisFile.value = null;
+        return;
+      }
+      editThisFile.value = currentPage?._file || null;
+    } catch (error) {
+      console.error(error);
+      editThisFile.value = null;
+    }
+  },
+  { immediate: true }, // Run on initialization
+);
 
 // Always set the dark mode
 const isDark = useDark();
@@ -57,10 +84,9 @@ set(isDark, get(isDark));
 
 #footer {
   grid-area: footer;
-  position: fixed;
-  bottom: 2rem;
   display: flex;
-  align-self: start;
+  align-items: center;
+  justify-content: center;
 }
 
 // Used to keep the vanta.js background in place and overwrite the built-in position: absolute;
