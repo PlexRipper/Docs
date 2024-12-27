@@ -22,8 +22,6 @@ useHead({
 const store = useNavigationStore();
 await store.setup();
 
-console.log(useAttrs());
-
 // Always set the dark mode
 const isDark = useDark();
 set(isDark, get(isDark));
@@ -53,7 +51,7 @@ set(isDark, get(isDark));
 
 #page-container {
   overflow: auto;
-  height: calc(100vh - 4rem);
+  height: 100%;
   grid-area: main;
 }
 
