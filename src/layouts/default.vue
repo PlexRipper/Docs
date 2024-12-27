@@ -29,25 +29,33 @@ const store = useNavigationStore();
 await store.setup();
 
 const editThisFile = ref<string | null>(null);
-watch(
-  () => route.path, // Watch the route path for changes
-  async (newPath) => {
-    try {
-      const currentPage = await queryContent(newPath).findOne();
-      const file = currentPage?._file || null;
-      console.log('Edit this file:', file);
-      if (file === 'index.md') {
+
+onMounted(() => {
+  watch(
+    () => route.path, // Watch the route path for changes
+    async (newPath) => {
+      try {
+        if (!newPath) {
+          editThisFile.value = null;
+          return;
+        }
+
+        const currentPage = await queryContent(newPath).findOne();
+        const file = currentPage?._file || null;
+        console.log('Edit this file:', file);
+        if (file === 'index.md') {
+          editThisFile.value = null;
+          return;
+        }
+        editThisFile.value = currentPage?._file || null;
+      } catch (error) {
+        console.error(error);
         editThisFile.value = null;
-        return;
       }
-      editThisFile.value = currentPage?._file || null;
-    } catch (error) {
-      console.error(error);
-      editThisFile.value = null;
-    }
-  },
-  { immediate: true }, // Run on initialization
-);
+    },
+    { immediate: true }, // Run on initialization
+  );
+});
 
 // Always set the dark mode
 const isDark = useDark();
