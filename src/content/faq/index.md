@@ -46,17 +46,9 @@ Password: `Pl€XR!ℙℙ€R69`
 ## What if I forgot my username and password to log into PlexRipper?  
 
 1. Shutdown PlexRipper
-2. You have two options:
-   1. Delete the `PlexRipper.db` file in the `/config/` folder which will reset the username and password to the default, but you will lose all PlexRipper data.
-   2. If you're technical and don't want to lose your PlexRipper data, you can also use a [SQLite editor](https://sqlitebrowser.org/) to delete all data from the following tables:
-        - `AspNetRoleClaims`
-        - `AspNetRoles`
-        - `AspNetUserClaims`
-        - `AspNetUserLogins`
-        - `AspNetUserRoles`
-        - `AspNetUserTokens`
-        - `AspNetUsers`
-3. Start PlexRipper again, and you will be able to log in with the default username and password.
+2. Open `/Config/PlexRipperSettings.json` in a text editor
+3. Change `ResetCredentials` to `true`
+4. Start PlexRipper again, and you will be able to log in with the default username and password
 
 ## How is PlexRipper spelled?
 
