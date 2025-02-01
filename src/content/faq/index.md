@@ -58,12 +58,19 @@ sense.
 
 ## What is the difference between PlexRipper stable and dev?
 
-The dev branch contains all the latest under development changes.
+The dev branch contains all the latest under development changes. 
+
+## Why are the poster images not showing when viewing a Plex library?
+
+ - Make sure the server is online, images are loaded directly from the Plex server.
+ - Make sure you disable ad blockers like [uBlock Origin](https://ublockorigin.com/).
+ - Make sure to disable extensions like Dark Reader.
+ - Firefox can sometimes block non-https connections. Press F12 in Firefox and watch the console to verify this.
 
 ## Which browsers are supported by PlexRipper?
 
 Officially, all chromium based browsers such as [Google Chrome](https://www.google.com/chrome/)
-and [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium).
+and [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium) and Firefox.
 
 [Brave](https://brave.com/) works as well, just disable the Brave shields functionality on PlexRipper. See
 this [issue](https://github.com/brave/brave-browser/issues/19037#issuecomment-1287769602).
